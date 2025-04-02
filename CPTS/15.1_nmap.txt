@@ -1,0 +1,3140 @@
+#nmap -A -sC -sV -p- 94.237.58.147
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-01-13 14:34 CST
+Nmap scan report for 94-237-58-147.uk-lon1.upcloud.host (94.237.58.147)
+Host is up (0.00089s latency).
+Not shown: 64888 closed tcp ports (reset), 250 filtered tcp ports (no-response), 18 filtered tcp ports (port-unreach)
+PORT      STATE SERVICE     VERSION
+22/tcp    open  ssh         OpenSSH 9.2p1 Debian 2+deb12u3 (protocol 2.0)
+| ssh-hostkey: 
+|   256 92:d7:84:07:2b:03:d5:2c:60:b9:fe:6d:ba:62:71:59 (ECDSA)
+|_  256 eb:17:cf:c1:8a:c8:57:80:ec:fc:a0:a6:17:01:67:ee (ED25519)
+111/tcp   open  rpcbind     2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|_  100000  3,4          111/udp6  rpcbind
+4240/tcp  open  daap        mt-daapd DAAP
+9962/tcp  open  http        Golang net/http server (Go-IPFS json-rpc or InfluxDB API)
+|_http-title: Site doesn't have a title (text/plain; charset=utf-8).
+10256/tcp open  http        Golang net/http server (Go-IPFS json-rpc or InfluxDB API)
+|_http-title: Site doesn't have a title (text/plain; charset=utf-8).
+30205/tcp open  unknown
+30215/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+30335/tcp open  http        nginx 1.26.1
+|_http-server-header: nginx/1.26.1
+|_http-title: inlanefreight
+30350/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: HTB Academy
+| http-robots.txt: 1 disallowed entry 
+|_/admin-login-page.php
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+30405/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: HTB Academy
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+30570/tcp open  ssl/unknown
+| ssl-cert: Subject: commonName=sc-upcloud-challs.thanos.htb.systems/organizationName=Hack The Box Ltd
+| Subject Alternative Name: DNS:sc-upcloud-challs.thanos.htb.systems
+| Not valid before: 2024-04-18T07:07:12
+|_Not valid after:  2025-04-18T07:07:42
+|_ssl-date: TLS randomness does not represent time
+30765/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+| http-auth: 
+| HTTP/1.1 401 Authorization Required\x0D
+|_  Basic realm=Access denied
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+30891/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+30907/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+30943/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+30961/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+31057/tcp open  nagios-nsca Nagios NSCA
+31146/tcp open  http        Node.js Express framework
+|_http-title: Halloween Party
+31231/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Secret Serial Generator
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+31240/tcp open  tcpwrapped
+31252/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+31316/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: HTB Academy
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+31387/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+31413/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Host Checker
+31529/tcp open  http        Node.js Express framework
+31531/tcp open  mysql       MySQL 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+|   Thread ID: 6
+|   Capabilities flags: 63486
+|   Some Capabilities: ODBCClient, FoundRows, Support41Auth, Speaks41ProtocolOld, IgnoreSigpipes, ConnectWithDatabase, SupportsTransactions, LongColumnFlag, SupportsCompression, DontAllowDatabaseTableColumn, InteractiveClient, Speaks41ProtocolNew, IgnoreSpaceBeforeParenthesis, SupportsLoadDataLocal, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: ^jzG3f+@@_?]8?q<v`\.
+|_  Auth Plugin Name: mysql_native_password
+31562/tcp open  http        nginx 1.26.1
+|_http-title: inlanefreight
+|_http-server-header: nginx/1.26.1
+31572/tcp open  http        Apache httpd 2.4.62 ((Debian))
+31756/tcp open  unknown
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcB/idFNvMucAmLZgxGMXI6CL/gcF9z+gm
+|     cZMclwIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   GetRequest: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcCiQ7bDfwS4I9IOWgMsQ33Xl2GL/eoKgI
+|     ZqkN5QIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   HTTPOptions: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcBOye5J1kifgcwktd69L3wQrMiWFCoBtc
+|     WgtJ2QIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   RPCCheck: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcD1Z36MVbNKiCaZ8rkUpAArciXZSj9HXT
+|     2wCUswIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   RTSPRequest: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcBmVNHgAAF2/zPRr3OFUiqNQ3J+y+ljhf
+|     MP9hwQIDAQAB
+|     -----END PUBLIC KEY-----
+|_    enter your first pumpkin =
+31781/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/2.1.2 Python/3.8.13
+|     Date: Mon, 13 Jan 2025 20:35:07 GMT
+|     Content-Type: application/json
+|     Content-Length: 33
+|     Connection: close
+|     "message": "404 Not Found"
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/2.1.2 Python/3.8.13
+|     Date: Mon, 13 Jan 2025 20:35:07 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: OPTIONS, GET, HEAD
+|     Content-Length: 0
+|     Connection: close
+|   Help: 
+|     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+|     "http://www.w3.org/TR/html4/strict.dtd">
+|     <html>
+|     <head>
+|     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request syntax ('HELP').</p>
+|     <p>Error code explanation: HTTPStatus.BAD_REQUEST - Bad request syntax or unsupported method.</p>
+|     </body>
+|     </html>
+|   RTSPRequest: 
+|     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+|     "http://www.w3.org/TR/html4/strict.dtd">
+|     <html>
+|     <head>
+|     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: HTTPStatus.BAD_REQUEST - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+31831/tcp open  http        Apache httpd 2.4.59 ((Debian))
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-title: Login
+|_http-server-header: Apache/2.4.59 (Debian)
+31903/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Secret Serial Generator
+32199/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+32448/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+32469/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+32479/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.1 Python/3.11.8
+|     Date: Mon, 13 Jan 2025 20:35:07 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 1473
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8" />
+|     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+|     <meta name="viewport" content="width=device-width, initial-scale=1" />
+|     <title>Flag Command</title>
+|     <link rel="stylesheet" href="/static/terminal/css/terminal.css" />
+|     <link rel="stylesheet" href="/static/terminal/css/commands.css" />
+|     </head>
+|     <body style="color: #94ffaa !important; position: fixed; height: 100vh; overflow: scroll; font-size: 28px;font-weight: 700;">
+|     <div id="terminal-container" style="overflow: auto;height: 90%;">
+|     id="before-div"></a>
+|     </div>
+|     <div id="command">
+|     <textarea id="user-text-input" autofocus></textarea>
+|     <div id="current-command-line">
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.1 Python/3.11.8
+|     Date: Mon, 13 Jan 2025 20:35:07 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: GET, HEAD, OPTIONS
+|     Content-Length: 0
+|     Connection: close
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+32562/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: 2Do
+32570/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Secret Serial Generator
+32672/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+32767/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlanefreight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+32778/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+32844/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-title: Materialize CSS text only template
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+32887/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+32912/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+32968/tcp open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 ea:54:a5:46:16:cf:30:f2:67:0b:c8:02:f3:ea:b9:05 (RSA)
+|   256 f4:06:25:66:77:eb:7b:b8:58:f3:ec:2e:ef:71:1c:eb (ECDSA)
+|_  256 98:af:f5:e4:6a:14:7e:2d:5c:3d:71:be:81:1c:74:97 (ED25519)
+32996/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+33013/tcp open  unknown
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|   GetRequest: 
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|   HTTPOptions, RTSPRequest: 
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|   Help: 
+|     Invalid command
+|   Kerberos: 
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|   TLSSessionReq: 
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|   TerminalServerCookie: 
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|_    Invalid command
+33093/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+33136/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Employee File Manager
+33397/tcp open  http        Node.js Express framework
+|_http-title: Gunship
+33644/tcp open  http        nginx 1.26.1
+|_http-title: inlanefreight
+|_http-server-header: nginx/1.26.1
+33722/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+33775/tcp open  unknown
+| fingerprint-strings: 
+|   GenericLines, GetRequest: 
+|     Welcome to the Digital Safety Annex!
+|     will keep your data safe so you don't have to worry!
+|     Create Account 
+|     Store Secret
+|     Verify Secret
+|     Download Secret
+|     Developer Note
+|     Exit
+|     Option > [!] Invalid Selection.
+|     Welcome to the Digital Safety Annex!
+|     will keep your data safe so you don't have to worry!
+|     Create Account 
+|     Store Secret
+|     Verify Secret
+|     Download Secret
+|     Developer Note
+|     Exit
+|     Option > [!] Invalid Selection.
+|     Welcome to the Digital Safety Annex!
+|     will keep your data safe so you don't have to worry!
+|     Create Account 
+|     Store Secret
+|     Verify Secret
+|     Download Secret
+|     Developer Note
+|     Exit
+|     Option >
+|   NULL: 
+|     Welcome to the Digital Safety Annex!
+|     will keep your data safe so you don't have to worry!
+|     Create Account 
+|     Store Secret
+|     Verify Secret
+|     Download Secret
+|     Developer Note
+|     Exit
+|_    Option >
+33950/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: HTB Academy
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+34010/tcp open  tcpwrapped
+34011/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Inlane Freight
+34285/tcp open  http        Apache httpd 2.4.38 ((Debian))
+|_http-server-header: Apache/2.4.38 (Debian)
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+34512/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: HTB Academy
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+34567/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Blank Page
+34730/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.3 Python/3.12.3
+|     Date: Mon, 13 Jan 2025 20:35:18 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 27270
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en" dir="ltr">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>PIP-OS(R) V1.33.7</title>
+|     <meta name="viewport" content="width=device-width, initial-scale=1">
+|     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+|     <link rel="stylesheet" href="/static/css/pipboy.app.css">
+|     <link rel="stylesheet" href="/static/css/menu.css">
+|     <link rel="icon" type="image/png" href="/static/images/favicon.png" />
+|     </head>
+|     <body>
+|     <nav class="navbar navbar-expand-lg navbar-light bg-light first-navbar">
+|     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-SupportedContent" aria-expanded="false" aria-label="Toggle-navigation"></button>
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.3 Python/3.12.3
+|     Date: Mon, 13 Jan 2025 20:35:18 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: OPTIONS, HEAD, GET
+|     Content-Length: 0
+|     Connection: close
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+34759/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+| http-auth: 
+| HTTP/1.1 401 Authorization Required\x0D
+|_  Basic realm=Access denied
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+34948/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Inlanefreight
+34986/tcp open  http        nginx
+|_http-title: Inlanefreight &#8211; Just another WordPress site
+|_http-generator: WordPress 5.1.6
+35070/tcp open  tcpwrapped
+35126/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+35564/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: 2Do
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+35571/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Employee Manager
+35582/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+35621/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+35630/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+35686/tcp open  unknown
+| fingerprint-strings: 
+|   DNSVersionBindReqTCP, NULL, RPCCheck: 
+|     The input must be a binary signal of 16 bits.
+|     Input :
+|   GenericLines, GetRequest, HTTPOptions, RTSPRequest: 
+|     The input must be a binary signal of 16 bits.
+|     Input : Error : Invalid length of bits.
+|     Input : Error : Invalid length of bits.
+|_    Input :
+35729/tcp open  http        nginx
+|_http-title: Inlanefreight &#8211; Just another WordPress site
+|_http-generator: WordPress 5.1.6
+35768/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+35951/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Inlane Freight
+35967/tcp open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 ea:54:a5:46:16:cf:30:f2:67:0b:c8:02:f3:ea:b9:05 (RSA)
+|   256 f4:06:25:66:77:eb:7b:b8:58:f3:ec:2e:ef:71:1c:eb (ECDSA)
+|_  256 98:af:f5:e4:6a:14:7e:2d:5c:3d:71:be:81:1c:74:97 (ED25519)
+36048/tcp open  unknown
+| fingerprint-strings: 
+|   NULL: 
+|     [1;32m ______ 
+|     [1;35m|xxx|
+|     [1;32m /|_||_`.__ 
+|     [1;35m| F |
+|     [1;32m ( _ _ _\x20 
+|     [1;35m|xxx|
+|     [1;32m*** =`-(_)--(_)-' 
+|     [1;35m| I |
+|     [1;35m|xxx|
+|     [1;35m| N |
+|     [1;35m|xxx|
+|     [1;35m| I |
+|     [1;35m|xxx|
+|     [1;31m _-_- _/________ 
+|     [1;35m| S |
+|     [1;31m _-_-__ / ,-. -|- ,-.`-. 
+|     [1;35m|xxx|
+|_    [1;31m _-_- `( o )----( o )-
+36101/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+36200/tcp open  http        Apache httpd 2.4.38 ((Debian))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.38 (Debian)
+36279/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.5 Python/3.10.12
+|     Date: Mon, 13 Jan 2025 20:35:35 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 827
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="UTF-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+|     <meta name="author" content="rasti,lean">
+|     <title>Home</title>
+|     <link rel="shortcut icon" href="/static/icon.png" type="image/png">
+|     <link rel="stylesheet" href="/static/main.css">
+|     </head>
+|     <body>
+|     <header>
+|     class="tag-blue">Welcome to the Notes App</h1>
+|     </header>
+|     <nav>
+|     <ul>
+|     <li><a href="/register">Register</a></li>
+|     <li><a href="/login">Login</a></li>
+|     <li><a href="/create-note">Create Note</a></li>
+|     <li><a href="/view-notes">View Notes</a></li>
+|     </ul>
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.5 Python/3.10.12
+|     Date: Mon, 13 Jan 2025 20:35:35 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: HEAD, OPTIONS, GET
+|     Content-Length: 0
+|     Connection: close
+|   RTSPRequest: 
+|     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+|     "http://www.w3.org/TR/html4/strict.dtd">
+|     <html>
+|     <head>
+|     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: HTTPStatus.BAD_REQUEST - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+36724/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.1 Python/3.11.8
+|     Date: Mon, 13 Jan 2025 20:35:35 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 1473
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8" />
+|     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+|     <meta name="viewport" content="width=device-width, initial-scale=1" />
+|     <title>Flag Command</title>
+|     <link rel="stylesheet" href="/static/terminal/css/terminal.css" />
+|     <link rel="stylesheet" href="/static/terminal/css/commands.css" />
+|     </head>
+|     <body style="color: #94ffaa !important; position: fixed; height: 100vh; overflow: scroll; font-size: 28px;font-weight: 700;">
+|     <div id="terminal-container" style="overflow: auto;height: 90%;">
+|     id="before-div"></a>
+|     </div>
+|     <div id="command">
+|     <textarea id="user-text-input" autofocus></textarea>
+|     <div id="current-command-line">
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.1 Python/3.11.8
+|     Date: Mon, 13 Jan 2025 20:35:35 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: OPTIONS, GET, HEAD
+|     Content-Length: 0
+|     Connection: close
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+36750/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+36873/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+36940/tcp open  http        Node.js Express framework
+|_http-title: HTB Academy
+|_http-cors: HEAD GET POST PUT DELETE PATCH
+36966/tcp open  tcpwrapped
+37034/tcp open  http        nginx 1.26.1
+|_http-server-header: nginx/1.26.1
+|_http-title: inlanefreight
+37039/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+| http-title: Search Ports
+|_Requested resource was search.php
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+37054/tcp open  unknown
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, RPCCheck, RTSPRequest, SMBProgNeg, SSLSessionReq, TLSSessionReq, TerminalServerCookie, X11Probe: 
+|     Hello, Survivor. Anything new these days?
+|     Yup, same old same old here as well...
+|   NULL: 
+|_    Hello, Survivor. Anything new these days?
+37086/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+37103/tcp open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 ea:54:a5:46:16:cf:30:f2:67:0b:c8:02:f3:ea:b9:05 (RSA)
+|   256 f4:06:25:66:77:eb:7b:b8:58:f3:ec:2e:ef:71:1c:eb (ECDSA)
+|_  256 98:af:f5:e4:6a:14:7e:2d:5c:3d:71:be:81:1c:74:97 (ED25519)
+37150/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-title: City Search
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+37239/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+37241/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+37266/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Employee File Manager
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+37323/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: HTB Academy
+37417/tcp open  ssh         OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 c5:ae:f0:10:f5:13:3c:6e:bb:66:ec:a9:5d:2e:a1:99 (ECDSA)
+|_  256 f7:db:97:a5:51:2e:9c:10:dd:a7:97:80:d7:bc:fe:ea (ED25519)
+37657/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-title: Inlane Freight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+37734/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+37776/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+37785/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+37816/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+37829/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+37910/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+38021/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+38079/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-generator: WordPress 5.6.1
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Getting Started &#8211; Just another WordPress site
+38201/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Getting Started &#8211; Just another WordPress site
+|_http-generator: WordPress 5.6.1
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+38270/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Registration
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+38398/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-generator: WordPress 5.8
+|_http-title: HTB Academy &#8211; Just another WordPress site
+38488/tcp open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 ea:54:a5:46:16:cf:30:f2:67:0b:c8:02:f3:ea:b9:05 (RSA)
+|   256 f4:06:25:66:77:eb:7b:b8:58:f3:ec:2e:ef:71:1c:eb (ECDSA)
+|_  256 98:af:f5:e4:6a:14:7e:2d:5c:3d:71:be:81:1c:74:97 (ED25519)
+38521/tcp open  unknown
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     HTTP/1.1 404 Not Found
+|     Content-Length: 0
+|     Connection: close
+|     Date: Mon, 13 Jan 2025 20:36:31 GMT
+|     Server: Kestrel
+|   GetRequest, HTTPOptions: 
+|     HTTP/1.1 404 Not Found
+|     Content-Length: 0
+|     Connection: close
+|     Date: Mon, 13 Jan 2025 20:36:06 GMT
+|     Server: Kestrel
+|   Help, Kerberos, SSLSessionReq, TLSSessionReq, TerminalServerCookie: 
+|     HTTP/1.1 400 Bad Request
+|     Content-Length: 0
+|     Connection: close
+|     Date: Mon, 13 Jan 2025 20:36:21 GMT
+|     Server: Kestrel
+|   LDAPSearchReq, LPDString: 
+|     HTTP/1.1 400 Bad Request
+|     Content-Length: 0
+|     Connection: close
+|     Date: Mon, 13 Jan 2025 20:36:31 GMT
+|     Server: Kestrel
+|   RTSPRequest: 
+|     HTTP/1.1 505 HTTP Version Not Supported
+|     Content-Length: 0
+|     Connection: close
+|     Date: Mon, 13 Jan 2025 20:36:06 GMT
+|_    Server: Kestrel
+38555/tcp open  http        PHP cli server 5.5 or later (PHP 7.4.33)
+|_http-title: Tracking | MangoPost
+38572/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.3 Python/3.12.3
+|     Date: Mon, 13 Jan 2025 20:36:02 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 27270
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en" dir="ltr">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>PIP-OS(R) V1.33.7</title>
+|     <meta name="viewport" content="width=device-width, initial-scale=1">
+|     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+|     <link rel="stylesheet" href="/static/css/pipboy.app.css">
+|     <link rel="stylesheet" href="/static/css/menu.css">
+|     <link rel="icon" type="image/png" href="/static/images/favicon.png" />
+|     </head>
+|     <body>
+|     <nav class="navbar navbar-expand-lg navbar-light bg-light first-navbar">
+|     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-SupportedContent" aria-expanded="false" aria-label="Toggle-navigation"></button>
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.3 Python/3.12.3
+|     Date: Mon, 13 Jan 2025 20:36:02 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: HEAD, OPTIONS, GET
+|     Content-Length: 0
+|     Connection: close
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+38576/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+38591/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+38670/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/2.3.6 Python/3.11.2
+|     Date: Mon, 13 Jan 2025 20:36:02 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 986
+|     Connection: close
+|     <!doctype html>
+|     <html>
+|     <head>
+|     <title>WebSocket Demo</title>
+|     </head>
+|     <body>
+|     <center>
+|     <h1>WebSocket Demo</h1>
+|     <div id="log"></div>
+|     <br>
+|     <form id="form">
+|     <label for="text">Message: </label>
+|     <input type="text" id="text" autofocus>
+|     <input type="submit" value="Send" name="Send">
+|     </form>
+|     </center>
+|     <script>
+|     const log = (text, color) => {
+|     document.getElementById('log').innerHTML += `<span style="color: ${color}">${text}</span><br>`;
+|     const socket = new WebSocket('ws://' + location.host + '/echo');
+|     socket.addEventListener('message', ev => {
+|     log('server: ' + ev.data, 'blue');
+|     document.getElementById('form').onsub
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/2.3.6 Python/3.11.2
+|     Date: Mon, 13 Jan 2025 20:36:02 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: GET, OPTIONS, HEAD
+|     Content-Length: 0
+|     Connection: close
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+38893/tcp open  http        nginx
+|_http-generator: WordPress 5.1.6
+|_http-title: Inlanefreight &#8211; Just another WordPress site
+38995/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+39572/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+39604/tcp open  http        nginx
+|_http-title: xxe
+39636/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+39657/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+39662/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Recommended Modules
+39770/tcp open  mysql       MySQL 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+|   Thread ID: 26
+|   Capabilities flags: 63486
+|   Some Capabilities: ODBCClient, FoundRows, Support41Auth, Speaks41ProtocolOld, IgnoreSigpipes, ConnectWithDatabase, SupportsTransactions, LongColumnFlag, SupportsCompression, DontAllowDatabaseTableColumn, InteractiveClient, Speaks41ProtocolNew, IgnoreSpaceBeforeParenthesis, SupportsLoadDataLocal, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: 2S-&s4GGp~J3_giWW."[
+|_  Auth Plugin Name: mysql_native_password
+39771/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+39787/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-generator: WordPress 5.6.1
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Getting Started &#8211; Just another WordPress site
+39823/tcp open  tcpwrapped
+39935/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Secret Serial Generator
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+40072/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/2.3.6 Python/3.11.2
+|     Date: Mon, 13 Jan 2025 20:36:18 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 1703
+|     Connection: close
+|     <!doctype html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="UTF-8">
+|     <title>Admin Chat</title>
+|     <link rel="stylesheet" href="/static/font.css">
+|     <link rel="stylesheet" href="/static/style.css">
+|     </head>
+|     <body>
+|     <center><h1>Admin Chat</h1></center>
+|     <div id="live-chat">
+|     <header class="clearfix">
+|     href="#" class="chat-close">x</a>
+|     <h4></h4>Admin</h4>
+|     </header>
+|     <div class="chat">
+|     <div class="chat-history" id="chat">
+|     </div> <!-- end chat-history -->
+|     <form id="chatform" action="#">
+|     <fieldset>
+|     <input type="text" placeholder="Message" id="msg" autofocus>
+|     <input type="hidden">
+|     </fieldset>
+|     </form>
+|     </div> <!-- end chat -->
+|     </div> <!-- end live-chat -->
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/2.3.6 Python/3.11.2
+|     Date: Mon, 13 Jan 2025 20:36:18 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: GET, HEAD, OPTIONS
+|     Content-Length: 0
+|     Connection: close
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+40147/tcp open  tcpwrapped
+40197/tcp open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 ea:54:a5:46:16:cf:30:f2:67:0b:c8:02:f3:ea:b9:05 (RSA)
+|   256 f4:06:25:66:77:eb:7b:b8:58:f3:ec:2e:ef:71:1c:eb (ECDSA)
+|_  256 98:af:f5:e4:6a:14:7e:2d:5c:3d:71:be:81:1c:74:97 (ED25519)
+40284/tcp open  http        nginx
+|_http-title: Inlanefreight &#8211; Just another WordPress site
+|_http-generator: WordPress 5.1.6
+40322/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.4 Python/3.11.10
+|     Date: Mon, 13 Jan 2025 20:36:20 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 2413
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="UTF-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+|     <title>Login</title>
+|     <style>
+|     body {
+|     background-color: #1d1f21;
+|     color: #c5c8c6;
+|     font-family: 'Courier New', Courier, monospace;
+|     display: flex;
+|     justify-content: center;
+|     align-items: center;
+|     height: 100vh;
+|     margin: 0;
+|     color: #b5bd68;
+|     text-align: center;
+|     form {
+|     background-color: #282a2e;
+|     padding: 20px;
+|     border-radius: 8px;
+|     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.4 Python/3.11.10
+|     Date: Mon, 13 Jan 2025 20:36:20 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: GET, HEAD, OPTIONS, POST
+|     Content-Length: 0
+|_    Connection: close
+40404/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+40424/tcp open  unknown
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcCQo5hzN18lHQX1ylv3K+29ZrhwwC0iEl
+|     NJ5OvQIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   GetRequest: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcDTkKLytCSZv5LOqWfrlnj9FjQhA1omeT
+|     us+eNQIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   HTTPOptions: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcCETUNH3p5kv/MMfwGoYFJ8cDRk6KPnBe
+|     NFoS0QIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   RPCCheck: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcB3KCUOemzgGW4PiM3/9AjhH9aNqaB1iH
+|     gx4d+QIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   RTSPRequest: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcB2RwSM9+beRKM/HYso3/dscvdkDZ4RlU
+|     eJxAwwIDAQAB
+|     -----END PUBLIC KEY-----
+|_    enter your first pumpkin =
+40498/tcp open  http        Werkzeug httpd 1.0.1 (Python 3.9.0)
+|_http-title: Site doesn't have a title (text/html; charset=utf-8).
+|_http-server-header: Werkzeug/1.0.1 Python/3.9.0
+40540/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Employee File Manager
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+40551/tcp open  http        nginx
+|_http-title: CDNio
+40621/tcp open  http        nginx 1.18.0
+|_http-title: InlaneFreight
+|_http-server-header: nginx/1.18.0
+40631/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: HTB Academy
+40713/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+40882/tcp open  mysql       MySQL 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+|   Thread ID: 6
+|   Capabilities flags: 63486
+|   Some Capabilities: ODBCClient, FoundRows, Support41Auth, Speaks41ProtocolOld, IgnoreSigpipes, ConnectWithDatabase, SupportsTransactions, LongColumnFlag, SupportsCompression, DontAllowDatabaseTableColumn, InteractiveClient, Speaks41ProtocolNew, IgnoreSpaceBeforeParenthesis, SupportsLoadDataLocal, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: ;O]fhWY<\<X$I$vJKx>k
+|_  Auth Plugin Name: mysql_native_password
+40897/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Getting Started &#8211; Just another WordPress site
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-generator: WordPress 5.6.1
+40912/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: File Manager
+40958/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+41031/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Secret Serial Generator
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+41100/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+41137/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Employee Login
+41202/tcp open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 ea:54:a5:46:16:cf:30:f2:67:0b:c8:02:f3:ea:b9:05 (RSA)
+|   256 f4:06:25:66:77:eb:7b:b8:58:f3:ec:2e:ef:71:1c:eb (ECDSA)
+|_  256 98:af:f5:e4:6a:14:7e:2d:5c:3d:71:be:81:1c:74:97 (ED25519)
+41461/tcp open  http        nginx
+|_http-title: Time
+41551/tcp open  http        nginx
+41731/tcp open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+41781/tcp open  unknown
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, Help, RPCCheck, RTSPRequest, SSLSessionReq: 
+|     HTTP/1.1 400 
+|     Date: Mon, 13 Jan 2025 20:36:46 GMT
+|     Connection: close
+|   GetRequest: 
+|     HTTP/1.1 200 
+|     Content-Type: text/plain;charset=UTF-8
+|     Content-Length: 614
+|     Date: Mon, 13 Jan 2025 20:36:46 GMT
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="UTF-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+|     <title>Labyrinth Linguist 
+|     </title>
+|     <link rel="stylesheet" href="/css/style.css">
+|     </head>
+|     <body>
+|     <form class="fire-form" action="" method="post">
+|     <span class="fire-form-text">Enter text to translate english to voxalith!</span><br><br>
+|     <input class="fire-form-input" type="text" name="text" value="">
+|     <input class="fire-form-button" type="submit" value="Submit 
+|     </form>
+|     class="fire">Example text</h2>
+|     </body>
+|     </html>
+|   HTTPOptions: 
+|     HTTP/1.1 200 
+|     Allow: GET,HEAD,POST,PUT,PATCH,DELETE,OPTIONS
+|     Content-Length: 0
+|     Date: Mon, 13 Jan 2025 20:36:46 GMT
+|_    Connection: close
+41783/tcp open  http        nginx 1.26.1
+|_http-server-header: nginx/1.26.1
+|_http-title: inlanefreight
+41816/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Blank Page
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+41997/tcp open  unknown
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     You will be given a file with N = 200 different potential candidates. Every candidates has 6 different skills, with a score 1 <= s <= 10 for each.
+|     formulas to calculate their general value are:
+|     <skill>_score = round(6 * (int(s) * <skill>_weight)) + 10
+|     overall_value = round(5 * ((health * 0.18) + (agility * 0.20) + (charisma * 0.21) + (knowledge * 0.08) + (energy * 0.17) + (resourcefulness * 0.16)))
+|     Note: The round() function here is Python 3's round(), which uses a concept called Banker's Rounding
+|     weights for the 6 skills are: health_weight = 0.2, agility_weight = 0.3, charisma_weight = 0.1, knowledge_weight = 0.05, energy_weight = 0.05, resourcefulness_weight = 0.3
+|     Enter the first 14 candidates ordered in the highest overall values.
+|     Enter them like so: Name_1 Surname_1 - score_1, Name_2 Surname_2 - score_2, ..., Name_i Surname_i - score_i
+|_    e.g. Timothy Pempleton - 94, Jimmy J
+42061/tcp open  http        nginx 1.27.1
+| http-auth: 
+| HTTP/1.1 401 Unauthorized\x0D
+|_  Basic realm=Restricted
+|_http-title: 401 Authorization Required
+|_http-server-header: nginx/1.27.1
+42405/tcp open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 ea:54:a5:46:16:cf:30:f2:67:0b:c8:02:f3:ea:b9:05 (RSA)
+|   256 f4:06:25:66:77:eb:7b:b8:58:f3:ec:2e:ef:71:1c:eb (ECDSA)
+|_  256 98:af:f5:e4:6a:14:7e:2d:5c:3d:71:be:81:1c:74:97 (ED25519)
+42479/tcp open  mysql       MySQL 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+|   Thread ID: 25
+|   Capabilities flags: 63486
+|   Some Capabilities: ODBCClient, FoundRows, Support41Auth, Speaks41ProtocolOld, IgnoreSigpipes, ConnectWithDatabase, SupportsTransactions, LongColumnFlag, SupportsCompression, DontAllowDatabaseTableColumn, InteractiveClient, Speaks41ProtocolNew, IgnoreSpaceBeforeParenthesis, SupportsLoadDataLocal, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: >7:\CyX+l`zi|Utf%#}p
+|_  Auth Plugin Name: mysql_native_password
+42499/tcp open  http        nginx 1.23.3
+| http-title: Welcome
+|_Requested resource was index.php?language=en
+|_http-server-header: nginx/1.23.3
+42720/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Secret Serial Generator
+42747/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-generator: WordPress 5.8
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: HTB Academy &#8211; Just another WordPress site
+42798/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Blank Page
+42951/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+42961/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: HTB Academy
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+43006/tcp open  http        Node.js (Express middleware)
+|_http-title: The Magic Informer
+43034/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+43038/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.4 Python/3.11.10
+|     Date: Mon, 13 Jan 2025 20:36:55 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 2413
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="UTF-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+|     <title>Login</title>
+|     <style>
+|     body {
+|     background-color: #1d1f21;
+|     color: #c5c8c6;
+|     font-family: 'Courier New', Courier, monospace;
+|     display: flex;
+|     justify-content: center;
+|     align-items: center;
+|     height: 100vh;
+|     margin: 0;
+|     color: #b5bd68;
+|     text-align: center;
+|     form {
+|     background-color: #282a2e;
+|     padding: 20px;
+|     border-radius: 8px;
+|     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.4 Python/3.11.10
+|     Date: Mon, 13 Jan 2025 20:36:55 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: OPTIONS, GET, HEAD, POST
+|     Content-Length: 0
+|_    Connection: close
+43046/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.4 Python/3.11.10
+|     Date: Mon, 13 Jan 2025 20:36:55 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 2413
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="UTF-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+|     <title>Login</title>
+|     <style>
+|     body {
+|     background-color: #1d1f21;
+|     color: #c5c8c6;
+|     font-family: 'Courier New', Courier, monospace;
+|     display: flex;
+|     justify-content: center;
+|     align-items: center;
+|     height: 100vh;
+|     margin: 0;
+|     color: #b5bd68;
+|     text-align: center;
+|     form {
+|     background-color: #282a2e;
+|     padding: 20px;
+|     border-radius: 8px;
+|     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.4 Python/3.11.10
+|     Date: Mon, 13 Jan 2025 20:36:55 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: POST, GET, OPTIONS, HEAD
+|     Content-Length: 0
+|_    Connection: close
+43068/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+| http-title: Search Ports
+|_Requested resource was search.php
+43090/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.1 Python/3.11.8
+|     Date: Mon, 13 Jan 2025 20:36:57 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 1473
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8" />
+|     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+|     <meta name="viewport" content="width=device-width, initial-scale=1" />
+|     <title>Flag Command</title>
+|     <link rel="stylesheet" href="/static/terminal/css/terminal.css" />
+|     <link rel="stylesheet" href="/static/terminal/css/commands.css" />
+|     </head>
+|     <body style="color: #94ffaa !important; position: fixed; height: 100vh; overflow: scroll; font-size: 28px;font-weight: 700;">
+|     <div id="terminal-container" style="overflow: auto;height: 90%;">
+|     id="before-div"></a>
+|     </div>
+|     <div id="command">
+|     <textarea id="user-text-input" autofocus></textarea>
+|     <div id="current-command-line">
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.1 Python/3.11.8
+|     Date: Mon, 13 Jan 2025 20:36:57 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: GET, HEAD, OPTIONS
+|     Content-Length: 0
+|     Connection: close
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+43091/tcp open  http        Apache httpd 2.4.38 ((Debian))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.38 (Debian)
+43141/tcp open  mysql       MySQL 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+|   Thread ID: 29
+|   Capabilities flags: 63486
+|   Some Capabilities: ODBCClient, FoundRows, Support41Auth, Speaks41ProtocolOld, IgnoreSigpipes, ConnectWithDatabase, SupportsTransactions, LongColumnFlag, SupportsCompression, DontAllowDatabaseTableColumn, InteractiveClient, Speaks41ProtocolNew, IgnoreSpaceBeforeParenthesis, SupportsLoadDataLocal, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: '=?bOHXa^75F=@jt+r!G
+|_  Auth Plugin Name: mysql_native_password
+43156/tcp open  http        Werkzeug httpd 2.0.0 (Python 3.8.15)
+|_http-server-header: Werkzeug/2.0.0 Python/3.8.15
+|_http-title:         Name Spookifier    
+43189/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+43351/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+43426/tcp open  unknown
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, GenericLines, GetRequest, HTTPOptions, RTSPRequest: 
+|     Welcome to Qubit Enterprises. Would you like your own time capsule? (Y/n) I'm sorry I don't understand
+|     Welcome to Qubit Enterprises. Would you like your own time capsule? (Y/n)
+|   NULL, RPCCheck: 
+|_    Welcome to Qubit Enterprises. Would you like your own time capsule? (Y/n)
+43479/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+43521/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 302 FOUND
+|     Server: Werkzeug/3.0.2 Python/3.11.2
+|     Date: Mon, 13 Jan 2025 20:37:04 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 199
+|     Location: /login
+|     Connection: close
+|     <!doctype html>
+|     <html lang=en>
+|     <title>Redirecting...</title>
+|     <h1>Redirecting...</h1>
+|     <p>You should be redirected automatically to the target URL: <a href="/login">/login</a>. If not, click the link.
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.2 Python/3.11.2
+|     Date: Mon, 13 Jan 2025 20:37:04 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: HEAD, OPTIONS, GET
+|     Content-Length: 0
+|     Connection: close
+|   Help: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request syntax ('HELP').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|     </html>
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+43713/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Recommended Modules
+43789/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Getting Started &#8211; Just another WordPress site
+|_http-generator: WordPress 5.6.1
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+43924/tcp open  tcpwrapped
+44044/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: HTB Academy
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+44112/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+44136/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: HTB Academy
+| http-robots.txt: 1 disallowed entry 
+|_/admin-login-page.php
+44191/tcp open  http        Apache httpd 2.4.59 ((Debian))
+|_http-title: Login
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-server-header: Apache/2.4.59 (Debian)
+44265/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Employee File Manager
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+44287/tcp open  http        Apache httpd 2.4.38 ((Debian))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.38 (Debian)
+44436/tcp open  http        Apache httpd 2.4.59 ((Unix))
+|_http-server-header: Apache/2.4.59 (Unix)
+|_http-title: ScreenCrack
+44459/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+| http-auth: 
+| HTTP/1.1 401 Authorization Required\x0D
+|_  Basic realm=Access denied
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+44744/tcp open  http        nginx 1.26.1
+|_http-title: inlanefreight
+|_http-server-header: nginx/1.26.1
+44880/tcp open  unknown
+45038/tcp open  http        Apache httpd 2.4.59 ((Debian))
+|_http-title: Login
+|_http-server-header: Apache/2.4.59 (Debian)
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+45093/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Employee File Manager
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+45157/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+45281/tcp open  http        Node.js Express framework
+45350/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Uploads Shop
+45360/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Employee Manager
+45379/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Employee File Manager
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+45405/tcp open  http        Apache httpd 2.4.38 ((Debian))
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-title: Login Portal
+|_http-server-header: Apache/2.4.38 (Debian)
+45445/tcp open  http        Apache httpd 2.4.54 ((Debian))
+| http-title: Login Form
+|_Requested resource was login.php
+|_http-server-header: Apache/2.4.54 (Debian)
+45522/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+45603/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Employee File Manager
+45634/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+45776/tcp open  http        Node.js Express framework
+45887/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+45995/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Getting Started &#8211; Just another WordPress site
+46061/tcp open  http        nginx
+|_http-title: Inlanefreight &#8211; Just another WordPress site
+|_http-generator: WordPress 5.1.6
+46065/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+46302/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Secret Serial Generator
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+46367/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Inlanefreight
+46441/tcp open  unknown
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, GenericLines, GetRequest, HTTPOptions, Help, RTSPRequest: 
+|     [95mWhat is the file format of the executable?
+|     [0m> 
+|     [91m[-] Wrong Answer.
+|     [95mWhat is the file format of the executable?
+|     [0m>
+|   NULL, RPCCheck, SSLSessionReq, TerminalServerCookie: 
+|     [95mWhat is the file format of the executable?
+|_    [0m>
+46464/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+46486/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+46676/tcp open  unknown
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, JavaRMI, LANDesk-RC, LDAPBindReq, LDAPSearchReq, LPDString, NCP, NotesRPC, RPCCheck, RTSPRequest, SSLSessionReq, TerminalServer, TerminalServerCookie, X11Probe, afp, giop, ms-sql-s, oracle-tns: 
+|     Failed to run shellcode!
+|   Kerberos, SMBProgNeg, TLSSessionReq, WMSRequest: 
+|     Failed to run shellcode!
+|     Failed to run shellcode!
+|   SIPOptions: 
+|     Failed to run shellcode!
+|     Failed to run shellcode!
+|_    Failed to run shellcode!
+46714/tcp open  http        nginx 1.26.1
+|_http-server-header: nginx/1.26.1
+|_http-title: inlanefreight
+46767/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+46879/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+46918/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+46946/tcp open  mysql       MySQL 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+|   Thread ID: 44
+|   Capabilities flags: 63486
+|   Some Capabilities: ODBCClient, FoundRows, Support41Auth, Speaks41ProtocolOld, IgnoreSigpipes, ConnectWithDatabase, SupportsTransactions, LongColumnFlag, SupportsCompression, DontAllowDatabaseTableColumn, InteractiveClient, Speaks41ProtocolNew, IgnoreSpaceBeforeParenthesis, SupportsLoadDataLocal, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: R8`]1{=X'V]OU>vW35Qw
+|_  Auth Plugin Name: mysql_native_password
+47012/tcp open  unknown
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, NULL, RPCCheck: 
+|     The input must be a binary signal of 16 bits.
+|     Input :
+|   GenericLines, GetRequest, HTTPOptions, RTSPRequest: 
+|     The input must be a binary signal of 16 bits.
+|     Input : Error : Invalid length of bits.
+|     Input : Error : Invalid length of bits.
+|     Input :
+|   Help, SSLSessionReq, TLSSessionReq, TerminalServerCookie: 
+|     The input must be a binary signal of 16 bits.
+|     Input : Error : Invalid length of bits.
+|_    Input :
+47215/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+47325/tcp open  mysql       MySQL 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+47395/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Employee File Manager
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+47472/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+47541/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+47604/tcp open  unknown
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcCr5UdLlqNXzoCmeg8DUrJOtmwlhUl4Is
+|     s/NmHQIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   GetRequest: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcBtLmu4LBKBP6rf20ODgcYTz56nu/T4dh
+|     FidA4QIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   HTTPOptions: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcDUHm8+KsONciTsTTIacNYTQ/4/1HvKtV
+|     ZLnQkwIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   RPCCheck: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcCD2r/bDILbXaHtmAU5AYMuuFyv13ei+i
+|     42zJOwIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   RTSPRequest: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcCZYuYLo6i6sSZ74eqV0ys2BmnSp3fNcS
+|     kOBcswIDAQAB
+|     -----END PUBLIC KEY-----
+|_    enter your first pumpkin =
+47700/tcp open  http        Node.js (Express middleware)
+|_http-title: Urban Planning Commission's Public Information System
+47763/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: HTB Academy
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+47879/tcp open  http        nginx 1.26.1
+|_http-title: inlanefreight
+|_http-server-header: nginx/1.26.1
+47944/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Inlane Freight
+48028/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-generator: WordPress 5.8
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: HTB Academy &#8211; Just another WordPress site
+48065/tcp open  http        lighttpd 1.4.76
+|_http-title: 403 Forbidden
+|_http-server-header: lighttpd/1.4.76
+48169/tcp open  unknown
+48352/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+48365/tcp open  unknown
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcC2XhT5//+YikaINLSXuV84Cf1Mp+Z4un
+|     oFXLGQIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   GetRequest: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcCT20aLNmjyDDmaYDEgll0klSlBF2i7Nk
+|     foP6LQIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   HTTPOptions: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcDKz0QeUkx+G1AEOB42Sv230nepwVQybQ
+|     krf+xwIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   RPCCheck: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcBo055EOuGZ/mxi/frZIMR+VgJFdwWPCe
+|     wXpd3QIDAQAB
+|     -----END PUBLIC KEY-----
+|     enter your first pumpkin =
+|   RTSPRequest: 
+|     ********** Round 1/5 **********
+|     crack this pumpkin
+|     -----BEGIN PUBLIC KEY-----
+|     MDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcCo33j5hgynFA4r4HI7tpDGKDgGw2JSBp
+|     HeBYQwIDAQAB
+|     -----END PUBLIC KEY-----
+|_    enter your first pumpkin =
+48463/tcp open  unknown
+| fingerprint-strings: 
+|   NULL: 
+|     [1;35m
+|     Trying to leak information from the pc.. 
+|     ____________________________________________________
+|     _____________________________________________ |
+|     goldenfang@d12:$ history | |
+|     secret_pass.txt flag.txt | |
+|     chmod -x missile_launcher.py | |
+|_    history | |
+48573/tcp open  http        nginx 1.26.1
+|_http-server-header: nginx/1.26.1
+|_http-title: inlanefreight
+48704/tcp open  http        Node.js Express framework
+|_http-title: Ping IP
+48796/tcp open  http        Apache httpd 2.4.59 ((Debian))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.59 (Debian)
+48825/tcp open  unknown
+| fingerprint-strings: 
+|   GenericLines: 
+|     [?7l
+|     [0mSeaBIOS (version rel-1.16.2-0-gea1b7a073390-prebuilt.qemu.org)
+|     iPXE (http://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+06FD1040+06F31040 CA00
+|     Press Ctrl-B to configure iPXE (PCI 00:03.0)...
+|     Booting from ROM...
+|     [?7l
+|     [2Jcttyhack: can't open '/dev/ttyS0': No such file or directory
+|     /bin/sh: can't access tty; job control turned off
+|   GetRequest, NULL: 
+|     [?7l
+|     [0mSeaBIOS (version rel-1.16.2-0-gea1b7a073390-prebuilt.qemu.org)
+|     iPXE (http://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+06FD1040+06F31040 CA00
+|     Press Ctrl-B to configure iPXE (PCI 00:03.0)...
+|     Booting from ROM...
+|_    [?7l
+48959/tcp open  ssh         OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 c5:ae:f0:10:f5:13:3c:6e:bb:66:ec:a9:5d:2e:a1:99 (ECDSA)
+|_  256 f7:db:97:a5:51:2e:9c:10:dd:a7:97:80:d7:bc:fe:ea (ED25519)
+48987/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-title: City Search
+48999/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/2.2.2 Python/3.8.10
+|     Date: Mon, 13 Jan 2025 20:38:16 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 1903
+|     Connection: close
+|     <!doctype html>
+|     <html lang="en">
+|     <head>
+|     <!-- Required meta tags -->
+|     <meta charset="utf-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+|     <!-- Bootstrap CSS -->
+|     <link rel="stylesheet" href="/static/css/bootstrap.min.css" >
+|     <title>Crypto Panel</title>
+|     </head>
+|     <body>
+|     <nav class="navbar navbar-expand-md navbar-light bg-light">
+|     class="navbar-brand" href="/">Home</a>
+|     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+|     <span class="navbar-toggler-icon"></span>
+|     </button>
+|     <div class="collapse navbar-coll
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/2.2.2 Python/3.8.10
+|     Date: Mon, 13 Jan 2025 20:38:16 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: GET, OPTIONS, HEAD
+|     Content-Length: 0
+|     Connection: close
+|   RTSPRequest: 
+|     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+|     "http://www.w3.org/TR/html4/strict.dtd">
+|     <html>
+|     <head>
+|     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: HTTPStatus.BAD_REQUEST - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+49114/tcp open  unknown
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, GenericLines, GetRequest, HTTPOptions, Help, RTSPRequest: 
+|     [95mWhat is the file format of the executable?
+|     [0m> 
+|     [91m[-] Wrong Answer.
+|     [95mWhat is the file format of the executable?
+|     [0m>
+|   NULL, RPCCheck, SSLSessionReq, TerminalServerCookie: 
+|     [95mWhat is the file format of the executable?
+|_    [0m>
+49163/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+49221/tcp open  tcpwrapped
+49386/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+49409/tcp open  tcpwrapped
+49485/tcp open  http        Apache httpd 2.4.59 ((Debian))
+|_http-server-header: Apache/2.4.59 (Debian)
+|_http-title: Login
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+49536/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+49589/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+| http-title: Search Ports
+|_Requested resource was search.php
+49603/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+49613/tcp open  http        Apache httpd 2.4.38 ((Debian))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.38 (Debian)
+49692/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+49759/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+49778/tcp open  unknown
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     [1;34m
+|     [1;34m
+|     [4mStack frame layout
+|     [1;34m 
+|     Higher addresses
+|     |_____________|
+|     bytes
+|     Return addr |
+|     |_____________|
+|     bytes
+|     |_____________|
+|     bytes
+|     target |
+|     |_____________|
+|     bytes
+|     alignment |
+|     |_____________|
+|     bytes
+|     Buffer[31] |
+|     |_____________|
+|     |_____________|
+|     Buffer[0] |
+|     |_____________| <- Lower addresses
+|     [Addr] | [Value] 
+|     -------------------+-------------------
+|     0x00007ffddc891ad0 | 
+|     [1;32m0x0000000000000000
+|     [1;34m <- 
+|     [1;32mStart of buffer
+|     [1;34m
+|     0x00007ffddc891ad8 | 0x0000000000000000
+|     0x00007ffddc891ae0 | 0x0000000000000000
+|     0x00007ffddc891ae8 | 0x0000000000000000
+|     0x00007ffddc891af0 | 0x6969696969696969 <- Dummy value for alignment
+|_    0x0000
+49986/tcp open  mysql       MySQL 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+|   Thread ID: 7
+|   Capabilities flags: 63486
+|   Some Capabilities: ODBCClient, FoundRows, Support41Auth, Speaks41ProtocolOld, IgnoreSigpipes, ConnectWithDatabase, SupportsTransactions, LongColumnFlag, SupportsCompression, DontAllowDatabaseTableColumn, InteractiveClient, Speaks41ProtocolNew, IgnoreSpaceBeforeParenthesis, SupportsLoadDataLocal, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: bg_)Hpz58V-y=cYsZG6w
+|_  Auth Plugin Name: mysql_native_password
+50114/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Inlane Freight
+50213/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Secret Serial Generator
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+50234/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+50267/tcp open  http        Apache httpd 2.4.38 ((Debian))
+|_http-server-header: Apache/2.4.38 (Debian)
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+50295/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+50329/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Getting Started &#8211; Just another WordPress site
+|_http-generator: WordPress 5.6.1
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+50409/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+50417/tcp open  unknown
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     You will be given a number of t = 100 grids for the different regions you need to pass. For every map you will have the below values:
+|     dimensions i x j of the map grid where 2 <= i, j <= 100
+|     numbers n_i,j symbolizing the distances between the blocks where 1 <= n_i,j <= 50
+|     will start at the top left element, and your goal is to reach the bottom right, while only being allowed to move down or right, minimizing the sum of the numbers you pass. Provide the minimum sum.
+|     Example Question:
+|     This generates the following grid:
+|     Example Response:
+|     (Optimal route is 2 -> 5 -> 2 -> 1 -> 3 -> 4)
+|_    Test 1/100
+50482/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+50503/tcp open  http        Apache httpd 2.4.59 ((Debian))
+|_http-title: Login
+|_http-server-header: Apache/2.4.59 (Debian)
+50571/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: HTB Academy
+50722/tcp open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 ea:54:a5:46:16:cf:30:f2:67:0b:c8:02:f3:ea:b9:05 (RSA)
+|   256 f4:06:25:66:77:eb:7b:b8:58:f3:ec:2e:ef:71:1c:eb (ECDSA)
+|_  256 98:af:f5:e4:6a:14:7e:2d:5c:3d:71:be:81:1c:74:97 (ED25519)
+50735/tcp open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+50769/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.0 200 OK
+|     content-type: text/html; charset=utf-8
+|     content-length: 3656
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="UTF-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+|     <link rel="stylesheet" href="/static/css/style.css">
+|     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+|     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
+|     <title>Wizard Shop</title>
+|     </head>
+|     <body>
+|     <div class="container">
+|     <h1>~ WIZARD SHOP ~</h1>
+|     <div class="navbar">
+|     <ul>
+|     <li>
+|     href="/">Shop</a>
+|     </li>
+|     <li>
+|     href="/auth/login">Login</a>
+|     </li>
+|     </ul>
+|     </div>
+|     <div class="content">
+|     <div class="product-grid">
+|   HTTPOptions: 
+|     HTTP/1.0 200 OK
+|     content-type: text/html; charset=utf-8
+|     allow: GET, OPTIONS, HEAD
+|     content-length: 0
+|   RTSPRequest: 
+|     HTTP/1.1 400 Bad request
+|     Content-length: 90
+|     Cache-Control: no-cache
+|     Connection: close
+|     Content-Type: text/html
+|     <html><body><h1>400 Bad request</h1>
+|     Your browser sent an invalid request.
+|_    </body></html>
+50843/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+50929/tcp open  tcpwrapped
+51008/tcp open  http        Werkzeug httpd 1.0.1 (Python 2.7.18)
+51009/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+51138/tcp open  http        Apache httpd 2.4.54 ((Debian))
+|_http-server-header: Apache/2.4.54 (Debian)
+| http-title: Login Form
+|_Requested resource was login.php
+51145/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+51172/tcp open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 ea:54:a5:46:16:cf:30:f2:67:0b:c8:02:f3:ea:b9:05 (RSA)
+|   256 f4:06:25:66:77:eb:7b:b8:58:f3:ec:2e:ef:71:1c:eb (ECDSA)
+|_  256 98:af:f5:e4:6a:14:7e:2d:5c:3d:71:be:81:1c:74:97 (ED25519)
+51291/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Hardware Shop
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+51799/tcp open  tcpwrapped
+51806/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+| http-title: Search Ports
+|_Requested resource was search.php
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+51985/tcp open  unknown
+| fingerprint-strings: 
+|   GenericLines, GetRequest, HTTPOptions, NULL, RTSPRequest: 
+|     Choose as you please
+|     parameters
+|     Reset parameters!! This can take some time
+|_    Flag
+52073/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.3 Python/3.12.3
+|     Date: Mon, 13 Jan 2025 20:38:56 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 27270
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en" dir="ltr">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>PIP-OS(R) V1.33.7</title>
+|     <meta name="viewport" content="width=device-width, initial-scale=1">
+|     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+|     <link rel="stylesheet" href="/static/css/pipboy.app.css">
+|     <link rel="stylesheet" href="/static/css/menu.css">
+|     <link rel="icon" type="image/png" href="/static/images/favicon.png" />
+|     </head>
+|     <body>
+|     <nav class="navbar navbar-expand-lg navbar-light bg-light first-navbar">
+|     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-SupportedContent" aria-expanded="false" aria-label="Toggle-navigation"></button>
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.3 Python/3.12.3
+|     Date: Mon, 13 Jan 2025 20:38:56 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: OPTIONS, HEAD, GET
+|     Content-Length: 0
+|     Connection: close
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+52096/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+52164/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+52173/tcp open  http        Apache httpd 2.4.38 ((Debian))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.38 (Debian)
+52333/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Blank Page
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+52384/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Employee File Manager
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+52388/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html).
+52450/tcp open  http        nginx 1.26.1
+|_http-server-header: nginx/1.26.1
+|_http-title: inlanefreight
+52524/tcp open  tcpwrapped
+52556/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+| http-title: Search Ports
+|_Requested resource was search.php
+52680/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+52690/tcp open  http        nginx 1.26.1
+|_http-title: inlanefreight
+|_http-server-header: nginx/1.26.1
+52747/tcp open  tcpwrapped
+52760/tcp open  tcpwrapped
+52783/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+52902/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Recommended Modules
+52931/tcp open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 ea:54:a5:46:16:cf:30:f2:67:0b:c8:02:f3:ea:b9:05 (RSA)
+|   256 f4:06:25:66:77:eb:7b:b8:58:f3:ec:2e:ef:71:1c:eb (ECDSA)
+|_  256 98:af:f5:e4:6a:14:7e:2d:5c:3d:71:be:81:1c:74:97 (ED25519)
+52955/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.4 Python/3.11.10
+|     Date: Mon, 13 Jan 2025 20:39:09 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 2413
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="UTF-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+|     <title>Login</title>
+|     <style>
+|     body {
+|     background-color: #1d1f21;
+|     color: #c5c8c6;
+|     font-family: 'Courier New', Courier, monospace;
+|     display: flex;
+|     justify-content: center;
+|     align-items: center;
+|     height: 100vh;
+|     margin: 0;
+|     color: #b5bd68;
+|     text-align: center;
+|     form {
+|     background-color: #282a2e;
+|     padding: 20px;
+|     border-radius: 8px;
+|     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.4 Python/3.11.10
+|     Date: Mon, 13 Jan 2025 20:39:09 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: POST, HEAD, GET, OPTIONS
+|     Content-Length: 0
+|_    Connection: close
+52958/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Employee Manager
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+53045/tcp open  unknown
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|   GetRequest: 
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|   HTTPOptions, RTSPRequest: 
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|   Help: 
+|     Invalid command
+|   Kerberos: 
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|   TLSSessionReq: 
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|   TerminalServerCookie: 
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|     Invalid command
+|_    Invalid command
+53063/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+53083/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Blank Page
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+53149/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Employee File Manager
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+53292/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+53352/tcp open  http        Apache httpd 2.4.54 ((Debian))
+|_http-server-header: Apache/2.4.54 (Debian)
+| http-title: Login Form
+|_Requested resource was login.php
+53362/tcp open  http        Node.js Express framework
+|_http-title: Gunship
+53476/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+53492/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+53516/tcp open  http        Apache httpd 2.4.38 ((Debian))
+|_http-title: Minishop
+|_http-server-header: Apache/2.4.38 (Debian)
+53715/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: HTB Academy
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+53731/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+53738/tcp open  mysql       MySQL 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.7.3-MariaDB-1:10.7.3+maria~focal
+|   Thread ID: 6
+|   Capabilities flags: 63486
+|   Some Capabilities: ODBCClient, FoundRows, Support41Auth, Speaks41ProtocolOld, IgnoreSigpipes, ConnectWithDatabase, SupportsTransactions, LongColumnFlag, SupportsCompression, DontAllowDatabaseTableColumn, InteractiveClient, Speaks41ProtocolNew, IgnoreSpaceBeforeParenthesis, SupportsLoadDataLocal, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: qPz6?uT"K5f#yZ7D/^l'
+|_  Auth Plugin Name: mysql_native_password
+53804/tcp open  ssl/http    Apache httpd 2.4.41
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Full Width Pics - Start Bootstrap Template
+|_ssl-date: TLS randomness does not represent time
+| ssl-cert: Subject: commonName=ng-699451-httpattacks2h2cl-bfzys-5cb9fd45d7-dfvj2
+| Not valid before: 2024-01-14T19:30:23
+|_Not valid after:  9999-12-31T23:59:59
+53819/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Uploads Shop
+53824/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Host Checker
+53921/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+53984/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+54018/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.3 Python/3.12.4
+|     Date: Mon, 13 Jan 2025 20:39:26 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 42108
+|     Vary: Cookie
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html>
+|     <head>
+|     <meta charset="UTF-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+|     <link rel="shortcut icon" href="/static/img/icon.png">
+|     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+|     <link rel="stylesheet" href="/static/css/main.css">
+|     <script src="/static/js/bootstrap.min.js"></script>
+|     <script src="/static/js/tailwind.js"></script>
+|     <title>Artificial University | Home</title>
+|     </head>
+|     <body>
+|     <div class="lg:max-w-screen w-full flex flex-col items-center relative overflow-x-hidden lg:p-0">
+|     <div class="absolute left-0 w-full h-full bg-black opacity-[80%] top-0 -z-5 bg-black"></div>
+|     <div
+|     class="hidden lg:block
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.3 Python/3.12.4
+|     Date: Mon, 13 Jan 2025 20:39:26 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: OPTIONS, HEAD, GET
+|     Content-Length: 0
+|     Connection: close
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+54027/tcp open  http        nginx 1.26.1
+|_http-server-header: nginx/1.26.1
+|_http-title: inlanefreight
+54350/tcp open  tcpwrapped
+54427/tcp open  http        Node.js Express framework
+|_http-title: Ping IP
+54482/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Welcome
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+54536/tcp open  http        Gunicorn 20.0.4
+|_http-server-header: gunicorn/20.0.4
+|_http-title: Heroic Features - Start Bootstrap Template
+54578/tcp open  http        Apache httpd 2.4.62 ((Debian))
+|_http-title: Rogue Pickings
+|_http-server-header: Apache/2.4.62 (Debian)
+54640/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+54649/tcp open  tcpwrapped
+54747/tcp open  http        nginx 1.26.1
+|_http-server-header: nginx/1.26.1
+|_http-title: inlanefreight
+54925/tcp open  unknown
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, NULL, RPCCheck: 
+|     The input must be a binary signal of 16 bits.
+|     Input :
+|   GenericLines, GetRequest, HTTPOptions, RTSPRequest: 
+|     The input must be a binary signal of 16 bits.
+|     Input : Error : Invalid length of bits.
+|     Input : Error : Invalid length of bits.
+|     Input :
+|   Help, SSLSessionReq, TLSSessionReq, TerminalServerCookie: 
+|     The input must be a binary signal of 16 bits.
+|     Input : Error : Invalid length of bits.
+|_    Input :
+54977/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+55016/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+55077/tcp open  http        Apache httpd 2.4.62 ((Debian))
+|_http-title: Rogue Pickings
+|_http-server-header: Apache/2.4.62 (Debian)
+55080/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+55154/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+| http-auth: 
+| HTTP/1.1 401 Authorization Required\x0D
+|_  Basic realm=Access denied
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+55165/tcp open  http        Node.js Express framework
+|_http-title: Ping IP
+55222/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest, HTTPOptions: 
+|     HTTP/1.1 404 NOT FOUND
+|     Server: Werkzeug/3.0.4 Python/3.11.10
+|     Date: Mon, 13 Jan 2025 20:39:42 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 207
+|     Connection: close
+|     <!doctype html>
+|     <html lang=en>
+|     <title>404 Not Found</title>
+|     <h1>Not Found</h1>
+|     <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+|   Help: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request syntax ('HELP').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|     </html>
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+55244/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Tiny File Manager
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+55350/tcp open  http        nginx 1.19.2
+55493/tcp open  tcpwrapped
+55506/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+55513/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.4 Python/3.11.10
+|     Date: Mon, 13 Jan 2025 20:39:46 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 2413
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="UTF-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+|     <title>Login</title>
+|     <style>
+|     body {
+|     background-color: #1d1f21;
+|     color: #c5c8c6;
+|     font-family: 'Courier New', Courier, monospace;
+|     display: flex;
+|     justify-content: center;
+|     align-items: center;
+|     height: 100vh;
+|     margin: 0;
+|     color: #b5bd68;
+|     text-align: center;
+|     form {
+|     background-color: #282a2e;
+|     padding: 20px;
+|     border-radius: 8px;
+|     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.4 Python/3.11.10
+|     Date: Mon, 13 Jan 2025 20:39:46 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: GET, POST, HEAD, OPTIONS
+|     Content-Length: 0
+|_    Connection: close
+55658/tcp open  http        nginx 1.26.1
+55834/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: HTB Academy
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+55839/tcp open  http        Werkzeug httpd 2.0.0 (Python 3.8.15)
+|_http-server-header: Werkzeug/2.0.0 Python/3.8.15
+|_http-title:         Name Spookifier    
+55856/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.0 200 OK
+|     content-type: text/html; charset=utf-8
+|     content-length: 3656
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="UTF-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+|     <link rel="stylesheet" href="/static/css/style.css">
+|     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+|     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
+|     <title>Wizard Shop</title>
+|     </head>
+|     <body>
+|     <div class="container">
+|     <h1>~ WIZARD SHOP ~</h1>
+|     <div class="navbar">
+|     <ul>
+|     <li>
+|     href="/">Shop</a>
+|     </li>
+|     <li>
+|     href="/auth/login">Login</a>
+|     </li>
+|     </ul>
+|     </div>
+|     <div class="content">
+|     <div class="product-grid">
+|   HTTPOptions: 
+|     HTTP/1.0 200 OK
+|     content-type: text/html; charset=utf-8
+|     allow: OPTIONS, GET, HEAD
+|     content-length: 0
+|   RTSPRequest: 
+|     HTTP/1.1 400 Bad request
+|     Content-length: 90
+|     Cache-Control: no-cache
+|     Connection: close
+|     Content-Type: text/html
+|     <html><body><h1>400 Bad request</h1>
+|     Your browser sent an invalid request.
+|_    </body></html>
+55973/tcp open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 ea:54:a5:46:16:cf:30:f2:67:0b:c8:02:f3:ea:b9:05 (RSA)
+|   256 f4:06:25:66:77:eb:7b:b8:58:f3:ec:2e:ef:71:1c:eb (ECDSA)
+|_  256 98:af:f5:e4:6a:14:7e:2d:5c:3d:71:be:81:1c:74:97 (ED25519)
+55987/tcp open  http        nginx 1.26.1
+|_http-title: inlanefreight
+|_http-server-header: nginx/1.26.1
+56032/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.1 Python/3.11.8
+|     Date: Mon, 13 Jan 2025 20:39:51 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 1473
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8" />
+|     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+|     <meta name="viewport" content="width=device-width, initial-scale=1" />
+|     <title>Flag Command</title>
+|     <link rel="stylesheet" href="/static/terminal/css/terminal.css" />
+|     <link rel="stylesheet" href="/static/terminal/css/commands.css" />
+|     </head>
+|     <body style="color: #94ffaa !important; position: fixed; height: 100vh; overflow: scroll; font-size: 28px;font-weight: 700;">
+|     <div id="terminal-container" style="overflow: auto;height: 90%;">
+|     id="before-div"></a>
+|     </div>
+|     <div id="command">
+|     <textarea id="user-text-input" autofocus></textarea>
+|     <div id="current-command-line">
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.1 Python/3.11.8
+|     Date: Mon, 13 Jan 2025 20:39:51 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: HEAD, GET, OPTIONS
+|     Content-Length: 0
+|     Connection: close
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+56226/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Recommended Modules
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+56315/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+56320/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+56572/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+56697/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+56771/tcp open  http        nginx 1.19.2
+56861/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+57018/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-title: City Search
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+57045/tcp open  http        nginx
+|_http-generator: WordPress 5.1.6
+|_http-title: Inlanefreight &#8211; Just another WordPress site
+57070/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+57176/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Employee File Manager
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+57523/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+57943/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Uploads Shop
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+57995/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Hardware Shop
+58006/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+58073/tcp open  http        nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+58109/tcp open  unknown
+| fingerprint-strings: 
+|   NULL: 
+|     [0;0H
+|_    [1;35m
+58158/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Blank Page
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+58319/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+58396/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Getting Started &#8211; Just another WordPress site
+|_http-generator: WordPress 5.6.1
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+58514/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: HTB Academy
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+58528/tcp open  http        Apache httpd 2.4.59
+|_http-server-header: Werkzeug/3.0.2 Python/3.11.2
+|_http-title: OAuth Lab
+58595/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: City Search
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+58596/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+58759/tcp open  nagios-nsca Nagios NSCA
+58806/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+59160/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+| http-title: Search Ports
+|_Requested resource was search.php
+59546/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Secret Serial Generator
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+59629/tcp open  http        nginx 1.19.2
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: nginx/1.19.2
+59716/tcp open  http        Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-generator: WordPress 5.6.1
+|_http-title: Getting Started &#8211; Just another WordPress site
+59788/tcp open  unknown
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.2 Python/3.12.2
+|     Date: Mon, 13 Jan 2025 20:40:28 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 3036
+|     Connection: close
+|     <!DOCTYPE html>
+|     <head>
+|     <meta name="viewport" content="width=device-width, initial-scale=1">
+|     <title>PDFy</title>
+|     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous" /> <link rel="shortcut icon" href="/static/assets/favicon.png" type="image/png">
+|     <link rel="stylesheet" href="/static/css/main.css">
+|     </head>
+|     <body>
+|     <div id="alerts"></div>
+|     <div class="jumbotron jumbotron-fluid" align="center">
+|     <img src="/static/assets/machine.gif" height="340px">
+|     <div class="container">
+|     class="d
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.0.2 Python/3.12.2
+|     Date: Mon, 13 Jan 2025 20:40:28 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: GET, HEAD, OPTIONS
+|     Content-Length: 0
+|     Connection: close
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+9 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port31756-TCP:V=7.94SVN%I=7%D=1/13%Time=678578FB%P=x86_64-pc-linux-gnu%
+SF:r(NULL,E3,"\*\*\*\*\*\*\*\*\*\*\x20Round\x201/5\x20\*\*\*\*\*\*\*\*\*\*
+SF:\n\n\xf0\x9f\x8e\x83Can\x20you\x20crack\x20this\x20pumpkin\xf0\x9f\x8e\
+SF:x83\?\n-----BEGIN\x20PUBLIC\x20KEY-----\nMDcwDQYJKoZIhvcNAQEBBQADJgAwIw
+SF:IcB/idFNvMucAmLZgxGMXI6CL/gcF9z\+gm\ncZMclwIDAQAB\n-----END\x20PUBLIC\x
+SF:20KEY-----\n\nenter\x20your\x20first\x20pumpkin\x20=\x20")%r(GenericLin
+SF:es,E3,"\*\*\*\*\*\*\*\*\*\*\x20Round\x201/5\x20\*\*\*\*\*\*\*\*\*\*\n\n
+SF:\xf0\x9f\x8e\x83Can\x20you\x20crack\x20this\x20pumpkin\xf0\x9f\x8e\x83\
+SF:?\n-----BEGIN\x20PUBLIC\x20KEY-----\nMDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcB/
+SF:idFNvMucAmLZgxGMXI6CL/gcF9z\+gm\ncZMclwIDAQAB\n-----END\x20PUBLIC\x20KE
+SF:Y-----\n\nenter\x20your\x20first\x20pumpkin\x20=\x20")%r(GetRequest,E3,
+SF:"\*\*\*\*\*\*\*\*\*\*\x20Round\x201/5\x20\*\*\*\*\*\*\*\*\*\*\n\n\xf0\x
+SF:9f\x8e\x83Can\x20you\x20crack\x20this\x20pumpkin\xf0\x9f\x8e\x83\?\n---
+SF:--BEGIN\x20PUBLIC\x20KEY-----\nMDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcCiQ7bDfw
+SF:S4I9IOWgMsQ33Xl2GL/eoKgI\nZqkN5QIDAQAB\n-----END\x20PUBLIC\x20KEY-----\
+SF:n\nenter\x20your\x20first\x20pumpkin\x20=\x20")%r(HTTPOptions,E3,"\*\*\
+SF:*\*\*\*\*\*\*\*\x20Round\x201/5\x20\*\*\*\*\*\*\*\*\*\*\n\n\xf0\x9f\x8e
+SF:\x83Can\x20you\x20crack\x20this\x20pumpkin\xf0\x9f\x8e\x83\?\n-----BEGI
+SF:N\x20PUBLIC\x20KEY-----\nMDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcBOye5J1kifgcwk
+SF:td69L3wQrMiWFCoBtc\nWgtJ2QIDAQAB\n-----END\x20PUBLIC\x20KEY-----\n\nent
+SF:er\x20your\x20first\x20pumpkin\x20=\x20")%r(RTSPRequest,E3,"\*\*\*\*\*\
+SF:*\*\*\*\*\x20Round\x201/5\x20\*\*\*\*\*\*\*\*\*\*\n\n\xf0\x9f\x8e\x83Ca
+SF:n\x20you\x20crack\x20this\x20pumpkin\xf0\x9f\x8e\x83\?\n-----BEGIN\x20P
+SF:UBLIC\x20KEY-----\nMDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcBmVNHgAAF2/zPRr3OFUi
+SF:qNQ3J\+y\+ljhf\nMP9hwQIDAQAB\n-----END\x20PUBLIC\x20KEY-----\n\nenter\x
+SF:20your\x20first\x20pumpkin\x20=\x20")%r(RPCCheck,E3,"\*\*\*\*\*\*\*\*\*
+SF:\*\x20Round\x201/5\x20\*\*\*\*\*\*\*\*\*\*\n\n\xf0\x9f\x8e\x83Can\x20yo
+SF:u\x20crack\x20this\x20pumpkin\xf0\x9f\x8e\x83\?\n-----BEGIN\x20PUBLIC\x
+SF:20KEY-----\nMDcwDQYJKoZIhvcNAQEBBQADJgAwIwIcD1Z36MVbNKiCaZ8rkUpAArciXZS
+SF:j9HXT\n2wCUswIDAQAB\n-----END\x20PUBLIC\x20KEY-----\n\nenter\x20your\x2
+SF:0first\x20pumpkin\x20=\x20");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port31781-TCP:V=7.94SVN%I=7%D=1/13%Time=678578FB%P=x86_64-pc-linux-gnu%
+SF:r(GetRequest,C6,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20Werkzeug/2\.1\.2\
+SF:x20Python/3\.8\.13\r\nDate:\x20Mon,\x2013\x20Jan\x202025\x2020:35:07\x2
+SF:0GMT\r\nContent-Type:\x20application/json\r\nContent-Length:\x2033\r\nC
+SF:onnection:\x20close\r\n\r\n{\n\x20\x20\"message\":\x20\"404\x20Not\x20F
+SF:ound\"\n}\n")%r(HTTPOptions,C7,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20We
+SF:rkzeug/2\.1\.2\x20Python/3\.8\.13\r\nDate:\x20Mon,\x2013\x20Jan\x202025
+SF:\x2020:35:07\x20GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\n
+SF:Allow:\x20OPTIONS,\x20GET,\x20HEAD\r\nContent-Length:\x200\r\nConnectio
+SF:n:\x20close\r\n\r\n")%r(RTSPRequest,1F4,"<!DOCTYPE\x20HTML\x20PUBLIC\x2
+SF:0\"-//W3C//DTD\x20HTML\x204\.01//EN\"\n\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\"http://www\.w3\.org/TR/html4/strict\.dtd\">\n<html>\n\x20\x20\x20\x20
+SF:<head>\n\x20\x20\x20\x20\x20\x20\x20\x20<meta\x20http-equiv=\"Content-T
+SF:ype\"\x20content=\"text/html;charset=utf-8\">\n\x20\x20\x20\x20\x20\x20
+SF:\x20\x20<title>Error\x20response</title>\n\x20\x20\x20\x20</head>\n\x20
+SF:\x20\x20\x20<body>\n\x20\x20\x20\x20\x20\x20\x20\x20<h1>Error\x20respon
+SF:se</h1>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Error\x20code:\x20400</p>\n
+SF:\x20\x20\x20\x20\x20\x20\x20\x20<p>Message:\x20Bad\x20request\x20versio
+SF:n\x20\('RTSP/1\.0'\)\.</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Error\x2
+SF:0code\x20explanation:\x20HTTPStatus\.BAD_REQUEST\x20-\x20Bad\x20request
+SF:\x20syntax\x20or\x20unsupported\x20method\.</p>\n\x20\x20\x20\x20</body
+SF:>\n</html>\n")%r(Help,1EF,"<!DOCTYPE\x20HTML\x20PUBLIC\x20\"-//W3C//DTD
+SF:\x20HTML\x204\.01//EN\"\n\x20\x20\x20\x20\x20\x20\x20\x20\"http://www\.
+SF:w3\.org/TR/html4/strict\.dtd\">\n<html>\n\x20\x20\x20\x20<head>\n\x20\x
+SF:20\x20\x20\x20\x20\x20\x20<meta\x20http-equiv=\"Content-Type\"\x20conte
+SF:nt=\"text/html;charset=utf-8\">\n\x20\x20\x20\x20\x20\x20\x20\x20<title
+SF:>Error\x20response</title>\n\x20\x20\x20\x20</head>\n\x20\x20\x20\x20<b
+SF:ody>\n\x20\x20\x20\x20\x20\x20\x20\x20<h1>Error\x20response</h1>\n\x20\
+SF:x20\x20\x20\x20\x20\x20\x20<p>Error\x20code:\x20400</p>\n\x20\x20\x20\x
+SF:20\x20\x20\x20\x20<p>Message:\x20Bad\x20request\x20syntax\x20\('HELP'\)
+SF:\.</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Error\x20code\x20explanation
+SF::\x20HTTPStatus\.BAD_REQUEST\x20-\x20Bad\x20request\x20syntax\x20or\x20
+SF:unsupported\x20method\.</p>\n\x20\x20\x20\x20</body>\n</html>\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port32479-TCP:V=7.94SVN%I=7%D=1/13%Time=678578FB%P=x86_64-pc-linux-gnu%
+SF:r(GetRequest,670,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20Werkzeug/3\.0\.1
+SF:\x20Python/3\.11\.8\r\nDate:\x20Mon,\x2013\x20Jan\x202025\x2020:35:07\x
+SF:20GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nContent-Length
+SF::\x201473\r\nConnection:\x20close\r\n\r\n<!DOCTYPE\x20html>\n<html\x20l
+SF:ang=\"en\">\n\n<head>\n\x20\x20<meta\x20charset=\"utf-8\"\x20/>\n\x20\x
+SF:20<meta\x20http-equiv=\"X-UA-Compatible\"\x20content=\"IE=edge\"\x20/>\
+SF:n\x20\x20<meta\x20name=\"viewport\"\x20content=\"width=device-width,\x2
+SF:0initial-scale=1\"\x20/>\n\x20\x20<title>Flag\x20Command</title>\n\x20\
+SF:x20<link\x20rel=\"stylesheet\"\x20href=\"/static/terminal/css/terminal\
+SF:.css\"\x20/>\n\x20\x20<link\x20rel=\"stylesheet\"\x20href=\"/static/ter
+SF:minal/css/commands\.css\"\x20/>\n</head>\n\n<body\x20style=\"color:\x20
+SF:#94ffaa\x20!important;\x20position:\x20fixed;\x20height:\x20100vh;\x20o
+SF:verflow:\x20scroll;\x20font-size:\x2028px;font-weight:\x20700;\">\n\x20
+SF:\x20<div\x20id=\"terminal-container\"\x20style=\"overflow:\x20auto;heig
+SF:ht:\x2090%;\">\n\x20\x20\x20\x20<a\x20id=\"before-div\"></a>\n\x20\x20<
+SF:/div>\n\x20\x20<div\x20id=\"command\">\n\x20\x20\x20\x20<textarea\x20id
+SF:=\"user-text-input\"\x20autofocus></textarea>\n\x20\x20\x20\x20<div\x20
+SF:id=\"current-command-line\">\n\x20\x20\x20\x20")%r(HTTPOptions,C7,"HTTP
+SF:/1\.1\x20200\x20OK\r\nServer:\x20Werkzeug/3\.0\.1\x20Python/3\.11\.8\r\
+SF:nDate:\x20Mon,\x2013\x20Jan\x202025\x2020:35:07\x20GMT\r\nContent-Type:
+SF:\x20text/html;\x20charset=utf-8\r\nAllow:\x20GET,\x20HEAD,\x20OPTIONS\r
+SF:\nContent-Length:\x200\r\nConnection:\x20close\r\n\r\n")%r(RTSPRequest,
+SF:16C,"<!DOCTYPE\x20HTML>\n<html\x20lang=\"en\">\n\x20\x20\x20\x20<head>\
+SF:n\x20\x20\x20\x20\x20\x20\x20\x20<meta\x20charset=\"utf-8\">\n\x20\x20\
+SF:x20\x20\x20\x20\x20\x20<title>Error\x20response</title>\n\x20\x20\x20\x
+SF:20</head>\n\x20\x20\x20\x20<body>\n\x20\x20\x20\x20\x20\x20\x20\x20<h1>
+SF:Error\x20response</h1>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Error\x20cod
+SF:e:\x20400</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Message:\x20Bad\x20re
+SF:quest\x20version\x20\('RTSP/1\.0'\)\.</p>\n\x20\x20\x20\x20\x20\x20\x20
+SF:\x20<p>Error\x20code\x20explanation:\x20400\x20-\x20Bad\x20request\x20s
+SF:yntax\x20or\x20unsupported\x20method\.</p>\n\x20\x20\x20\x20</body>\n</
+SF:html>\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port33013-TCP:V=7.94SVN%I=7%D=1/13%Time=67857906%P=x86_64-pc-linux-gnu%
+SF:r(GetRequest,40,"Invalid\x20command\nInvalid\x20command\nInvalid\x20com
+SF:mand\nInvalid\x20command\n")%r(HTTPOptions,50,"Invalid\x20command\nInva
+SF:lid\x20command\nInvalid\x20command\nInvalid\x20command\nInvalid\x20comm
+SF:and\n")%r(RTSPRequest,50,"Invalid\x20command\nInvalid\x20command\nInval
+SF:id\x20command\nInvalid\x20command\nInvalid\x20command\n")%r(Help,10,"In
+SF:valid\x20command\n")%r(TerminalServerCookie,A0,"Invalid\x20command\nInv
+SF:alid\x20command\nInvalid\x20command\nInvalid\x20command\nInvalid\x20com
+SF:mand\nInvalid\x20command\nInvalid\x20command\nInvalid\x20command\nInval
+SF:id\x20command\nInvalid\x20command\n")%r(TLSSessionReq,1B0,"Invalid\x20c
+SF:ommand\nInvalid\x20command\nInvalid\x20command\nInvalid\x20command\nInv
+SF:alid\x20command\nInvalid\x20command\nInvalid\x20command\nInvalid\x20com
+SF:mand\nInvalid\x20command\nInvalid\x20command\nInvalid\x20command\nInval
+SF:id\x20command\nInvalid\x20command\nInvalid\x20command\nInvalid\x20comma
+SF:nd\nInvalid\x20command\nInvalid\x20command\nInvalid\x20command\nInvalid
+SF:\x20command\nInvalid\x20command\nInvalid\x20command\nInvalid\x20command
+SF:\nInvalid\x20command\nInvalid\x20command\nInvalid\x20command\nInvalid\x
+SF:20command\nInvalid\x20command\n")%r(Kerberos,1D0,"Invalid\x20command\nI
+SF:nvalid\x20command\nInvalid\x20command\nInvalid\x20command\nInvalid\x20c
+SF:ommand\nInvalid\x20command\nInvalid\x20command\nInvalid\x20command\nInv
+SF:alid\x20command\nInvalid\x20command\nInvalid\x20command\nInvalid\x20com
+SF:mand\nInvalid\x20command\nInvalid\x20command\nInvalid\x20command\nInval
+SF:id\x20command\nInvalid\x20command\nInvalid\x20command\nInvalid\x20comma
+SF:nd\nInvalid\x20command\nInvalid\x20command\nInvalid\x20command\nInvalid
+SF:\x20command\nInvalid\x20command\nInvalid\x20command\nInvalid\x20command
+SF:\nInvalid\x20command\nInvalid\x20command\nInvalid\x20command\n")%r(Four
+SF:OhFourRequest,D0,"Invalid\x20command\nInvalid\x20command\nInvalid\x20co
+SF:mmand\nInvalid\x20command\nInvalid\x20command\nInvalid\x20command\nInva
+SF:lid\x20command\nInvalid\x20command\nInvalid\x20command\nInvalid\x20comm
+SF:and\nInvalid\x20command\nInvalid\x20command\nInvalid\x20command\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port33775-TCP:V=7.94SVN%I=7%D=1/13%Time=67857906%P=x86_64-pc-linux-gnu%
+SF:r(NULL,D4,"\nWelcome\x20to\x20the\x20Digital\x20Safety\x20Annex!\nWe\x2
+SF:0will\x20keep\x20your\x20data\x20safe\x20so\x20you\x20don't\x20have\x20
+SF:to\x20worry!\n\n\[0\]\x20Create\x20Account\x20\n\[1\]\x20Store\x20Secre
+SF:t\n\[2\]\x20Verify\x20Secret\n\[3\]\x20Download\x20Secret\n\[4\]\x20Dev
+SF:eloper\x20Note\n\[5\]\x20Exit\n\n\[\+\]\x20Option\x20>\x20")%r(GenericL
+SF:ines,2AA,"\nWelcome\x20to\x20the\x20Digital\x20Safety\x20Annex!\nWe\x20
+SF:will\x20keep\x20your\x20data\x20safe\x20so\x20you\x20don't\x20have\x20t
+SF:o\x20worry!\n\n\[0\]\x20Create\x20Account\x20\n\[1\]\x20Store\x20Secret
+SF:\n\[2\]\x20Verify\x20Secret\n\[3\]\x20Download\x20Secret\n\[4\]\x20Deve
+SF:loper\x20Note\n\[5\]\x20Exit\n\n\[\+\]\x20Option\x20>\x20\[!\]\x20Inval
+SF:id\x20Selection\.\n\nWelcome\x20to\x20the\x20Digital\x20Safety\x20Annex
+SF:!\nWe\x20will\x20keep\x20your\x20data\x20safe\x20so\x20you\x20don't\x20
+SF:have\x20to\x20worry!\n\n\[0\]\x20Create\x20Account\x20\n\[1\]\x20Store\
+SF:x20Secret\n\[2\]\x20Verify\x20Secret\n\[3\]\x20Download\x20Secret\n\[4\
+SF:]\x20Developer\x20Note\n\[5\]\x20Exit\n\n\[\+\]\x20Option\x20>\x20\[!\]
+SF:\x20Invalid\x20Selection\.\n\nWelcome\x20to\x20the\x20Digital\x20Safety
+SF:\x20Annex!\nWe\x20will\x20keep\x20your\x20data\x20safe\x20so\x20you\x20
+SF:don't\x20have\x20to\x20worry!\n\n\[0\]\x20Create\x20Account\x20\n\[1\]\
+SF:x20Store\x20Secret\n\[2\]\x20Verify\x20Secret\n\[3\]\x20Download\x20Sec
+SF:ret\n\[4\]\x20Developer\x20Note\n\[5\]\x20Exit\n\n\[\+\]\x20Option\x20>
+SF:\x20")%r(GetRequest,2AA,"\nWelcome\x20to\x20the\x20Digital\x20Safety\x2
+SF:0Annex!\nWe\x20will\x20keep\x20your\x20data\x20safe\x20so\x20you\x20don
+SF:'t\x20have\x20to\x20worry!\n\n\[0\]\x20Create\x20Account\x20\n\[1\]\x20
+SF:Store\x20Secret\n\[2\]\x20Verify\x20Secret\n\[3\]\x20Download\x20Secret
+SF:\n\[4\]\x20Developer\x20Note\n\[5\]\x20Exit\n\n\[\+\]\x20Option\x20>\x2
+SF:0\[!\]\x20Invalid\x20Selection\.\n\nWelcome\x20to\x20the\x20Digital\x20
+SF:Safety\x20Annex!\nWe\x20will\x20keep\x20your\x20data\x20safe\x20so\x20y
+SF:ou\x20don't\x20have\x20to\x20worry!\n\n\[0\]\x20Create\x20Account\x20\n
+SF:\[1\]\x20Store\x20Secret\n\[2\]\x20Verify\x20Secret\n\[3\]\x20Download\
+SF:x20Secret\n\[4\]\x20Developer\x20Note\n\[5\]\x20Exit\n\n\[\+\]\x20Optio
+SF:n\x20>\x20\[!\]\x20Invalid\x20Selection\.\n\nWelcome\x20to\x20the\x20Di
+SF:gital\x20Safety\x20Annex!\nWe\x20will\x20keep\x20your\x20data\x20safe\x
+SF:20so\x20you\x20don't\x20have\x20to\x20worry!\n\n\[0\]\x20Create\x20Acco
+SF:unt\x20\n\[1\]\x20Store\x20Secret\n\[2\]\x20Verify\x20Secret\n\[3\]\x20
+SF:Download\x20Secret\n\[4\]\x20Developer\x20Note\n\[5\]\x20Exit\n\n\[\+\]
+SF:\x20Option\x20>\x20");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port34730-TCP:V=7.94SVN%I=7%D=1/13%Time=67857906%P=x86_64-pc-linux-gnu%
+SF:r(GetRequest,6B36,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20Werkzeug/3\.0\.
+SF:3\x20Python/3\.12\.3\r\nDate:\x20Mon,\x2013\x20Jan\x202025\x2020:35:18\
+SF:x20GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nContent-Lengt
+SF:h:\x2027270\r\nConnection:\x20close\r\n\r\n<!DOCTYPE\x20html>\n<html\x2
+SF:0lang=\"en\"\x20dir=\"ltr\">\n\x20\x20<head>\n\x20\x20\x20\x20<meta\x20
+SF:charset=\"utf-8\">\n\x20\x20\x20\x20<title>PIP-OS\(R\)\x20V1\.33\.7</ti
+SF:tle>\n\x20\x20\x20\x20<meta\x20name=\"viewport\"\x20content=\"width=dev
+SF:ice-width,\x20initial-scale=1\">\n\x20\x20\x20\x20<link\x20rel=\"styles
+SF:heet\"\x20href=\"/static/css/bootstrap\.min\.css\">\n\x20\x20\x20\x20<l
+SF:ink\x20rel=\"stylesheet\"\x20href=\"/static/css/pipboy\.app\.css\">\n\x
+SF:20\x20\x20\x20<link\x20rel=\"stylesheet\"\x20href=\"/static/css/menu\.c
+SF:ss\">\n\n\x20\x20\x20\x20<link\x20rel=\"icon\"\x20type=\"image/png\"\x2
+SF:0href=\"/static/images/favicon\.png\"\x20/>\n\x20\x20</head>\n\x20\x20<
+SF:body>\n\x20\x20\x20\x20<nav\x20class=\"navbar\x20navbar-expand-lg\x20na
+SF:vbar-light\x20bg-light\x20first-navbar\">\n\x20\x20\x20\x20\x20\x20<but
+SF:ton\x20class=\"navbar-toggler\"\x20type=\"button\"\x20data-toggle=\"col
+SF:lapse\"\x20data-target=\"#navbar-SupportedContent\"\x20aria-expanded=\"
+SF:false\"\x20aria-label=\"Toggle-navigation\"></button>\n\x20\x20\x20\x20
+SF:")%r(HTTPOptions,C7,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20Werkzeug/3\.0
+SF:\.3\x20Python/3\.12\.3\r\nDate:\x20Mon,\x2013\x20Jan\x202025\x2020:35:1
+SF:8\x20GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nAllow:\x20O
+SF:PTIONS,\x20HEAD,\x20GET\r\nContent-Length:\x200\r\nConnection:\x20close
+SF:\r\n\r\n")%r(RTSPRequest,16C,"<!DOCTYPE\x20HTML>\n<html\x20lang=\"en\">
+SF:\n\x20\x20\x20\x20<head>\n\x20\x20\x20\x20\x20\x20\x20\x20<meta\x20char
+SF:set=\"utf-8\">\n\x20\x20\x20\x20\x20\x20\x20\x20<title>Error\x20respons
+SF:e</title>\n\x20\x20\x20\x20</head>\n\x20\x20\x20\x20<body>\n\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20<h1>Error\x20response</h1>\n\x20\x20\x20\x20\x20\x
+SF:20\x20\x20<p>Error\x20code:\x20400</p>\n\x20\x20\x20\x20\x20\x20\x20\x2
+SF:0<p>Message:\x20Bad\x20request\x20version\x20\('RTSP/1\.0'\)\.</p>\n\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20<p>Error\x20code\x20explanation:\x20400\x2
+SF:0-\x20Bad\x20request\x20syntax\x20or\x20unsupported\x20method\.</p>\n\x
+SF:20\x20\x20\x20</body>\n</html>\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port35686-TCP:V=7.94SVN%I=7%D=1/13%Time=67857911%P=x86_64-pc-linux-gnu%
+SF:r(NULL,37,"The\x20input\x20must\x20be\x20a\x20binary\x20signal\x20of\x2
+SF:016\x20bits\.\n\nInput\x20:\x20")%r(GenericLines,89,"The\x20input\x20mu
+SF:st\x20be\x20a\x20binary\x20signal\x20of\x2016\x20bits\.\n\nInput\x20:\x
+SF:20Error\x20:\x20Invalid\x20length\x20of\x20bits\.\n\nInput\x20:\x20Erro
+SF:r\x20:\x20Invalid\x20length\x20of\x20bits\.\n\nInput\x20:\x20")%r(GetRe
+SF:quest,89,"The\x20input\x20must\x20be\x20a\x20binary\x20signal\x20of\x20
+SF:16\x20bits\.\n\nInput\x20:\x20Error\x20:\x20Invalid\x20length\x20of\x20
+SF:bits\.\n\nInput\x20:\x20Error\x20:\x20Invalid\x20length\x20of\x20bits\.
+SF:\n\nInput\x20:\x20")%r(HTTPOptions,89,"The\x20input\x20must\x20be\x20a\
+SF:x20binary\x20signal\x20of\x2016\x20bits\.\n\nInput\x20:\x20Error\x20:\x
+SF:20Invalid\x20length\x20of\x20bits\.\n\nInput\x20:\x20Error\x20:\x20Inva
+SF:lid\x20length\x20of\x20bits\.\n\nInput\x20:\x20")%r(RTSPRequest,89,"The
+SF:\x20input\x20must\x20be\x20a\x20binary\x20signal\x20of\x2016\x20bits\.\
+SF:n\nInput\x20:\x20Error\x20:\x20Invalid\x20length\x20of\x20bits\.\n\nInp
+SF:ut\x20:\x20Error\x20:\x20Invalid\x20length\x20of\x20bits\.\n\nInput\x20
+SF::\x20")%r(RPCCheck,37,"The\x20input\x20must\x20be\x20a\x20binary\x20sig
+SF:nal\x20of\x2016\x20bits\.\n\nInput\x20:\x20")%r(DNSVersionBindReqTCP,37
+SF:,"The\x20input\x20must\x20be\x20a\x20binary\x20signal\x20of\x2016\x20bi
+SF:ts\.\n\nInput\x20:\x20");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port36048-TCP:V=7.94SVN%I=7%D=1/13%Time=67857911%P=x86_64-pc-linux-gnu%
+SF:r(NULL,47C,"\n\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\
+SF:x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c
+SF:\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9
+SF:f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x
+SF:8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\
+SF:x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e
+SF:\x8c\xf0\x9f\x8e\x8c\xf0\x9f\x8e\x8c\n\x1b\[1;32m\x20\x20\x20\x20\x20\x
+SF:20______\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x
+SF:20\x20\x20\x20\x20\x20\x1b\[1;35m\|xxx\|\n\x1b\[1;32m\x20\x20\x20\x20\x
+SF:20/\|_\|\|_\\`\.__\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x1b\[1;35m\|\x20F\x20\|\n\x1b\[1;32m\x20\x20\x20\x20\(
+SF:\x20\x20\x20_\x20\x20\x20\x20_\x20_\\\x20\x20\x20\x20\x20\x20\x20\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x1b\[1;35m\|xxx\|\n\x1b\[1;32m\*\*\*\x2
+SF:0=`-\(_\)--\(_\)-'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x1b\[1;35m\|\x20I\x20\|\n\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20\x1b\[1;35m\|xxx\|\n\x20\x20\x20\x20\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x1b\[1;35m\|\x20N\x20\|\n\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x1b\[1;35m\|x
+SF:xx\|\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x1
+SF:b\[1;35m\|\x20I\x20\|\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x
+SF:20\x20\x20\x20\x1b\[1;35m\|xxx\|\n\x1b\[1;31m\x20\x20\x20\x20\x20\x20\x
+SF:20\x20\x20\x20\x20\x20\x20_-_-\x20\x20_/\\______\\__\x20\x20\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x1b\[1;35
+SF:m\|\x20S\x20\|\n\x1b\[1;31m\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
+SF:_-_-__\x20/\x20,-\.\x20-\|-\x20\x20,-\.`-\.\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x1b\[1;35m\|xxx\|\n\x1b\[1;31m\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20_-_-\x20`\(\x20o\x20\)----\
+SF:(\x20o\x20\)-");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port36279-TCP:V=7.94SVN%I=7%D=1/13%Time=67857917%P=x86_64-pc-linux-gnu%
+SF:r(GetRequest,3EA,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20Werkzeug/3\.0\.5
+SF:\x20Python/3\.10\.12\r\nDate:\x20Mon,\x2013\x20Jan\x202025\x2020:35:35\
+SF:x20GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nContent-Lengt
+SF:h:\x20827\r\nConnection:\x20close\r\n\r\n<!DOCTYPE\x20html>\n<html\x20l
+SF:ang=\"en\">\n<head>\n\x20\x20\x20\x20<meta\x20charset=\"UTF-8\">\n\x20\
+SF:x20\x20\x20<meta\x20name=\"viewport\"\x20content=\"width=device-width,\
+SF:x20initial-scale=1\.0\">\n\x20\x20\x20\x20<meta\x20name=\"author\"\x20c
+SF:ontent=\"rasti,lean\">\n\x20\x20\x20\x20<title>Home</title>\n\x20\x20\x
+SF:20\x20<link\x20rel=\"shortcut\x20icon\"\x20href=\"/static/icon\.png\"\x
+SF:20type=\"image/png\">\n\x20\x20\x20\x20<link\x20rel=\"stylesheet\"\x20h
+SF:ref=\"/static/main\.css\">\n</head>\n<body>\n\x20\x20\x20\x20<header>\n
+SF:\x20\x20\x20\x20\x20\x20\x20\x20<h1\x20class=\"tag-blue\">Welcome\x20to
+SF:\x20the\x20Notes\x20App</h1>\n\x20\x20\x20\x20</header>\n\x20\x20\x20\x
+SF:20<nav>\n\x20\x20\x20\x20\x20\x20\x20\x20<ul>\n\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20<li><a\x20href=\"/register\">Register</a></li>\
+SF:n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\n\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><a\x20href=\"/login\">L
+SF:ogin</a></li>\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\n\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><a\x20href=\"/create-note
+SF:\">Create\x20Note</a></li>\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2
+SF:0\x20<li><a\x20href=\"/view-notes\">View\x20Notes</a></li>\n\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20</ul>\n\x20")%r(HTTPOptions,C8,"HTTP/1\.1\x20200\x
+SF:20OK\r\nServer:\x20Werkzeug/3\.0\.5\x20Python/3\.10\.12\r\nDate:\x20Mon
+SF:,\x2013\x20Jan\x202025\x2020:35:35\x20GMT\r\nContent-Type:\x20text/html
+SF:;\x20charset=utf-8\r\nAllow:\x20HEAD,\x20OPTIONS,\x20GET\r\nContent-Len
+SF:gth:\x200\r\nConnection:\x20close\r\n\r\n")%r(RTSPRequest,1F4,"<!DOCTYP
+SF:E\x20HTML\x20PUBLIC\x20\"-//W3C//DTD\x20HTML\x204\.01//EN\"\n\x20\x20\x
+SF:20\x20\x20\x20\x20\x20\"http://www\.w3\.org/TR/html4/strict\.dtd\">\n<h
+SF:tml>\n\x20\x20\x20\x20<head>\n\x20\x20\x20\x20\x20\x20\x20\x20<meta\x20
+SF:http-equiv=\"Content-Type\"\x20content=\"text/html;charset=utf-8\">\n\x
+SF:20\x20\x20\x20\x20\x20\x20\x20<title>Error\x20response</title>\n\x20\x2
+SF:0\x20\x20</head>\n\x20\x20\x20\x20<body>\n\x20\x20\x20\x20\x20\x20\x20\
+SF:x20<h1>Error\x20response</h1>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Error
+SF:\x20code:\x20400</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Message:\x20Ba
+SF:d\x20request\x20version\x20\('RTSP/1\.0'\)\.</p>\n\x20\x20\x20\x20\x20\
+SF:x20\x20\x20<p>Error\x20code\x20explanation:\x20HTTPStatus\.BAD_REQUEST\
+SF:x20-\x20Bad\x20request\x20syntax\x20or\x20unsupported\x20method\.</p>\n
+SF:\x20\x20\x20\x20</body>\n</html>\n");
+Device type: general purpose
+Running: Linux 4.X|5.X
+OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5
+OS details: Linux 4.15 - 5.8
+Network Distance: 6 hops
+Service Info: Hosts: main.local, 192.168.17.109; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 5900/tcp)
+HOP RTT     ADDRESS
+1   0.30 ms 94.237.60.1
+2   0.31 ms 100.69.45.209
+3   0.38 ms 172.17.255.177
+4   0.39 ms 172.17.255.226
+5   0.32 ms 100.69.4.195
+6   0.70 ms 94-237-58-147.uk-lon1.upcloud.host (94.237.58.147)
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 613.26 seconds

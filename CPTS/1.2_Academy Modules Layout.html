@@ -1,0 +1,2689 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Penetration Testing Process</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+
+    <link rel="shortcut icon" href=/images/favicon.ico>
+    <link rel=icon type=image/png sizes=16x16 href=/images/favicon-16x16.png>
+    <link rel=icon type=image/png sizes=32x32 href=/images/favicon-32x32.png>
+    <link rel=apple-touch-icon href=/images/apple-touch-icon.png>
+    <link rel=mask-icon href=/images/safari-pinned-tab.svg>
+
+    <link rel="preload" as="style" href="https://academy.hackthebox.com/build/assets/bootstrap-dark-f3934f68.css" /><link rel="preload" as="style" href="https://academy.hackthebox.com/build/assets/app-dark-c0e94a59.css" /><link rel="preload" as="style" href="https://academy.hackthebox.com/build/assets/icons-541b9943.css" /><link rel="preload" as="style" href="https://academy.hackthebox.com/build/assets/prism-8ad01d51.css" /><link rel="stylesheet" href="https://academy.hackthebox.com/build/assets/bootstrap-dark-f3934f68.css" /><link rel="stylesheet" href="https://academy.hackthebox.com/build/assets/app-dark-c0e94a59.css" /><link rel="stylesheet" href="https://academy.hackthebox.com/build/assets/icons-541b9943.css" /><link rel="stylesheet" href="https://academy.hackthebox.com/build/assets/prism-8ad01d51.css" />
+    <link href="/assets/libs/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.typekit.net/ryt3opf.css">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/8161086d56.css" crossorigin="anonymous">
+    
+    <script>
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://fygapokei.hackthebox.com/htb-anal.js/v1/" + key + "/htb-anal.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="eLzeD0QoARKZ42pc8AGEUYpcFLpYkf0I";analytics.SNIPPET_VERSION="4.13.2";
+            analytics.load("eLzeD0QoARKZ42pc8AGEUYpcFLpYkf0I", { integrations: { "Segment.io": { apiHost: "fygapokei.hackthebox.com/v1" }}});
+                                            properties = {"platform":"Academy","platform_version":"V1","module_id":90,"module_name":"Penetration Testing Process","module_difficulty":"Fundamental","section_id":1559,"section_title":"Academy Modules Layout"};
+                                    analytics.page(
+                "Module",
+                properties
+            );
+                                }
+    }();
+</script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+<style>
+    .website-screenshot-url {
+        height: 22px;
+        cursor: text;
+        padding-left: 10px;
+    }
+
+    .iterminal {
+        position: fixed;
+        bottom: 0;
+        z-index: 100;
+        width: 100%;
+        left: 0;
+    }
+
+
+    .page-head {
+        display: none;
+    }
+
+    .btn-circle {
+        width: 25px;
+        height: 25px;
+        padding: 6px 0px;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 9px;
+        line-height: 1.42857;
+    }
+</style>
+    <script src="https://www.google.com/recaptcha/api.js?hl=&render=6LeI6LsaAAAAAKgdStgBC6B4UVbXlpYNaYGN46Ah"></script>
+</head>
+
+<body data-layout="detached" data-topbar="colored">
+        <div class="container-fluid">
+
+        <div id="layout-wrapper" >
+
+            <header id="page-topbar" >
+    <div class="navbar-header">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <div class="navbar-brand-box">
+                        <a href="https://academy.hackthebox.com/dashboard" class="logo">
+                            <span class="logo-sm">
+                                <img src="/images/new-logo-htb.svg" alt="" height="30">
+                            </span>
+                            <span class="logo-md">
+                                <img src="/images/logo.svg" alt="" height="30">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="/images/logo.svg" alt="" height="36">
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-sm font-size-16 header-item toggle-btn waves-effect" id="vertical-menu-btn">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+                                            </div>
+                                        <div class="topnav">
+                        <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+                            <div class="collapse navbar-collapse" id="topnav-menu-content">
+                                <ul class="navbar-nav active">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://academy.hackthebox.com/dashboard"><i class="mdi mdi-monitor-dashboard"></i> Dashboard</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://academy.hackthebox.com/modules"><i class="mdi mdi-book-open"></i>
+                                            Modules</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://academy.hackthebox.com/paths"><i class="mdi mdi-map-marker-path"></i> Paths</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                                    </div>
+
+                <div class="float-right">
+                    <div class="dropdown d-none d-lg-inline-block ml-1">
+                        <a href="https://academy.hackthebox.com/billing">
+                            <button type="button" class="btn btn-extra-light">
+                                <i class="fad fa-cube text-success mt-1 mr-2"></i>&nbsp;Purchase Cubes
+                            </button>
+                        </a>
+                    </div>
+                    <div class="dropdown d-none d-lg-inline-block ml-1">
+                        <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
+                            <i class="mdi mdi-fullscreen fullscreen-icon"></i>
+                        </button>
+                    </div>
+
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="https://www.gravatar.com/avatar/81077ac56c02d574ee54d661ab69cf4b?d=robohash" alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ml-1">ATMvnvl</span>
+                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item" href="https://academy.hackthebox.com/referral"><i class="bx bx-gift font-size-16 align-middle mr-1"></i> Refer a friend
+                                    <i class="fa fa-solid fa-circle font-size-6 align-middle ml-2 text-success"></i>
+                                </a>
+                                                        <a class="dropdown-item" href="https://academy.hackthebox.com/billing"><i class="bx bx-wallet font-size-16 align-middle mr-1"></i> Billing</a>
+                            <a class="dropdown-item d-block" href="https://academy.hackthebox.com/settings"><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
+                            <a class="dropdown-item d-block" href="https://academy.hackthebox.com/vpn"><i class="bx bx-server font-size-16 align-middle mr-1"></i> VPN Settings</a>
+                            <a class="dropdown-item d-block" href="https://academy.hackthebox.com/htb-account-settings"><i class="bx bx-server font-size-16 align-middle mr-1"></i> HTB Account Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <form method="POST" action="https://academy.hackthebox.com/logout"> <input type="hidden" name="_token" value="ON0cbxlZO2d7IiAG1RjqlEqH37vO3jcEGKJkDB0K" autocomplete="off"> <a class="dropdown-item text-danger log-out" href="#"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="vertical-menu overflow-hidden  d-lg-none  ">
+    <div class="vertical-menu-overlay"></div>
+    <div class="h-100 overflow-auto">
+        <div class="user-wid text-center py-4">
+            <div class="user-img">
+                <img src="https://www.gravatar.com/avatar/81077ac56c02d574ee54d661ab69cf4b?d=robohash" alt=""
+                     class="avatar-md mx-auto rounded-circle">
+            </div>
+
+            <div class="mt-3">
+                <p class="text-dark mb-0 font-weight-medium font-size-16">ATMvnvl</p>
+                                <p class="text-body mt-1 mb-1">
+                                                                        Student
+                                                            </p>
+                <p>
+                    <span class="custom-badge custom-badge-soft-secondary" data-toggle="tooltip"
+                        data-title="Cubes">
+                        <i class="fad fa-cube text-success mr-1"></i>
+                        <span class="cubeBalance">
+                                                            70
+                                                    </span>
+                    </span>
+                                    </p>
+            </div>
+        </div>
+
+        <div id="sidebar-menu">
+    <ul class="metismenu list-unstyled" id="side-menu">
+
+        <li class="menu-title">Learn</li>
+
+        <li><a class="navDashboard" href="https://academy.hackthebox.com/dashboard"><i
+                        class="mdi mdi-monitor-dashboard"></i> Dashboard</a></li>
+
+                <li>
+            <a class="navDashboard" href="https://academy.hackthebox.com/exams"><i class="mdi mdi-certificate"></i>
+                Exams</a></li>
+        <li>
+            <a class="navModules" href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="mdi mdi-book-open"></i>
+                <span>Modules</span>
+            </a>
+            <ul class="sub-menu mm-collapse" aria-expanded="false">
+                <li><a href="https://academy.hackthebox.com/modules"><i class="mdi mdi-book-open"></i> All Modules</a>
+                </li>
+                <li>
+                    <a href="https://academy.hackthebox.com/modules/inprogress"><i class="mdi mdi-progress-upload"></i>
+                        In-Progress Modules</a></li>
+                <li><a href="https://academy.hackthebox.com/modules/locked"><i
+                                class="mdi mdi-account-arrow-left-outline"></i> Available
+                        Modules</a>
+                </li>
+                <li>
+                    <a href="https://academy.hackthebox.com/modules/unlocked"><i class="mdi mdi-account-check-outline"></i>
+                        Owned
+                        Modules</a></li>
+                <li>
+                    <a href="https://academy.hackthebox.com/modules/changelog"><i class="mdi mdi-playlist-check"></i>
+                        Change Log</a></li>
+                            </ul>
+        </li>
+        <li class="pathsLink">
+            <a class="navPaths" href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="mdi mdi-map-marker-path"></i>
+                <span>Paths</span>
+            </a>
+            <ul class="sub-menu mm-collapse" aria-expanded="false">
+                <li class="skillPathsLink"><a href="https://academy.hackthebox.com/paths"><i
+                                class="mdi mdi-chart-line-variant"></i> Skill Paths</a></li>
+                                    <li class="jobRolePathsLink"><a href="https://academy.hackthebox.com/paths/jobrole"><i
+                                    class="mdi mdi-briefcase"></i> Job Role Paths</a></li>
+                                            </ul>
+        </li>
+                <li>
+            <a class="navDashboard" href="https://academy.hackthebox.com/academy-relations"><i
+                        class="mdi mdi-sitemap"></i>
+                Academy x HTB Labs</a>
+        </li>
+        <li class="menu-title">My Achievements</li>
+        <li>
+            <a class="navDashboard" href="https://academy.hackthebox.com/my-certificates"><i class="mdi mdi-certificate"></i>
+                My Certificates </a></li>
+        <li>
+                    <li>
+                <a class="navDashboard" href="https://academy.hackthebox.com/my-badges"><i class="mdi mdi-trophy"></i>
+                    My Badges </a>
+            </li>
+                <li>
+
+                    <li class="menu-title">Referrals</li>
+                <li>
+                    <a class="navDashboard" href="https://academy.hackthebox.com/referral">
+                        <i class="mdi mdi-gift"></i> Invite friends
+                                            </a>
+                <li>
+            <li>
+        
+        <li class="menu-title">Get Help</li>
+        <li>
+            <a class="navSupport" href="http://help.hackthebox.eu/" rel="noopener nofollow norefferer"
+               target="_blank"><i class="mdi mdi-help-box"></i>Help Center</a></li>
+        <li><a class="navSupport" data-toggle="tooltip" href="https://academy.hackthebox.com/faq"><i
+                        class="mdi mdi-help-circle"></i> FAQ</a></li>
+        <li><a class="navSupport" href="https://discord.gg/hackthebox"
+               rel="noopener nofollow norefferer" target="_blank"><i class="mdi mdi-discord"></i>
+                Discord</a></li>
+
+    </ul>
+</div>
+
+    </div>
+</div>
+
+            <div class="vertical-menu overflow-hidden  d-lg-none  ">
+    <div class="vertical-menu-overlay"></div>
+    <div class="h-100 overflow-auto">
+        <div class="user-wid text-center py-4">
+            <div class="user-img">
+                <img src="https://www.gravatar.com/avatar/81077ac56c02d574ee54d661ab69cf4b?d=robohash" alt=""
+                     class="avatar-md mx-auto rounded-circle">
+            </div>
+
+            <div class="mt-3">
+                <p class="text-dark mb-0 font-weight-medium font-size-16">ATMvnvl</p>
+                                <p class="text-body mt-1 mb-1">
+                                                                        Student
+                                                            </p>
+                <p>
+                    <span class="custom-badge custom-badge-soft-secondary" data-toggle="tooltip"
+                        data-title="Cubes">
+                        <i class="fad fa-cube text-success mr-1"></i>
+                        <span class="cubeBalance">
+                                                            70
+                                                    </span>
+                    </span>
+                                    </p>
+            </div>
+        </div>
+
+        <div id="sidebar-menu">
+    <ul class="metismenu list-unstyled" id="side-menu">
+
+        <li class="menu-title">Learn</li>
+
+        <li><a class="navDashboard" href="https://academy.hackthebox.com/dashboard"><i
+                        class="mdi mdi-monitor-dashboard"></i> Dashboard</a></li>
+
+                <li>
+            <a class="navDashboard" href="https://academy.hackthebox.com/exams"><i class="mdi mdi-certificate"></i>
+                Exams</a></li>
+        <li>
+            <a class="navModules" href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="mdi mdi-book-open"></i>
+                <span>Modules</span>
+            </a>
+            <ul class="sub-menu mm-collapse" aria-expanded="false">
+                <li><a href="https://academy.hackthebox.com/modules"><i class="mdi mdi-book-open"></i> All Modules</a>
+                </li>
+                <li>
+                    <a href="https://academy.hackthebox.com/modules/inprogress"><i class="mdi mdi-progress-upload"></i>
+                        In-Progress Modules</a></li>
+                <li><a href="https://academy.hackthebox.com/modules/locked"><i
+                                class="mdi mdi-account-arrow-left-outline"></i> Available
+                        Modules</a>
+                </li>
+                <li>
+                    <a href="https://academy.hackthebox.com/modules/unlocked"><i class="mdi mdi-account-check-outline"></i>
+                        Owned
+                        Modules</a></li>
+                <li>
+                    <a href="https://academy.hackthebox.com/modules/changelog"><i class="mdi mdi-playlist-check"></i>
+                        Change Log</a></li>
+                            </ul>
+        </li>
+        <li class="pathsLink">
+            <a class="navPaths" href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="mdi mdi-map-marker-path"></i>
+                <span>Paths</span>
+            </a>
+            <ul class="sub-menu mm-collapse" aria-expanded="false">
+                <li class="skillPathsLink"><a href="https://academy.hackthebox.com/paths"><i
+                                class="mdi mdi-chart-line-variant"></i> Skill Paths</a></li>
+                                    <li class="jobRolePathsLink"><a href="https://academy.hackthebox.com/paths/jobrole"><i
+                                    class="mdi mdi-briefcase"></i> Job Role Paths</a></li>
+                                            </ul>
+        </li>
+                <li>
+            <a class="navDashboard" href="https://academy.hackthebox.com/academy-relations"><i
+                        class="mdi mdi-sitemap"></i>
+                Academy x HTB Labs</a>
+        </li>
+        <li class="menu-title">My Achievements</li>
+        <li>
+            <a class="navDashboard" href="https://academy.hackthebox.com/my-certificates"><i class="mdi mdi-certificate"></i>
+                My Certificates </a></li>
+        <li>
+                    <li>
+                <a class="navDashboard" href="https://academy.hackthebox.com/my-badges"><i class="mdi mdi-trophy"></i>
+                    My Badges </a>
+            </li>
+                <li>
+
+                    <li class="menu-title">Referrals</li>
+                <li>
+                    <a class="navDashboard" href="https://academy.hackthebox.com/referral">
+                        <i class="mdi mdi-gift"></i> Invite friends
+                                            </a>
+                <li>
+            <li>
+        
+        <li class="menu-title">Get Help</li>
+        <li>
+            <a class="navSupport" href="http://help.hackthebox.eu/" rel="noopener nofollow norefferer"
+               target="_blank"><i class="mdi mdi-help-box"></i>Help Center</a></li>
+        <li><a class="navSupport" data-toggle="tooltip" href="https://academy.hackthebox.com/faq"><i
+                        class="mdi mdi-help-circle"></i> FAQ</a></li>
+        <li><a class="navSupport" href="https://discord.gg/hackthebox"
+               rel="noopener nofollow norefferer" target="_blank"><i class="mdi mdi-discord"></i>
+                Discord</a></li>
+
+    </ul>
+</div>
+
+    </div>
+</div>
+
+            <div class="main-content">
+
+                <div class="page-content">
+
+                    
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="page-title mb-0 font-size-18 letter-spacing-1-2">Penetration Testing Process
+                                &nbsp;
+                <i style="cursor:pointer;" data-module-id="90" data-toggle="tooltip"
+                data-title="Toggle To-Do"
+                class="favouriteBtn  fa-sharp fa-solid  fa-heart text-danger"></i>
+            </h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Page 2</a></li>
+                    <li class="breadcrumb-item active">Academy Modules Layout</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-xl-center">
+    <div class="col-md-12 col-xl-9 col-xxl-7">
+
+        <div class="training-module">
+
+            <h1>Academy Modules Layout</h1>
+<hr />
+<p>Hack The Box was initially created to give technical professionals a safe place to practice and develop hacking skills and was not ideally suited for beginners starting their IT/Security journeys. Hack The Box began as solely a competitive CTF platform with a mix of machines and challenges, each awarding varying amounts of points depending on the difficulty, to be solved from a &quot;black box&quot; approach, with no walkthrough, guidance, or even hints. As the platform evolved, we saw the need for more beginner-friendly content and a guided learning approach to supplement the competitive side of the platform. With that goal in mind, HTB Academy was born. We aim to provide beginner-friendly content while helping mid-level and advanced practitioners upskill in various areas. We also offer Starting Point on the main HTB platform, which aims to help users become more comfortable attacking individual targets using a guided approach and eventually transitioning to solving boxes independently and even playing the competitive boxes. Each person likely has their personal opinion of HTB, and it may not be for everyone. However, we would like to take the time to explain our point of view as experienced IT specialists from various fields, with many years of combined experience and different journeys from beginners to where we are today.</p>
+<p>IT (Information Technology) is a major business function of most organizations that focuses on building, administering, and supporting the computer technology used by organizations to achieve their mission. IT is a term often used to encompass many specialized sub-disciplines like Cybersecurity, Information Security, Software Development, Database Administration, Network Administration, and more. To become &quot;good&quot; in this field requires considerable practice and effort. Cyber security can be a very challenging discipline because it requires the basic knowledge necessary for a typical IT specialist and a much deeper understanding of all areas (networking, Linux and Windows systems administration, scripting, databases, etc.). We don't need to be experts in every single area of IT. However, the more experience and knowledge we have, the easier our job as an IT security specialist or penetration tester will become. We cannot work confidently as penetration testers if we don't have a deep understanding of the technologies we are assessing. For example, a web developer focuses only on developing web applications and websites. This generally requires knowledge of HTML, JavaScript, CSS, SQL, and server-side programming languages, such as PHP. Even if the developer has over ten years of experience in his field, it only takes one mistake for the entire web server to be unusable or for data to be stolen. As an attacker, the trick is to find a way to identify and exploit these errors.</p>
+<p>With this in mind, we have laid a foundation for our students because, in our experience, it is hard to know where to start. We have structured and built our learning material so that it may seem difficult <code>at first</code>, but with time you will realize that this is the easiest and most efficient way to teach such complex material efficiently. We want to make the learning process as easy and efficient as possible while emphasizing the core fundamentals and returning to them repeatedly. For example, many of our tasks are set up to get you to think in a certain way. We do this to help you develop the essential analytical skills that are imperative to be successful in a field that can have so much uncertainty. We want to help craft professionals who see things differently and question everything, which ultimately can help deliver more value to clients if you're able to find nuanced issues that other testers miss. We can't teach analytical skills and the ability to dig deeper and &quot;question everything&quot; in one single module or path. This can be compared to playing a musical instrument. We can't learn to play the guitar well without considerable practice. We can learn everything about a guitar, the history of guitars, the name of every component, etc., but if we pick one up without practice, we will not be able to produce music that is equivalent to our knowledge of guitars. This is the same in the field of penetration testing. We may know everything about the history of computers and be able to describe every component, but without deep hands-on experience, we won't be able to perform penetration testing at a high level.</p>
+<p>The remainder of this section will explain how we have structured the modules in the way that we did to give you insight into our thought process and teaching philosophy. Our primary focus is creating engaging and empowering training resources that benefit individuals at  <code>ALL</code> skill levels.</p>
+<div class="card bg-light">
+    <div class="card-body">
+				 <p class="mb-0">The module listing shown corresponds to the sequence we recommend for beginners or advanced users who are 'stuck' to follow, in order to improve in specific areas at each stage of the penetration testing process.</p>
+    </div>
+</div>
+<p><img src="https://academy.hackthebox.com/storage/modules/90/0-PT-Process.png" alt="" /></p>
+<hr />
+<h2>Pre-Engagement</h2>
+<p>The pre-engagement stage is where the main commitments, tasks, scope, limitations, and related agreements are documented in writing. During this stage, contractual documents are drawn up, and essential information is exchanged that is relevant for penetration testers and the client, depending on the type of assessment.</p>
+<p><img src="https://academy.hackthebox.com/storage/modules/90/0-PT-Process-PRE.png" alt="" /></p>
+<p>There is only one path we can take from here:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Path</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Information Gathering</code></td>
+<td>Next, we move towards the <code>Information Gathering</code> stage. Before any target systems can be examined and attacked, we must first identify them. It may well be that the customer will not give us any information about their network and components other than a domain name or just a listing of in-scope IP addresses/network ranges. Therefore, we need to get an overview of the target web application(s) or network before proceeding further.</td>
+</tr>
+</tbody>
+</table>
+<p>At this stage in the process, we should have a strong foundation that can be built through the following fundamental modules:</p>
+<h4>1. Learning Process</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/9" target="_blank" rel="noopener nofollow"><img src="/storage/modules/9/logo.png" alt="" style="width: 300px"></a></td>
+<td>To acquire this knowledge as quickly and as well as possible, we need to know how a human being's <code>Learning Process</code> works and how to avoid stumbling blocks during the process. In this module we learn the art of how our brain works and how we can use this knowledge to increase our learning efficiency dramatically. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-success font-size-13">Fundamental</span><span class="badge mr-1 badge-soft-success font-size-13" data-toggle="tooltip" data-title="General module covering various topics" data-original-title="" title="">General</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">12 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">3 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>In addition, we need fundamental knowledge about the world's most widely used operating systems. This includes <code>Linux</code> and <code>Windows</code> operating systems. Before we attack these systems, we first need to know how they work, so we can then learn how to best exploit them.</p>
+<h4>2. Linux Fundamentals</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/18" target="_blank" rel="noopener nofollow"><img src="/storage/modules/18/logo.png" alt="" style="width: 300px"></a></td>
+<td>Linux is one of the most stable operating systems today, and ubiquitous in corporate networks. <code>Linux Fundamentals</code> is essential so we learn its structure and can take the appropriate steps to achieve our goals. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-success font-size-13">Fundamental</span><span class="badge mr-1 badge-soft-success font-size-13" data-toggle="tooltip" data-title="General module covering various topics" data-original-title="" title="">General</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">18 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">6 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>3. Windows Fundamentals</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/49" target="_blank" rel="noopener nofollow"><img src="/storage/modules/49/logo.png" alt="" style="width: 300px"></a></td>
+<td>On the other hand, Windows is one of the more user-friendly operating systems that most companies find in their IT infrastructure. It is essential to understand <code>Windows Fundamentals</code> to be able to handle the operating system in the best possible way and achieve the desired results. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-success font-size-13">Fundamental</span><span class="badge mr-1 badge-soft-success font-size-13" data-toggle="tooltip" data-title="General module covering various topics" data-original-title="" title="">General</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">14 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">6 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>All connected systems communicate via different networks, routes, and protocols on the Internet or internal network. To understand how interconnected systems function and communicate, we must work through some theoretical components to understand key functionality and specific terms.</p>
+<h4>4. Introduction to Networking</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/34" target="_blank" rel="noopener nofollow"><img src="/storage/modules/34/logo.png" alt="" style="width: 300px"></a></td>
+<td>Most of the information world is interconnected, and understanding how hosts communicate and find each other on the Internet and within internal networks is another fundamental building block that we must master. Without deep understanding of <code>Networking</code>, we will not be effective in assessing interconnected systems. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-success font-size-13">Fundamental</span><span class="badge mr-1 badge-soft-success font-size-13" data-toggle="tooltip" data-title="General module covering various topics" data-original-title="" title="">General</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">12 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">3 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Web applications represent a separate category. We are comfortable using a web browser and browsing websites. But what happens behind the scenes when we interact with a web application? Before attacking web applications, we must focus on how they function and the processes that occur on the backend when using a web application.</p>
+<h4>5. Introduction to Web Applications</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/75" target="_blank" rel="noopener nofollow"><img src="/storage/modules/75/logo.png" alt="" style="width: 300px"></a></td>
+<td>Computer networking on the Internet is standardized over many layers and protocols. The most used type of applications are <code>Web Applications</code>. These are designed so that any user with a browser and internet connection can access the web pages on the Internet. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-success font-size-13">Fundamental</span><span class="badge mr-1 badge-soft-success font-size-13" data-toggle="tooltip" data-title="General module covering various topics" data-original-title="" title="">General</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">17 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">3 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>6. Web Requests</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/35" target="_blank" rel="noopener nofollow"><img src="/storage/modules/35/logo.png" alt="" style="width: 300px"></a></td>
+<td>The communication takes place through different types of <code>Web Requests</code>, which the web application processes with specific functions. We will cover various types of web requests and how web browsers use them in the background. Some web server misconfigurations may even grant us access to the system without having to even exploit a web application directly. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-success font-size-13">Fundamental</span><span class="badge mr-1 badge-soft-success font-size-13" data-toggle="tooltip" data-title="General module covering various topics" data-original-title="" title="">General</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">8 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">4 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>7. JavaScript Deobfuscation</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/41" target="_blank" rel="noopener nofollow"><img src="/storage/modules/41/logo.png" alt="" style="width: 300px"></a></td>
+<td>Most web applications nowadays are dynamic and include <code>JavaScript</code>, which we must also be familiar with to handle the dynamics of the web page correctly. JavaScript is a very popular programming language and is often obfuscated to make it difficult for attackers (and defenders) to understand the exact functionality of the code. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-success font-size-13">Fundamental</span><span class="badge mr-1 badge-soft-primary font-size-13" data-toggle="tooltip" data-title="Focuses on defensive security practices" data-original-title="" title="">Defensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">11 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">4 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>As we know, large IT networks need to be closely managed and secured. Most companies have a management structure, as managing hundreds or thousands of systems remotely or physically one by one would be unreasonable. For this reason, various technologies exist to facilitate and accelerate remote management of users, systems, and other resources.</p>
+<h4>8. Introduction to Active Directory</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/74" target="_blank" rel="noopener nofollow"><img src="/storage/modules/74/logo.png" alt="" style="width: 300px"></a></td>
+<td>Nowadays, most companies use a structured way of managing hundreds or thousands of computers and users.  <code>Active Directory</code> is used to simplify and speed up management for administrators. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-success font-size-13">Fundamental</span><span class="badge mr-1 badge-soft-success font-size-13" data-toggle="tooltip" data-title="General module covering various topics" data-original-title="" title="">General</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">16 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">7 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>9. Getting Started</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/77" target="_blank" rel="noopener nofollow"><img src="/storage/modules/77/logo.png" alt="" style="width: 300px"></a></td>
+<td>What causes the most significant difficulty for most when starting out? The answer to this is much easier than most may imagine because all we have to do is <code>Get Started</code>. This module includes many tips and tricks for those just starting out, examples of what technologies we will see and what attack methods we will use, and a guided walkthrough of solving a vulnerable box, culminating in solving (for some of us) our first box without assistance.  <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-success font-size-13">Fundamental</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">23 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">8 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Information Gathering</h2>
+<p>Information gathering is an essential part of any assessment. Because information, the knowledge gained from it, the conclusions we draw, and the steps we take are based on the information available. This information must be obtained from somewhere, so it is critical to know how to retrieve it and best leverage it based on our assessment goals.</p>
+<p><img src="https://academy.hackthebox.com/storage/modules/90/0-PT-Process-IG.png" alt="" /></p>
+<p>From this stage, the next part of our path is clear:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Path</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Vulnerability Assessment</code></td>
+<td>The next stop on our journey is <code>Vulnerability Assessment</code>, where we use the information found to identify potential weaknesses. We can use vulnerability scanners that will scan the target systems for known vulnerabilities and manual analysis where we try to look behind the scenes to discover where the potential vulnerabilities might lie.</td>
+</tr>
+</tbody>
+</table>
+<p>The information we gather in advance will influence the results of the <code>Exploitation</code> stage. From this, we can see if we have collected enough or dived deep enough. Time, patience, and personal commitment all play a significant role in information gathering. This is when many penetration testers tend to jump straight into exploiting a potential vulnerability. This often fails and can lead, among other things, to a significant loss of time. Before attempting to exploit anything, we should have completed thorough information gathering, keeping detailed notes along the way, focusing on things to hone in on once we get to the exploitation stage. Most assessments are time-based, so we don't want to waste time bouncing around, which could lead to us missing something critical. Organization and patience are vital while being as thorough as possible.</p>
+<h4>10. Network Enumeration with Nmap</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/19" target="_blank" rel="noopener nofollow"><img src="/storage/modules/19/logo.png" alt="" style="width: 300px"></a></td>
+<td>Suppose we limit our scope to the corporate network infrastructure. In that case, we should know how to perform the <code>Network Enumeration with Nmap</code>, identify the potential targets, and bypass security measures like firewalls, intrusion prevention, and intrusion detection systems (IPS/IDS). <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-success font-size-13">Tier I</span><span class="badge mr-1 badge-soft-success font-size-13">Easy</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">12 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">7 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>11. Footprinting</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/112" target="_blank" rel="noopener nofollow"><img src="/storage/modules/112/logo.png" alt="" style="width: 300px"></a></td>
+<td>Once we have identified the potential targets, we need to know how the individual services of these hosts can be examined. It is essential to understand what these services are used for, how they can be misconfigured, and how we, as attackers, can exploit them for our purposes. Because every service that communicates via the network leaves its own <code>Footprint</code> that we have to discover, knowing these footprints will give us a more accurate picture of what steps we can take next as we head into the exploitation phase. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-warning font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">20 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">2 days</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>12. Information Gathering - Web Edition</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/144" target="_blank" rel="noopener nofollow"><img src="/storage/modules/144/logo.png" alt="" style="width: 300px"></a></td>
+<td>In most cases, web servers and web applications contain a great deal of information that can be used against them. Since web is a vast technical area in its own right, it will be treated separately. A web server can run many web applications, and some of these applications may be only intended for the developers and administrators. Therefore, finding these is an essential part of our <code>Information Gathering - Web Edition</code>. We also want to discover as many web applications as possible and gather detailed information on their structure and function which will help inform our attacks.<p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-success font-size-13">Easy</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">10 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">7 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Things can become quite complex when we want to find information about a target company on the Internet. After all, sifting through various sources and social media platforms is time-consuming and requires a great deal of attention and patience.</p>
+<h4>13. OSINT: Corporate Recon</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/28" target="_blank" rel="noopener nofollow"><img src="/storage/modules/28/logo.png" alt="" style="width: 300px"></a></td>
+<td>This type of research is called open-source intelligence (OSINT) and has many subcategories. In summary, this process involves gathering information from all publicly available sources. <code>OSINT: Corporate Recon</code>, gives us a clear and structured approach that will allow us to work through many different types of data and information sources. A simple example would be finding a private SSH key that allows us to log into the corporate network as an administrator. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-purple font-size-13">Tier IV</span><span class="badge mr-1 badge-soft-danger font-size-13">Hard</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">23 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+200 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">2 days</span></p></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Vulnerability Assessment</h2>
+<p>The vulnerability assessment stage is divided into two areas. On the one hand, it is an approach to scan for known vulnerabilities using automated tools. On the other hand, it is analyzing for potential vulnerabilities through the information found. Many companies conduct regular vulnerability assessment audits to check their infrastructure for new known vulnerabilities and compare them with the latest entries in these tools' databases.</p>
+<p>An analysis is more about <code>thinking outside the box</code>. We try to discover gaps and opportunities to trick the systems and applications to our advantage and gain unintended access or privileges. This requires creativity and a deep technical understanding. We must connect the various information points we obtain and understand its processes.</p>
+<p><img src="https://academy.hackthebox.com/storage/modules/90/0-PT-Process-VA.png" alt="" /></p>
+<p>From this stage, there are four paths we can take, depending on how far we have come:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Path</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Exploitation</code></td>
+<td>The first we can jump into is the <code>Exploitation</code> stage. This happens when we do not yet have access to a system or application. Of course, this assumes that we have already identified at least one gap and prepared everything necessary to attempt to exploit it.</td>
+</tr>
+<tr>
+<td><code>Post-Exploitation</code></td>
+<td>The second way leads to the <code>Post-Exploitation</code> stage, where we escalate privileges on the target system. This assumes that we are already on the target system and can interact with it.</td>
+</tr>
+<tr>
+<td><code>Lateral Movement</code></td>
+<td>Our third option is the <code>Lateral Movement</code> stage, where we move from the already exploited system through the network and attack other systems. Again, this assumes that we are already on a target system and can interact with it. However, privilege escalation is not strictly necessary because interacting with the system already allows us to move further in the network under certain circumstances. Other times we will need to escalate privileges before moving laterally. Every assessment is different.</td>
+</tr>
+<tr>
+<td><code>Information Gathering</code></td>
+<td>The last option is returning to the <code>Information Gathering</code> stage when we do not have enough information on hand. Here we can dig deeper to find more information that will give us a more accurate view.</td>
+</tr>
+</tbody>
+</table>
+<p>The ability to analyze comes with time and experience. However, it also needs to be trained because proper analysis makes connections between different points and information. Connecting this information about the target network or target system and our experience will often allow us to recognize specific patterns. We can compare this to reading. Once we have read certain words often enough, we will know that word at some point and understand what it means just by looking at the letters.</p>
+<h4>14. Vulnerability Assessment</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/108" target="_blank" rel="noopener nofollow"><img src="/storage/modules/108/logo.png" alt="" style="width: 300px"></a></td>
+<td>After summarizing the information, we can use automated tools to scan the defined targets to detect known vulnerabilities in the systems. First, however, we need to know the scoring systems and learn how to configure and use these tools efficiently. The <code>Vulnerability Assessment</code> performed by these tools can give us a better overview of the potential vulnerabilities and the configuration of the target system. From this, new paths and opportunities can be revealed to us to help us find another way into the system. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-success font-size-13">Easy</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">17 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">2 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>15. File Transfers</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/24" target="_blank" rel="noopener nofollow"><img src="/storage/modules/24/logo.png" alt="" style="width: 300px"></a></td>
+<td>Before we can efficiently exploit the potential vulnerabilities, we need to be familiar with techniques and methods to transfer the required data to the target systems. This is because manual adjustments are often necessary to circumvent specific restrictions. Knowing the ways and means to perform <code>File Transfers</code> is an essential component that we must master and there are many ways to transfer files both to and from Windows and Linux hosts. If we have found a potential gap and do not know how to transfer the corresponding data to the target system, it will lead us to a dead end.<p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-warning font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">8 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">3 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>16. Shells &amp; Payloads</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/115" target="_blank" rel="noopener nofollow"><img src="/storage/modules/115/logo.png" alt="" style="width: 300px"></a></td>
+<td>We also need to know what files we need to transfer to gain initial or further access to the systems. For this, it is necessary to know what <code>Shell &amp; Payloads</code> are. With the help of the transmitted payloads, we get access to the command line of the target system. Many things have to be taken into consideration because these shells and payloads must be adapted to the environment and the targeted system. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-success font-size-13">Tier I</span><span class="badge mr-1 badge-soft-warning font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">17 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">2 days</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>17. Using the Metasploit-Framework</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/39" target="_blank" rel="noopener nofollow"><img src="/storage/modules/39/logo.png" alt="" style="width: 300px"></a></td>
+<td>In addition, there is a handy framework called <code>Metasploit-Framework</code> that covers many attacks, enumeration, and privilege escalation methods and makes it faster for us to configure and execute. It can help us speed up our processes and get into the target systems in a semi-automated way. However, before we can do this, we need to understand what this tool is capable of and its limitations. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-success font-size-13">Easy</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">15 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">5 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exploitation</h2>
+<p>Exploitation is the attack performed against a system or application based on the potential vulnerability discovered during our information gathering and enumeration. We use the information from the <code>Information Gathering</code> stage, analyze it in the <code>Vulnerability Assessment</code> stage, and prepare the potential attacks. Often many companies and systems use the same applications but make different decisions about their configuration. This is because the same application can often be used for various purposes, and each organization will have different objectives.</p>
+<p><img src="https://academy.hackthebox.com/storage/modules/90/0-PT-Process-EX.png" alt="" /></p>
+<p>From this stage, there are four paths we can take, depending on how far we have come:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Path</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Information Gathering</code></td>
+<td>Once we have initial access to the target system, regardless of how high our privileges are at that moment, we need to gather information about the local system. Whether we use this new information for privilege escalation, lateral movement, or data exfiltration does not matter. Therefore, before we can take any further steps, we need to find out what we are dealing with. This inevitably takes us to the vulnerability assessment stage, where we analyze and evaluate the information we find.</td>
+</tr>
+<tr>
+<td><code>Post-Exploitation</code></td>
+<td><code>Post-exploitation</code> is mainly about escalating privileges if we have not yet attained the highest possible rights on the target host. As we know, more opportunities are open to us with higher privileges. This path actually includes the stages <code>Information Gathering</code>, <code>Vulnerability Assessment</code>, <code>Exploitation</code>, and <code>Lateral Movement</code> but from an internal perspective on the target system. The direct jump to post-exploitation is less frequent, but it does happen. Because through the exploitation stage, we may already have obtained the highest privileges, and from here on, we start again at <code>Information Gathering</code>.</td>
+</tr>
+<tr>
+<td><code>Lateral Movement</code></td>
+<td>From here, we can also skip directly over to <code>Lateral Movement</code>. This can come under different conditions. If we have achieved the highest privileges on a dual-homed system used to connect two networks, we can likely use this host to start enumerating hosts that were not previously available to us.</td>
+</tr>
+<tr>
+<td><code>Proof-of-Concept</code></td>
+<td>We can take the last path after gaining the highest privileges by exploiting an internal system. Of course, we do not necessarily have to have taken over all systems. However, if we have gained the Domain Admin privileges in an Active Directory environment, we can likely move freely across the entire network and perform any actions we can imagine. So we can create the <code>Proof-of-Concept</code> from our notes to detail and potentially automate the paths and activities and make them available to the technical department.</td>
+</tr>
+</tbody>
+</table>
+<p>This stage is so comprehensive that it has been divided into two distinct areas. The first category is general network protocols often used and present in almost every network. The actual exploitation of the potential and existing vulnerabilities is based on the adaptability and knowledge of the different network protocols we will be dealing with. In addition, we need to be able to create an overview of the existing network to understand its individual components' purposes. In most cases, web servers and applications contain a great deal of information that can be used against them. As stated previously, since web is a vast technical area in its own right, it will be treated separately. We are also interested in the remotely exposed services running on the target hosts, as these may have misconfigurations or known public vulnerabilities that we can leverage for initial access. Finally, existing users also play a significant role in the overall network.</p>
+<h4>18. Password Attacks</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/147" target="_blank" rel="noopener nofollow"><img src="/storage/modules/147/logo.png" alt="" style="width: 300px"></a></td>
+<td>If potential usernames or passwords were found during our information gathering, we may be able to use them specifically to perform <code>Password Attacks</code> on the systems and applications and authenticate ourselves. This module covers various methods to obtain credentials both remotely and locally on Windows and Linux systems. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-success font-size-13">Tier I</span><span class="badge mr-1 badge-soft-warning font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">18 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">8 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>19. Attacking Common Services</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/116" target="_blank" rel="noopener nofollow"><img src="/storage/modules/116/logo.png" alt="" style="width: 300px"></a></td>
+<td>Due to the variety of attacks that can be carried out, attacks on specific network services and web applications differ. Therefore, these are separated into different modules, as many specific attacks can only be carried out against web applications. However, there are many essential network services that can almost always be found in any corporate network. Therefore, knowing how to <code>Attack Common Services</code> is another major concept that needs to be covered in detail. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-warning font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">19 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">8 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>20. Pivoting, Tunneling &amp; Port Forwarding</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/158" target="_blank" rel="noopener nofollow"><img src="/storage/modules/158/logo.png" alt="" style="width: 300px"></a></td>
+<td>When <code>Pivoting</code>, the exploited system is used as a node between the external and internal networks or between different internal networks. This is used to communicate with the internal systems to which we can usually not establish a direct connection from the Internet or another host in the internal network. It does not matter whether these are hosted on-premise or in the cloud. Network access and restrictions can be configured to and from specific hosts, even in the cloud. <code>Tunnels</code> must also be created to be able to transfer data securely. <code>Port forwarding</code> is often used to forward a local port to the port of an exploited system.  <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-success font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">18 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">2 days</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>21. Active Directory Enumeration &amp; Attacks</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/143" target="_blank" rel="noopener nofollow"><img src="/storage/modules/143/logo.png" alt="" style="width: 300px"></a></td>
+<td>As we already know, most corporate networks are managed by administrators using Active Directory. Therefore, it is crucial to become familiar with this technology and how <code>Active Directory Enumeration &amp; Attacks</code> can affect it. Its complexity can often lead to various vulnerabilities. Especially when administrators are careless or imprecise, vulnerabilities often arise that can lead to a complete domain takeover. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-warning font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">36 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">7 days</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>Web Exploitation</h4>
+<p>Web exploitation is the second part of the exploitation stage. Many different technologies, improvements, features, and enhancements have been developed in this area over the last few years, and things are constantly evolving. As a result, many different components come into play when dealing with web applications. This includes many kinds of databases that require differing command syntax to interact with. Due to the diversity of web applications available to companies and their prevalence worldwide, we must deal with this area separately and focus intently on it. Web applications present a vast attack surface and are often the main accessible targets during external penetration testing engagements, so strong web enumeration and exploitation skills are paramount.</p>
+<h4>22. Using Web Proxies</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/110" target="_blank" rel="noopener nofollow"><img src="/storage/modules/110/logo.png" alt="" style="width: 300px"></a></td>
+<td>Web servers and web applications work based on the HTTP/HTTPS protocol. Like other protocols, this protocol has a fixed structure for requests and responses. We will focus on <code>Using Web Proxies</code> to analyze and manipulate these requests. The way these requests and their HTTP headers can be manipulated plays a significant role in the results we can get from them. Even the absence of specific HTTP headers or too many allowed HTTP methods can be very dangerous for the webserver or web application quickly and easily. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-success font-size-13">Easy</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">15 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">8 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>23. Attacking Web Applications with Ffuf</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/54" target="_blank" rel="noopener nofollow"><img src="/storage/modules/54/logo.png" alt="" style="width: 300px"></a></td>
+<td>After learning which attack methods these web applications can be subject to, we can use many of these attack methods and start <code>Attacking Web Applications with Ffuf</code>. Since every web server and application works with many different parameters due to its link with the database, these parameters can be discovered manually and automatically. For this purpose, there are procedures and different possibilities that allow us to find these parameters to exploit further possible vulnerabilities. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-success font-size-13">Easy</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">13 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">5 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>24. Login Brute Forcing</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/57" target="_blank" rel="noopener nofollow"><img src="/storage/modules/57/logo.png" alt="" style="width: 300px"></a></td>
+<td>Authentication mechanisms are a vital target. Using these, we can gain access to different user accounts with the help of specific vulnerabilities. One of the most effective ways of gaining access is through <code>Login Brute Forcing</code>. Almost all web applications that offer any kind of user-specific functions work with the help of  some sort of authentication mechanisms. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-success font-size-13">Easy</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">11 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">6 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>25. SQL Injection Fundamentals</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/33" target="_blankInstead, it can help us speed up the processes and get this into the target systems in a semi-automated way. However, before we can do this, we need to understand what this tool is capable of and where it has its limitations. " rel="noopener nofollow"><img src="/storage/modules/33/logo.png" alt="" style="width: 300px"></a></td>
+<td>Whether it manages products or users, most every web application works with at least one database. This database is linked to the web application in some way and may open up another attack category called SQL Injection. With an understanding of <code>SQL Injection Fundamentals</code>, we can manipulate or exploit the database for our purposes by abusing functionality contained within the web application. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-warning font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">17 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">8 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>26. SQLMap Essentials</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/58" target="_blank" rel="noopener nofollow"><img src="/storage/modules/58/logo.png" alt="" style="width: 300px"></a></td>
+<td>Many of the attacks against web application database are summarized in a tool called SQLMap and should therefore also be learned to speed up our process after manual inspection. <code>SQLMap Essentials</code> should be learned to apply the tool appropriately and adapt it to the web application. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-success font-size-13">Easy</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">11 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">8 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>27. Cross-Site Scripting (XSS)</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/103" target="_blank" rel="noopener nofollow"><img src="/storage/modules/103/logo.png" alt="" style="width: 300px"></a></td>
+<td><code>Cross-site Scripting (XSS)</code> is another of the most common attack categories. These vulnerabilities can be leveraged to launch various attacks, such as phishing, session hijacking, and others. Among other things, we can also potentially take over web sessions from other users or even administrators. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-success font-size-13">Easy</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">10 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">6 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>28. File Inclusion</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/23" target="_blank" rel="noopener nofollow"><img src="/storage/modules/23/logo.png" alt="" style="width: 300px"></a></td>
+<td>Depending on the webserver configuration and the web application, some vulnerabilities allow us some type of <code>File Inclusion</code>. For example, we may be able to access files on the target system or use our own to execute code without being provided access by the developers or administrators. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-dark font-size-13">Tier 0</span><span class="badge mr-1 badge-soft-warning font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">11 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">8 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>29. Command Injections</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/109" target="_blank" rel="noopener nofollow"><img src="/storage/modules/109/logo.png" alt="" style="width: 300px"></a></td>
+<td>We do not always need to attack the database using SQL Injections or XSS. Often direct <code>Command Injections</code> can be used to execute system commands. Some command injections are easier to spot than others, which may require advanced knowledge of identifying and bypassing filters in place. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-warning font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">12 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">6 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>30. Web Attacks</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/134" target="_blank" rel="noopener nofollow"><img src="/storage/modules/134/logo.png" alt="" style="width: 300px"></a></td>
+<td>The other top 10 most critical vulnerabilities include HTTP Verb Tampering, IDOR, and XXE. These are more advanced <code>Web Attacks</code>, as they require some security filters and encodings to be bypassed. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-warning font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">18 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">2 days</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>31. Attacking Common Applications</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/113" target="_blank" rel="noopener nofollow"><img src="/storage/modules/113/logo.png" alt="" style="width: 300px"></a></td>
+<td>Common web applications might be customized by administrators but are nevertheless used worldwide. Therefore, it is also essential to know how to <code>Attack Common Applications</code>. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-warning font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">22 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">2 days</span></p></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Post-Exploitation</h2>
+<p>In most cases, when we exploit certain services for our purposes to gain access to the system, we usually do not obtain the highest possible privileges. Because services are typically configured in a certain way &quot;isolated&quot; to stop potential attackers, bypassing these restrictions is the next step we take in this stage. However, it is not always easy to escalate the privileges. After gaining in-depth knowledge about how these operating systems function, we must adapt our techniques to the particular operating system and carefully study how <code>Linux Privilege Escalation</code> and <code>Windows Privilege Escalation</code> work.</p>
+<p><img src="https://academy.hackthebox.com/storage/modules/90/0-PT-Process-POEX.png" alt="" /></p>
+<p>From this stage, there are four paths we can take, depending on how far we have come:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Path</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Information Gathering / Pillaging</code></td>
+<td>Before we can begin escalating privileges, we must first get an overview of the inner workings of the exploited system. After all, we do not know which users are on the system and what options are available to us up to this point. This step is also known as <code>Pillaging</code>. This path is not optional, as with the others, but essential. Again, entering the <code>Information Gathering</code> stage puts us in this perspective. This inevitably takes us to the vulnerability assessment stage, where we analyze and evaluate the information we find.</td>
+</tr>
+<tr>
+<td><code>Exploitation</code></td>
+<td>Suppose we have found sensitive information about the system and its' contents. In that case, we can use it to exploit local applications or services with higher privileges to execute commands with those privileges.</td>
+</tr>
+<tr>
+<td><code>Lateral Movement</code></td>
+<td>From here, we can also skip directly over to <code>Lateral Movement</code>. This can come under different conditions. If we have achieved the highest privileges on a dual-homed system used to connect two networks, we can likely use this host to start enumerating hosts that were not previously available to us.</td>
+</tr>
+<tr>
+<td><code>Proof-of-Concept</code></td>
+<td>We can take the last path after gaining the highest privileges by exploiting an internal system. Of course, we do not necessarily have to have taken over all systems. However, if we have gained the Domain Admin privileges in an Active Directory environment, we can likely move freely across the entire network and perform any actions we can imagine. So we can create the <code>Proof-of-Concept</code> from our notes to detail and potentially automate the paths and activities and make them available to the technical department.</td>
+</tr>
+</tbody>
+</table>
+<p>After we have gained access to a system, we must be able to take further steps from within the system. During a penetration test, customers often want to find out how far an attacker could go in their network. There are many different versions of operating systems. For example, we may run into Windows XP, Windows 7, 8, 10, 11, and Windows Server 2008, 2012, 2016, and 2019. There are also different distributions for Linux-based operating systems, such as Ubuntu, Debian, Parrot OS, Arch, Deepin, Redhat, Pop!_OS, and many others. No matter which of these systems we get into, we have to find our way around it and understand the individual weak points that a system can have from within.</p>
+<h4>32. Linux Privilege Escalation</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/51" target="_blank" rel="noopener nofollow"><img src="/storage/modules/51/logo.png" alt="" style="width: 300px"></a></td>
+<td>The vast majority of web servers that make up the World Wide Web run Linux. In addition, we will find many Linux-based servers hosting critical infrastructure services that individuals &amp; organizations use to be more productive and efficient in their daily work. Because of this widespread use of Linux, we must understand the fundamentals. There are many ways to misconfigure Linux systems. Discovering these flaws and taking advantage of them to escalate privileges is covered in <code>Linux Privilege Escalation</code>.  <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-success font-size-13">Easy</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">28 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">8 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>33. Windows Privilege Escalation</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/67" target="_blank" rel="noopener nofollow"><img src="/storage/modules/67/logo.png" alt="" style="width: 300px"></a></td>
+<td>Modern Windows systems, now have stronger security precautions (if an organization is diligent with patching), but administrator errors are possible in any environment. There are many different ways to find the misconfigurations in Windows-based systems, and we need them for <code>Windows Privilege Escalation</code>. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-warning font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="Focuses on offensive security practices" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">33 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">4 days</span></p></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Lateral Movement</h2>
+<p>Lateral movement is one of the essential components for moving through a corporate network. We can use it to overlap with other internal hosts and further escalate our privileges within the current subnet or another part of the network. However, just like <code>Pillaging</code>, the <code>Lateral Movement</code> stage requires access to at least one of the systems in the corporate network. In the Exploitation stage, the privileges gained do not play a critical role in the first instance since we can also move through the network without administrator rights.</p>
+<p><img src="https://academy.hackthebox.com/storage/modules/90/0-PT-Process-LA.png" alt="" /></p>
+<p>There are three paths we can take from this stage:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Path</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Vulnerability Assessment</code></td>
+<td>If the penetration test is not finished yet, we can jump from here to the <code>Vulnerability Assessment</code> stage. Here, the information already obtained from pillaging is used and analyzed to assess where the network services or applications using an authentication mechanism that we may be able to exploit are running.</td>
+</tr>
+<tr>
+<td><code>Information Gathering / Pillaging</code></td>
+<td>After a successful lateral movement, we can jump into <code>Pillaging</code> once again. This is local information gathering on the target system that we accessed.</td>
+</tr>
+<tr>
+<td><code>Proof-of-Concept</code></td>
+<td>Once we have made the last possible lateral movement and completed our attack on the corporate network, we can summarize the information and steps we have collected and perhaps even automate certain sections that demonstrate vulnerability to the vulnerabilities we have found.</td>
+</tr>
+</tbody>
+</table>
+<p>Since both <code>Lateral Movement</code> and <code>Pillaging</code> require access to an already exploited system, these techniques and methods are covered in different modules, such as <code>Getting Started</code>, <code>Linux Privilege Escalation</code>, and <code>Windows Privilege Escalation</code>, and many others.</p>
+<hr />
+<h2>Proof-of-Concept</h2>
+<p>The <code>Proof-Of-Concept</code> (<code>POC</code>) is merely proof that a vulnerability found exists. As soon as the administrators receive our report, they will try to confirm the vulnerabilities found by reproducing them. After all, no administrator will change business-critical processes without confirming the existence of a given vulnerability. A large network may have many interoperating systems and dependencies that must be checked after making a change, which can take a considerable amount of time and money. Just because a pentester found a given flaw, it doesn't mean that the organization can easily remediate it by just changing one system, as this could negatively affect the business. Administrators must carefully test fixes to ensure no other system is negatively impacted when a change is introduced. PoCs are sent along with the documentation as part of a high-quality penetration test, allowing administrators to use them to confirm the issues themselves.</p>
+<p><img src="https://academy.hackthebox.com/storage/modules/90/0-PT-Process-POC.png" alt="" /></p>
+<p>From this stage, there is only one path we can take:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Path</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Post-Engagement</code></td>
+<td>At this point, we can only go to the post-engagement stage, where we optimize and improve the documentation and send it to the customer after an intensive review.</td>
+</tr>
+</tbody>
+</table>
+<p>When we already have all the information we have collected and have used the vulnerability to our advantage, it does not take much effort to automate the individual steps for this.</p>
+<h4>34. Introduction to Python 3</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/88" target="_blank" rel="noopener nofollow"><img src="/storage/modules/88/logo.png" alt="" style="width: 300px"></a></td>
+<td>Python is one of the easiest programming languages to learn, and it is also quite powerful. This makes it easy to automate many steps and, with the help of comments in our code, to understand exactly how the vulnerability is exploited step-by-step. Therefore, <code>Introduction to Python 3</code> will be sufficient for most aspects of automation once we understand the structure of this programming language.  <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-success font-size-13">Tier I</span><span class="badge mr-1 badge-soft-success font-size-13">Easy</span><span class="badge mr-1 badge-soft-success font-size-13" data-toggle="tooltip" data-title="General module covering various topics" data-original-title="" title="">General</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">14 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+10 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">5 hours</span></p></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Post-Engagement</h2>
+<p>The <code>Post-Engagement</code> stage also includes cleaning up the systems we exploit so that none of these systems can be exploited using our tools. For example, leaving a bind shell on a web server that does not require authentication and is easy to find will do the opposite of what we are trying to do. In this way, we endanger the network through our carelessness. Therefore, it is essential to remove all content that we have transferred to the systems during our penetration test so that the corporate network is left in the same state as before our penetration test. We also should note down any system changes, successful exploitation attempts, captured credentials, and uploaded files in the appendices of our report so our clients can cross-check this against any alerts they receive to prove that they were a result of our testing actions and not an actual attacker in the network.</p>
+<p>In addition, we have to reconcile all our notes with the documentation we have written in the meantime to make sure we have not skipped any steps and can provide a comprehensive, well-formatted and neat report to our clients.</p>
+<h4>35. Documentation &amp; Reporting</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/162" target="_blank" rel="noopener nofollow"><img src="/storage/modules/162/logo.png" alt="" style="width: 300px"></a></td>
+<td>We need to understand proper <code>Documentation and Reporting</code>, how to stay organized and take detailed notes, and how to write effectively and deliver high quality client deliverables. Practice in this area will simplify preparation of our reports and save us considerable time. This module also helps us optimize our notetaking and organization, which we must adapt to our needs to work as efficiently as possible. <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-success font-size-13">Easy</span><span class="badge mr-1 badge-soft-success font-size-13" data-toggle="tooltip" data-title="General module covering various topics" data-original-title="" title="">General</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">8 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">2 days</span></p></td>
+</tr>
+</tbody>
+</table>
+<h4>36. Attacking Enterprise Networks</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://academy.hackthebox.com/module/details/163" target="_blank" rel="noopener nofollow"><img src="/storage/modules/163/logo.png" alt="" style="width: 300px"></a></td>
+<td>It is essential to get and keep an overall view of all these stages, their contents, and possible challenges. <code>Attacking Enterprise Networks</code> can be a daunting task, and we can get lost in the diversity of our options and overlook some of the essentials. So instead, we need to familiarize ourselves with how to attack such large networks and what vulnerabilities may exist with a large number of systems in a network.  <p class="card-text ep-none" style="line-height: 1.8;margin-top: 10px;"><span class="badge mr-1 badge-soft-info font-size-13">Tier II</span><span class="badge mr-1 badge-soft-warning font-size-13">Medium</span><span class="badge mr-1 badge-soft-danger font-size-13" data-toggle="tooltip" data-title="General module covering various topics" data-original-title="" title="">Offensive</span><span class="badge mr-1 mt-1 badge-soft-dark font-size-12">14 Sections</span><span class="badge mt-1 badge-soft-secondary font-size-12" data-toggle="tooltip" data-title="You will be rewarded with this number of Cubes after completing the module" data-original-title="" title=""><i class="fad fa-cube text-success mr-1"></i>+20 </span><span class="badge ml-1 mr-1 mt-1 badge-soft-dark font-size-12">2 days</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Now that we've covered the general layout of Academy modules regarding the penetration testing process, we'll briefly discuss how exercises and questions are presented in HTB Academy.</p>
+
+                                            </div>
+
+        <div class="card bg-color-blue-nav" style="margin: 30px 0">
+            <div class="card-body">
+                                <a href="https://academy.hackthebox.com/module/90/section/1569"
+                    class="btn btn-light module-button py-2" style="float: left"><i
+                        class="fa fa-arrow-alt-left mr-1"></i> Previous</a>
+                                                                <form action="https://academy.hackthebox.com/module" method="POST" class="form-inline" id="completeForm"
+                    style="float: right">
+                    <input type="hidden" name="module_id" value="90">
+                    <input type="hidden" name="page_id" value="3">
+                    <input type="hidden" name="completed" value="1">
+                                        <p id="completeBtnPoints" class="mb-0 mr-3 font-size-14 font-medium text-white d-none">
+                        +10 Streak pts</p>
+                                        <button id="completeBtn" class="btn btn-outline-success" style="display: none;">
+                        <div id="complete-button-text">
+                            <i class="fa fa-check-circle"></i> Mark Complete & Next
+                        </div>
+                        <div id="complete-button-loader" class="mx-5 d-none">
+                            <i class="fa fa-circle-notch fa-spin"></i>
+                        </div>
+                    </button>
+                </form>
+                
+                <a href="https://academy.hackthebox.com/module/90/section/1570"
+                    class="btn btn-light ml-2 module-button py-2" style="float: left">Next <i
+                        class="ml-1 fa fa-arrow-alt-right"></i></a>
+                            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-xl-3 col-xxl-3">
+        <div id="table-of-contents">
+
+                        <div class="card">
+                <div class="card-body bg-color-blue-nav">
+                                                                            </div>
+            </div>
+                        <div class="card" id="TOC">
+                <div class="card-body bg-color-blue-nav">
+                    <h5 class="card-title font-size-15 mb-4">Table of Contents</h5>
+                                         <h6 class="mt-4 mb-2">Using Academy Effectively</h6>                     <a href="https://academy.hackthebox.com/module/90/section/1569"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Introduction to the Penetration Tester Path</span>
+                                                                                                <i class="fad fa-check-square text-success float-right mt-1" style="top: 2px"></i>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/1559"
+                        class="btn   text-primary  btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Academy Modules Layout</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/1570"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Academy Exercises &amp; Questions</span>
+                                                                    </a>
+                                         <h6 class="mt-4 mb-2">Background &amp; Preparation</h6>                     <a href="https://academy.hackthebox.com/module/90/section/935"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Penetration Testing Overview</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/1980"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Laws and Regulations</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/936"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Penetration Testing Process</span>
+                                                                    </a>
+                                         <h6 class="mt-4 mb-2">Penetration Testing Phases - Assessment  Specific Stages</h6>                     <a href="https://academy.hackthebox.com/module/90/section/937"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <i class="fad fa-cube text-success mt-1 mr-2"></i>&nbsp;
+                                                <span class="font-size-13">Pre-Engagement</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/938"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Information Gathering</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/939"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <i class="fad fa-cube text-success mt-1 mr-2"></i>&nbsp;
+                                                <span class="font-size-13">Vulnerability Assessment</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/940"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Exploitation</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/941"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <i class="fad fa-cube text-success mt-1 mr-2"></i>&nbsp;
+                                                <span class="font-size-13">Post-Exploitation</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/942"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Lateral Movement</span>
+                                                                    </a>
+                                         <h6 class="mt-4 mb-2">Penetration Testing Phases - Project Closeout</h6>                     <a href="https://academy.hackthebox.com/module/90/section/943"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Proof-of-Concept</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/944"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <i class="fad fa-cube text-success mt-1 mr-2"></i>&nbsp;
+                                                <span class="font-size-13">Post-Engagement</span>
+                                                                    </a>
+                                         <h6 class="mt-4 mb-2">Preparing for Real-World Pentests</h6>                     <a href="https://academy.hackthebox.com/module/90/section/945"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Practice</span>
+                                                                    </a>
+                                    </div>
+            </div>
+            <div class="card">
+                <div class="card-body bg-color-blue-nav">
+                    <h5 class="card-title mb-4">My Workstation</h5>
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="sidePreview"
+                                style="height: 160px; border: 1px solid #323232; border-radius: 5px; background-color: #0a121c; text-align: center">
+                                <div class="screenPlaceholder">
+                                    <p class="instanceStart" style="padding-top:70px; letter-spacing: 5px;">
+                                        OFFLINE</p>
+                                    <p class="instanceLoading " style="padding-top:70px; display: none"><i
+                                            class="fa fa-circle-notch fa-spin"></i> Starting...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <div class="instanceStart">
+                                <button
+                                    class="startInstanceBtn btn btn-success text-light btn-sm mt-2 btn-block module-button py-2  ">
+                                    <i class="fad fa-play-circle text-light"></i> &nbsp;Start Instance
+                                </button>
+                                <p class="text-center mt-2 font-size-13 font-secondary">
+                                    <span class="text-success spawnsLeft">
+                                                                                <i class="fal fa-infinity"></i>
+                                                                            </span> / 1 spawns left
+                                </p>
+                            </div>
+                            <button style="display:none;"
+                                class="fullScreenBtn btn btn-light btn-sm mt-2 module-button py-2"><i
+                                    class="fad fa-expand text-success"></i> &nbsp;Interact
+                            </button>
+                            <button style="display:none;"
+                                class="terminateInstanceBtn btn btn-light btn-sm mt-2 module-button py-2"><i
+                                    class="fad fa-times text-danger"></i> &nbsp;Terminate
+                            </button>
+                            <button style="display:none;"
+                                class="resetInstanceBtn btn btn-light btn-sm mt-2 module-button py-2"><i
+                                    class="fad fa-sync text-warning"></i> &nbsp;Reset
+                            </button>
+                            <div class="btn-group" role="group">
+                                <button style="display:none; cursor: default;"
+                                    class=" extendInstanceBtn btn btn-light btn-sm mt-2 module-button py-2">Life
+                                    Left: <span class="lifeLeft"></span>m
+                                </button>
+                                                                <button style="display:none;" data-toggle="tooltip" data-title="Extend Life"
+                                    class=" extendInstanceBtn extendInstanceBtnClicker btn btn-light btn-sm mt-2 module-button py-2">
+                                    <i class="fa fa-plus text-success"></i></button>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div id="cheatSheetModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="unlockModuleModal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center text-break">
+                    <h5><i class="fad fa-file-alt"></i>&nbsp; Cheat Sheet</h5>
+                    <p>The cheat sheet is a useful command reference for this module.</p>
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-light btn-block" href="https://academy.hackthebox.com/module/cheatsheet/90">Download
+                    Cheatsheet</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="linkDiscordModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="linkDiscordModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                            <h5 class="modal-title w-100">Do you need help with this question?</h5>
+                        </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <img src="/images/icons/discord-alternative.svg" alt="discord icon">
+                    <p class="mb-1">It looks like you have not linked your Discord account!</p>
+                    <p>You can receive question guidance via Discord. </p>
+                    <a href="https://academy.hackthebox.com/account/discord/link" class="btn btn-outline-success btn-block">
+                        Link your Discord account
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><div id="referralModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="referralModal"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center border-0">
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true"><img src="/images/close.svg" alt="close" /></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <img src="/images/htb-coin.svg" alt="coin icon" />
+                    <h1 class="text-white">Refer &amp; Earn</h1>
+                    <p class="text-secondary font-size-20">
+                        Refer a Friend, Earn Cubes, Unlock Academy Modules!
+                    </p>
+                    <div class="d-flex flex-column">
+                        <a href="/referral">
+                            <button type="button" class="btn btn-success btn-invite-friend text-light my-4">
+                                Invite Friends
+                            </button>
+                        </a>
+                        <button type="button" id="disableReferralModalBtn" onclick="disableModalRedisplay()" class="btn mt-2 mb-3 d-none">
+                            Don't show it again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><div id="pwnboxSwitchWarningModal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="pwnboxSwitchWarningModal" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h2 class="d-inline-flex align-items-center text-white"><span class="font-size-18"><i
+                            class="far fa-exclamation-triangle text-danger mr-2"></i></span>Warning</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><img src="/images/close.svg" alt="close" height="16" width="16" /></span>
+                </button>
+            </div>
+            <div class="modal-body pt-0">
+                <div class="text-left">
+                    <h1 class="text-white"></h1>
+                    <div class="text-secondary font-size-14 px-2">
+                        <p>
+                            The current instance of Pwnbox <span
+                                class="font-medium text-white">will be terminated</span>   when switching to a new region.
+                        </p>
+                        <p>
+                            <span class="font-medium text-white">All progress you've made will be lost.</span>  Do you want to continue?
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancelPwnboxSwitchBtn" class="btn cancel-btn px-5">
+                    Cancel
+                </button>
+                <button type="button" id="continuePwnboxSwitchBtn" class="btn continue-btn px-5 text-light">
+                    <span id="continuePwnboxSwitchBtnText">Continue</span>
+                    <div class="pwnboxSwitchModalLoader spinner-border d-none" role="status">
+                        <span class="sr-only">Switching VPN...</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div><div id="vpnSwitchWarningModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vpnSwitchWarningModal"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h2 class="d-inline-flex align-items-center text-white"><span class="font-size-18"><i
+                            class="far fa-exclamation-triangle text-danger mr-2"></i></span>Warning</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><img src="/images/close.svg" alt="close" height="16" width="16" /></span>
+                </button>
+            </div>
+            <div class="modal-body pt-0">
+                <div class="text-left">
+                    <h1 class="text-white"></h1>
+                    <div class="text-secondary font-size-14 px-2">
+                        <p>
+                            All VM instances associated with the old VPN Server <span
+                                class="font-medium text-white">will be terminated</span> when switching to
+                            a new VPN server. Existing PwnBox instances
+                            <span class="font-medium text-white">will automatically switch</span>
+                            to the new VPN server.
+                        </p>
+                        <p>
+                            <span class="font-medium text-white">All progress you've made, will
+                                be lost,</span> do you want to continue?
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancelVpnSwitchBtn" class="btn cancel-btn px-5">
+                    Cancel
+                </button>
+                <button type="button" id="continueVpnSwitchBtn" class="btn continue-btn px-5 text-light">
+                    <span id="continueVpnSwitchBtnText">Continue</span>
+                    <div class="vpnSwitchModalLoader spinner-border d-none" role="status">
+                        <span class="sr-only">Switching VPN...</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div><div id="solutionPreferencesModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="solutionPreferencesModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content pt-4 pl-4 pr-4 pb-3">
+            <div class="modal-header text-center flex-column align-items-center p-0 font-size-18 font-bold">
+                <img src="/images/icons/contact-support.svg" alt="contact support icon">
+                <h5 class="modal-title w-100 text-white mt-2">Do you need help with this question?</h5>
+            </div>
+            <div class="modal-body p-0 mt-2 font-size-16">
+                <div class="text-center">
+                    <p class="mb-0">You have the option to enable step-by-step solutions for all questions.</p>
+                    <p class="mb-0">You can manage this preference at any time through your profile settings.</p>
+                </div>
+            </div>
+            <div class="modal-footer align-items-center justify-content-center p-0 mt-4 gap-12">
+                <button class="btn btn-outline-secondary text-white font-medium" onclick="handleSolutionPreferencesModalAction(false)">
+                    Don't show Solutions
+                </button>
+                <button class="btn btn-success text-light font-medium" onclick="handleSolutionPreferencesModalAction(true)">
+                    Activate Solutions
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="streaks-container">
+    </div>
+
+
+
+                </div>
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-right d-none d-sm-block">
+                                    Powered by &nbsp; <a href="https://www.hackthebox.com" target="_blank"><img style="margin-bottom: 1px;" src="/images/logo-htb.svg" height="20px" alt="Hack The Box logo"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+
+    </div>
+    
+    <script src="/assets/libs/jquery/jquery.min.js"></script>
+
+    <link rel="preload" as="style" href="https://academy.hackthebox.com/build/assets/vue-radial-progress-a171cc18.css" /><link rel="preload" as="style" href="https://academy.hackthebox.com/build/assets/app-9c6116ce.css" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/app-58f58a33.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/lodash-c1890673.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vue-pusher-355285b3.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vue-markdown-render-9a7adb1b.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vue-router-d40907bb.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vuex-25bbbfbe.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vue-radial-progress-b7e2d0d0.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/popper-f4af5ef6.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vuejs-countdown-timer-ec737dcb.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vue-screen-5ca5066c.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vue2-perfect-scrollbar-dc6fc349.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/main-e60506ee.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/just-detect-adblock-220f5df6.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/referral-6739fc5a.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/prism-b645253c.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/detectBrowser-fc4c37dc.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/core-helpers-a73d44c2.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/index-da74a519.js" /><link rel="stylesheet" href="https://academy.hackthebox.com/build/assets/vue-radial-progress-a171cc18.css" /><link rel="stylesheet" href="https://academy.hackthebox.com/build/assets/app-9c6116ce.css" /><script type="module" src="https://academy.hackthebox.com/build/assets/app-58f58a33.js"></script><script type="module" src="https://academy.hackthebox.com/build/assets/main-e60506ee.js"></script><script type="module" src="https://academy.hackthebox.com/build/assets/referral-6739fc5a.js"></script><script type="module" src="https://academy.hackthebox.com/build/assets/prism-b645253c.js"></script><script type="module" src="https://academy.hackthebox.com/build/assets/detectBrowser-fc4c37dc.js"></script><script type="module" src="https://academy.hackthebox.com/build/assets/core-helpers-a73d44c2.js"></script>    
+    <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="/assets/libs/node-waves/waves.min.js"></script>
+    <script src="/assets/libs/toastr/toastr.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            const csrfToken = 'ON0cbxlZO2d7IiAG1RjqlEqH37vO3jcEGKJkDB0K';
+            const apiToken= 'WRI04eD0dLRT0zl6sytdbFICTFd1g6vRbv0m1Iou5ZGofbDoxXyLuQCJbCDlYQ5AwvMyVHtCkdFZGCaz';
+                
+            initAxios(csrfToken,apiToken);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script type="module">
+    import {register} from '/assets/libs/core-web-components/index.js';
+
+    register();
+</script>
+
+<script>
+      let currentBrowser;
+      let isPwnboxActive = false;
+      let isTargetActive = false;
+      let vmCheckTimer;
+      let areSolutionsEnabled = false;
+      const _showSolutionsSettingSwitch = $('#showSolutionsModuleSetting');
+      const isAnnualUser = false;
+      const isAdmin = false;
+      const isCompanyAdmin = false;
+
+      window.addEventListener('SpawnedPwnBox', () => {
+          isPwnboxActive = true;
+      }, false);
+
+      window.addEventListener('TerminatedPwnBox', () => {
+          isPwnboxActive = false;
+      }, false);
+
+      setTimeout(() => {
+          currentBrowser = window.detectBrowser();
+      }, 1000);
+
+      const AXIOS_ERROR_HANDLING_MESSAGE = 'Something went wrong, please try again later.';
+
+      
+      $('table').addClass('table table-striped text-left').wrap('<div class="table-responsive"></div>');
+
+      $('.training-module a').attr('target', '_blank').attr('rel', 'noopener nofollow');
+
+      $('.favouriteBtn').click(function () {
+          let id = $(this).data('module-id');
+
+          axios.get('/api/modules/favourite/' + id).then(response => {
+              let data = response.data;
+              if (data.fav === 1) {
+            $(this).removeClass('fa-sharp fa-solid fa-regular').addClass('fa-sharp fa-solid');
+                  toastr['success'](data.message, 'Success');
+              } else {
+            $(this).removeClass('fa-sharp fa-solid fa-regular').addClass('fa-regular');
+                  toastr['success'](data.message, 'Success');
+              }
+          }).catch(err => {
+              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+          });
+      });
+
+      function encode_utf8(string) {
+          return unescape(encodeURIComponent(string));
+      }
+
+      function checkSolutionsSettings() {
+        axios.get('/api/v2/user/settings/walkthroughs_enabled').then(response => {
+            areSolutionsEnabled = response.data.data.value;
+
+            if(areSolutionsEnabled) {
+                _showSolutionsSettingSwitch.prop('checked', true);
+            }
+        }).catch(error => {
+            toastr['error'](data.message, 'Error');
+        });
+      }
+
+      function manageSolutionsSettings(enableWriteupSettings) {
+        return axios.put('/api/v2/user/settings/walkthroughs_enabled', {
+            value: enableWriteupSettings
+        });
+      }
+
+      function handleSolutionPreferencesModalAction(enableWriteupSettings) {
+        manageSolutionsSettings(!areSolutionsEnabled).then(response => {
+            if (response.status === 204) {
+                areSolutionsEnabled = enableWriteupSettings;
+                if (areSolutionsEnabled) {
+                    // refresh page to update UI
+                    window.location.reload();
+                }
+            }
+        }).catch(error => {
+            toastr['error'](error.message, 'Error');
+        }).finally(() => {
+            $('#solutionPreferencesModal').modal('hide');
+        });
+      }
+
+      _showSolutionsSettingSwitch.on('click', () => {
+            if(isAnnualUser || isAdmin || isCompanyAdmin) {
+                _showSolutionsSettingSwitch.prop('disabled', true);
+                manageSolutionsSettings(!areSolutionsEnabled)
+                    .then(response => {
+                        if (response.status === 204) {
+                            areSolutionsEnabled = !areSolutionsEnabled;
+                             // refresh page to update UI
+                             window.location.reload();
+                        }
+                    }).catch(error => {
+                        toastr['error'](error.message, 'Error');
+                    }).finally(() => {
+                        // We add a small delay to avoid possible spam/abuse
+                        setTimeout(() => {
+                            _showSolutionsSettingSwitch.prop('disabled', false);
+                        }, 1500);
+                    });
+            }
+        });
+
+      $('.btnAnswer').click(function () {
+          let question_id = $(this).data('question-id');
+          $(this).attr('disabled', 1);
+          $(this).find('.submit-button-text').addClass('d-none');
+          $(this).find('.submit-button-loader').removeClass('d-none');
+          let utf8EncodedString = encode_utf8($('#answer' + question_id).val());
+          axios.post('/api/check/answer', {
+              answer: btoa(utf8EncodedString),
+              question_id: question_id
+          }).then(response => {
+              let data = response.data;
+              if (data.success === 0) {
+                  $(this).removeAttr('disabled');
+
+                  if(data.should_show_walkthrough_modal) {
+                    openSolutionPreferencesModal();
+                  }
+
+                  toastr['error'](data.message, 'Error');
+              } else {
+                  $(this).attr('disabled', 1);
+                  $('#answer' + question_id).attr('disabled', 1);
+                  $('#answer' + question_id).addClass('text-success');
+                  $('#hintBtn' + question_id).attr('disabled', 1);
+                  $(`.d-discord-${question_id}`).addClass('d-none');
+                  $('#questionStreakPointsText-' + question_id).addClass('d-none');
+                  toastr['success'](data.message, 'Success');
+                  completeCheck();
+              }
+              $(this).find('.submit-button-text').removeClass('d-none');
+              $(this).find('.submit-button-loader').addClass('d-none');
+          }).catch(err => {
+              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+          });
+      });
+
+      $('.btnAnswerExercise').click(function () {
+          let exercise_id = $(this).data('exercise-id');
+          $(this).attr('disabled', 1);
+          $(this).find('.submit-button-text').addClass('d-none');
+          $(this).find('.submit-button-loader').removeClass('d-none');
+          let utf8EncodedString = encode_utf8($(`#exerciseAnswer${exercise_id}`).val());
+          axios.post(`/api/check/exercise/${exercise_id}/answer`, {
+              answer: btoa(utf8EncodedString)
+          }).then(response => {
+              let data = response.data;
+              if (data.success === 0) {
+                  $(this).removeAttr('disabled');
+                  toastr['error'](data.message, 'Error');
+              } else {
+                  $(this).attr('disabled', 1);
+                  $(`#exerciseAnswer${exercise_id}`).attr('disabled', 1);
+                  $(`#exerciseAnswer${exercise_id}`).addClass('text-success');
+                  toastr['success'](data.message, 'Success');
+              }
+              $(this).find('.submit-button-text').removeClass('d-none');
+              $(this).find('.submit-button-loader').addClass('d-none');
+          }).catch(err => {
+              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+          });
+      });
+
+      $('.btnAnswerExerciseMultiple').click(function () {
+          $(this).attr('disabled', 1);
+          $(this).find('.submit-button-text').addClass('d-none');
+          $(this).find('.submit-button-loader').removeClass('d-none');
+          let exercise_id = $(this).data('exercise-id');
+          $(this).attr('disabled', 1);
+          let utf8EncodedString = $(`#exerciseAnswer${exercise_id}`).find('input:checked').val();
+          axios.post(`/api/check/exercise/${exercise_id}/answer`, {
+              answer: btoa(utf8EncodedString)
+          }).then(response => {
+              let data = response.data;
+              if (data.success === 0) {
+                  $(this).removeAttr('disabled');
+                  toastr['error'](data.message, 'Error');
+                  $(`#exerciseAnswer${exercise_id} input[type=radio]:checked`).parent().parent().find(`.exercise-answer-justification`).removeClass('d-none');
+                  $(`#exerciseAnswer${exercise_id} input[type=radio]:checked`).attr('disabled', 1);
+                  $(`#exerciseAnswer${exercise_id} input[type=radio]:checked`).parent().find('label').addClass('text-danger red');
+              } else {
+                  $(this).attr('disabled', 1);
+                  $(`#exerciseAnswer${exercise_id}`).attr('disabled', 1);
+                  $(`#exerciseAnswer${exercise_id} input[type=radio]:checked`).parent().find('label').addClass('text-success green');
+                  $(`#exerciseAnswer${exercise_id} input[type=radio]:checked`).parent().find('label').removeClass('red');
+                  $(`#exerciseAnswer${exercise_id} input[type=radio]`).attr('disabled', 1);
+                  $(`#exerciseAnswer${exercise_id} .exercise-answer-justification`).removeClass('d-none');
+                  toastr['success'](data.message, 'Success');
+              }
+              $(this).find('.submit-button-text').removeClass('d-none');
+              $(this).find('.submit-button-loader').addClass('d-none');
+          }).catch(err => {
+              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+          });
+      });
+
+      $('.reveal-modal').click(e => {
+          let id = $(e.target).data('exercise-id');
+          $(`#revealExerciseAnswer${id}`).modal('hide');
+      });
+
+      $(document).ready(function () {
+        let isOnOverloadedVpnServer;
+        const overLoadedVpnServerStatusKey = 'htb-vpn-overloaded-status';
+        isOnOverloadedVpnServer= '' ?? false;
+        const isNotInformedForVpnLoad = JSON.parse(localStorage.getItem(overLoadedVpnServerStatusKey) === null);
+
+        if(isOnOverloadedVpnServer && isNotInformedForVpnLoad) {
+            $('#overloadedVpnInfoModal').modal('show');
+        }
+
+          setTimeout(() => {
+            // we add a delay before calling this function
+            // in order the axios headers to have been set
+            completeCheck();
+            checkSolutionsSettings();
+
+          }, 500);
+
+          setTimeout(() => {
+            $('.bootstrap-select').find('button').attr("title","");
+          }, 5000);
+
+          $('pre').filter(function () {
+              return this.className.match(/\blanguage-/);
+          }).each(function () {
+              let heading = $(this).prevAll().closest('h1').last().text();
+
+              if (this.className === ' language-shell-session') {
+                  wrapTerminal(this, heading);
+              } else if (this.className === ' language-powershell-session') {
+                  wrapPSTerminal(this, heading);
+              } else if (this.className === ' language-cmd-session') {
+                  wrapCMDTerminal(this, heading);
+              } else if (this.className.startsWith(' language-')) {
+                  var language = this.className.split('-').pop();
+                  wrapCodeBlock(this, language);
+              }
+          });
+
+          wrapBrowser($('.website-screenshot'));
+
+          $('span:contains(\'[!bash!]\')').html('<span class="text-gray">ATMvnvl@htb</span><span class="text-success">[/htb]</span>');
+
+          let _vpnSelector = $('.vpnSelector');
+          let _selectedServer = _vpnSelector.val();
+          let _vpnLoader = $('.vpn-loader');
+
+          let _vpnSwitchWarningModal = $('#vpnSwitchWarningModal');
+          let _continueVpnSwitchBtn = $('#continueVpnSwitchBtn');
+          let _continueVpnSwitchBtnText = $('#continueVpnSwitchBtnText');
+          let _cancelVpnSwitchBtn = $('#cancelVpnSwitchBtn');
+          let _vpnSwitchWarningModalLoader = $('.vpnSwitchModalLoader');
+
+          // Modal for warning the user about switching to an overloaded server
+          let _overloadedVpnWarningModal = $('#overloadedVpnWarningModal');
+
+          // Modal for informing the user already being on an overloaded server
+          let _overloadedVpnInfoModal = $('#overloadedVpnInfoModal');
+
+          // Reverts the selected server to the last selected server
+          function cancelVpnServerChange() {
+            _overloadedVpnWarningModal.modal('hide');
+            _vpnSelector.val(_selectedServer);
+            _vpnSelector.selectpicker('refresh');
+          }
+
+          _overloadedVpnWarningModal.find('#stayToVpnServerWarning, .close').on('click', () => {
+            cancelVpnServerChange();
+          });
+
+          _overloadedVpnWarningModal.find('#overloadedVpnServerWarningAction').on('click', () => {
+            localStorage.setItem(overLoadedVpnServerStatusKey, JSON.stringify('complete'));
+            _overloadedVpnWarningModal.modal('hide');
+            switchVpnServer(true);
+          });
+
+          _overloadedVpnInfoModal.find('#stayToVpnServerInfo, #overloadedVpnInfoAction, .close').on('click', () => {
+            _vpnSelector.val(_selectedServer);
+            _vpnSelector.selectpicker('refresh');
+            _overloadedVpnInfoModal.modal('hide');
+          });
+
+          _overloadedVpnInfoModal.on('hidden.bs.modal', () => {
+            localStorage.setItem(overLoadedVpnServerStatusKey, JSON.stringify('complete'));
+          });
+
+          _vpnSelector.change(function () {
+              if (isPwnboxActive) {
+                _vpnSwitchWarningModal.modal('show');
+              } else {
+                let vpnLoadLevel = $('.vpnSelector option:selected').data('level');
+                if (vpnLoadLevel >= 70) {
+                    _overloadedVpnWarningModal.modal('show');
+                } else {
+                    switchVpnServer();
+                }
+              }
+          });
+
+          function switchVpnServer(displayError = true) {
+            let vpnId = $('.vpnSelector option:selected').val();
+            if (!vpnId) return;
+
+            _vpnLoader.removeClass('d-none');
+            _vpnLoader.addClass('d-flex');
+            $('.bootstrap-select').addClass('d-none');
+
+            // Display button loader and disable the buttons while
+            // waiting for the request to finish
+            _continueVpnSwitchBtnText.addClass('d-none');
+            _vpnSwitchWarningModalLoader.removeClass('d-none');
+            _continueVpnSwitchBtn.addClass('disabled');
+            _cancelVpnSwitchBtn.addClass('disabled');
+            _vpnSwitchWarningModal.find('.close').addClass('disabled');
+
+            axios.post(`/api/v2/vpn-servers/${vpnId}/switch`, {}).then(response => {
+                _vpnLoader.removeClass('d-flex');
+                _vpnLoader.addClass('d-none');
+                $('.bootstrap-select').removeClass('d-none');
+
+                toastr['success']('Vpn server switched successfully', 'Success');
+                $('.startInstanceBtn').each(function () {
+                    $(this).removeClass('disabled');
+                });
+
+                _selectedServer = _vpnSelector.val();
+                _vpnSwitchWarningModal.modal('hide');
+                _continueVpnSwitchBtnText.removeClass('d-none');
+                _vpnSwitchWarningModalLoader.addClass('d-none');
+                _continueVpnSwitchBtn.removeClass('disabled');
+                _cancelVpnSwitchBtn.removeClass('disabled');
+                _vpnSwitchWarningModal.find('.close').removeClass('disabled');
+
+                if (isTargetActive) {
+                    $('.target').html('<i class="fad fa-circle-notch fa-spin"></i> Target is spawning...');
+                    $('.targetIp').html('<i class="fad fa-circle-notch fa-spin"></i>');
+                    $('.target-protocol-ip').html('<i class="fad fa-circle-notch fa-spin"></i>');
+                    $('.resetTargetBtn').hide();
+                    $('.resetTargetBtn').prop('disabled', true);
+
+                    vmCheckTimer = setInterval(function () {
+                        window.checkMultipleVMs();
+                    }, 5 * 1000);
+                }
+
+            }).catch(err => {
+                clearInterval(vmCheckTimer);
+                _vpnLoader.removeClass('d-flex');
+                _vpnLoader.addClass('d-none');
+                $('.bootstrap-select').removeClass('d-none');
+                if(displayError) {
+                    toastr['error'](err.response.data.message, 'Error');
+                }
+                _vpnSelector.val(_selectedServer);
+                $('.selectpicker').selectpicker('refresh')
+                _vpnSwitchWarningModal.modal('hide');
+                _continueVpnSwitchBtnText.removeClass('d-none');
+                _vpnSwitchWarningModalLoader.addClass('d-none');
+                _continueVpnSwitchBtn.removeClass('disabled');
+                _cancelVpnSwitchBtn.removeClass('disabled');
+                _vpnSwitchWarningModal.find('.close').removeClass('disabled');
+            });
+
+          }
+
+          _continueVpnSwitchBtn.on('click', () => {
+              switchVpnServer();
+          });
+
+          _vpnSwitchWarningModal.find('.close').on('click', () => {
+              _vpnSelector.val(_selectedServer);
+              _vpnSwitchWarningModal.modal('hide');
+          });
+
+          _cancelVpnSwitchBtn.on('click', () => {
+              _vpnSelector.val(_selectedServer);
+              _vpnSwitchWarningModal.modal('hide');
+          });
+
+          _vpnSwitchWarningModal.on('hidden.bs.modal', () => {
+              _continueVpnSwitchBtnText.removeClass('d-none');
+              _vpnSwitchWarningModalLoader.addClass('d-none');
+
+              // Reset button state on modal close
+              _continueVpnSwitchBtn.removeClass('disabled');
+              _cancelVpnSwitchBtn.removeClass('disabled');
+              _vpnSwitchWarningModal.find('.close').removeClass('disabled');
+          });
+
+      });
+
+      $('.download-vpn-settings').click(() => {
+          let type = 'regular';
+          let protocol = $('input[name="vpn-protocol"]:checked').val();
+          axios.get(`/api/v2/vpn-servers/key/download?type=${type}&protocol=${protocol}`).then(response => {
+              const url = window.URL.createObjectURL(new Blob([response.data]));
+              const link = document.createElement('a');
+              link.href = url;
+              link.setAttribute('download', `academy-${type}.ovpn`);
+              document.body.appendChild(link);
+              link.click();
+          }).catch(err => {
+              toastr['error'](err.response.data.message, 'Error');
+          });
+      });
+
+      $('#completeBtn').click(() => {
+          $('#completeBtn').addClass('disabled');
+          $('#complete-button-text').addClass('d-none');
+          $('#complete-button-loader').removeClass('d-none');
+      });
+
+      function completeCheck() {
+          axios.get('/api/check/complete/1559').then(response => {
+              let data = response.data;
+              if (data.success === 1) {
+                  if (data.completed === true) {
+                      $('#completeBtn').show();
+                      $('#completeBtnPoints').removeClass('d-none');
+                  }
+              }
+          }).catch(err => {
+              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+          });
+      }
+
+      function wrapTerminal(element, heading) {
+          $(element).css('line-height', '0px');
+          $(element).wrap('<div class="window_content"></div>')
+              .parent().wrap('<div class="window_container"></div>')
+              .prepend(`
+                      <div class='window_top'>
+                          <span class='window_dot bg-danger'></span>
+                          <span class='window_dot bg-warning'></span>
+                          <span class='window_dot bg-success'></span>
+                          <span class='window_title'>${heading}</span>
+                      </div>
+                  `);
+      }
+
+      function wrapPSTerminal(element, heading) {
+          $(element).css('background', '#012456').children().css('color', 'white');
+          $(element).css('line-height', '0px');
+          $(element).wrap('<div class="window_content"></div>')
+              .parent().wrap('<div class="window_container"></div>')
+              .prepend(`
+                      <div class='window_top'>
+                          <span class='window_dot bg-danger'></span>
+                          <span class='window_dot bg-warning'></span>
+                          <span class='window_dot bg-success'></span>
+                          <span class='window_title'>${heading}</span>
+                      </div>
+                  `);
+      }
+
+      function wrapCMDTerminal(element, heading) {
+          $(element).css('background', 'black').children().css('color', 'white');
+          $(element).css('line-height', '0px');
+          $(element).wrap('<div class="window_content"></div>')
+              .parent().wrap('<div class="window_container"></div>')
+              .prepend(`
+                      <div class='window_top'>
+                          <span class='window_dot bg-danger'></span>
+                          <span class='window_dot bg-warning'></span>
+                          <span class='window_dot bg-success'></span>
+                          <span class='window_title'>${heading}</span>
+                      </div>
+                  `);
+      }
+
+      function wrapCodeBlock(element, lang) {
+          $(element).wrap('<div class="window_content"></div>')
+              .parent().wrap('<div class="window_container"></div>')
+              .prepend('<div class="window_top">Code: <span class="text-success">' + lang + '</div>');
+      }
+
+      function wrapBrowserOld(element) {
+          $(element).css('border', '0px').css('border-radius', '0');
+          let url = element.data('url');
+          $(element).wrap('<div class="window_content"></div>')
+              .parent().wrap('<div class="window_container"></div>')
+              .prepend(`
+                      <div class='window_top'>
+                          <span class='window_dot bg-danger'></span>
+                          <span class='window_dot bg-warning'></span>
+                          <span class='window_dot bg-success'></span>
+                          <input type='text' class='website-screenshot-url' disabled value='${url}'>
+                          <span class='float-right'><i class='fa fa-home'></i></span>
+                      </div>
+                  `);
+      }
+
+      function wrapBrowser(element) {
+          $(element).css('border', '0px').css('border-radius', '0');
+
+          $(element).each(function (index, e) {
+              let url = $(e).data('url');
+              $(e).wrap('<div class="window_content"></div>')
+                  .parent().wrap('<div class="window_container"></div>')
+                  .prepend(`
+                          <div class='window_top'>
+                              <span class='mr-2'>
+                                  <i class='fa fa-arrow-circle-left'></i> <i class='fa fa-arrow-right'></i> <i class='fa fa-redo'></i> <i class='fa fa-home'></i>
+                              </span>
+                              <input type='text' class='website-screenshot-url' disabled value='${url}'>
+                              <span class='float-right'><i class='fa fa-bars'></i></span>
+                          </div>
+                      `);
+          });
+      }
+
+      // This one is used by the requestHelpModal
+      function requestHelp() {
+          let question_id = $('#requestHelpModal').data('question_id');
+          axios.post(`/api/question/${question_id}/help`)
+              .then(({ data }) => {
+                  $('#requestHelpModal').modal('hide');
+                  if (data.success == 0) {
+                      toastr['error'](data.message, 'Error');
+                      return;
+                  }
+                  toastr['success']('Request sent!', 'Success');
+              }).catch(err => {
+                  toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+              });
+      }
+
+      function openRequestModal(question_id) {
+          $('#requestHelpModal').modal('show').data('question_id', question_id);
+      }
+
+      function openSolutionPreferencesModal() {
+        $('#solutionPreferencesModal').modal('show');
+      };
+
+      function openWalkthroughModal(index, sectionTitle) {
+          let _walkthrougModal = $('#walkthroughModal');
+          const _walkthroughContent = $('#walkthroughModal').find('.training-module');
+          const _walkthroughLoader = $('.walkthrough-loader');
+          _walkthrougModal.modal('show');
+          _walkthrougModal.on('shown.bs.modal', function (event) {
+              const indexNumber = new Number(index);
+
+              _walkthroughLoader.removeClass('d-none');
+              _walkthroughLoader.addClass('d-block');
+
+              let question = `Question ${indexNumber + 1}`;
+              let element = $('h1').filter(function () {
+                  // Filter all the h1 headers, to find the exact section title
+                  return $(this).text().trim().toLowerCase() === sectionTitle.toLowerCase();
+              }).nextAll('h2').filter(function () {
+                  // then filter all the h2 headers, to find the exact question as well
+                  return $(this).text().trim().toLowerCase() === question.toLowerCase();
+              }).first();
+
+              if (element.length) {
+                  setTimeout(() => {
+                      _walkthroughLoader.addClass('d-none');
+                      _walkthroughLoader.removeClass('d-block');
+                      _walkthroughContent.removeClass('d-none');
+
+                      _walkthrougModal.animate({
+                          scrollTop: element.offset().top - _walkthrougModal.offset().top + _walkthrougModal.scrollTop()
+                      }, 500);
+                  }, 1500);
+              } else {
+                  _walkthroughLoader.addClass('d-none');
+                  _walkthroughLoader.removeClass('d-block');
+                  _walkthroughContent.removeClass('d-none');
+              }
+          });
+          _walkthrougModal.on('hidden.bs.modal', function (event) {
+              // Make sure that content gets hidden again
+              // in case the user re-opens the modal multiple times
+              _walkthroughContent.addClass('d-none');
+          });
+      }
+
+      
+      function initStreakToast(autoHideOption = true) {
+          const streakToast = $('#streak-toast');
+          streakToast.toast({ autohide: autoHideOption, delay: 20000 }).toast('show');
+      }
+
+      function initStreaksNotificationContent(streaksTemplate) {
+          return new Promise((resolve, reject) => {
+              const _streaksContainer = $('.streaks-container');
+              _streaksContainer.html(streaksTemplate);
+              resolve();
+          });
+
+      }
+</script>
+
+<script type="module">
+    import RFB from '/assets/libs/vnc/core/rfb.js';
+
+      let rfb;
+      let sidePreview;
+      let desktopName;
+      let pwnboxActive = false;
+      $(document).ready(function () {
+          getRegions();
+          const userId = '1674007';
+          Echo.private(`user-${userId}`)
+              .listen('.streak.completed', data => {
+                  initStreaksNotificationContent(data.streak_popup).then(() => {
+                      initStreakToast();
+                  });
+              })
+              .listen('.streak.progressed', data => {
+                  initStreaksNotificationContent(data.streak_popup).then(() => {
+                      initStreakToast();
+                  });
+              })
+              .listen('.streak.started', data => {
+                  const { event, current_streak } = data.streak_data;
+                  initStreaksNotificationContent(data.streak_popup).then(() => {
+                    const enableToastAutohide = event === 'streak.started' && current_streak === 0 ? false : true;
+                    initStreakToast(enableToastAutohide);
+                  });
+              });
+      });
+
+      function connectedToServer(e) {
+          status('Connected to ' + desktopName);
+          $('.fullScreenBtn').show();
+          $('.resetInstanceBtn').show();
+          $('.terminateInstanceBtn').show();
+          $('.extendInstanceBtn').show();
+          $('.instanceLoading').hide();
+          $('.instanceStart').hide();
+          $('.resetInstanceBtn').prop('disabled', false);
+          $('.fullScreenBtn').prop('disabled', false);
+          $('.extendInstanceBtn').prop('disabled', false);
+          $('.terminateInstanceBtn').prop('disabled', false);
+
+          document.querySelector('canvas').addEventListener('focus', (event) => {
+              if (currentBrowser.firefox) {
+                  window.copyToClipboard(event.target.textContent);
+              } else {
+                  navigator.clipboard.readText()
+                      .then(text => {
+                          writeToClipboard(text);
+                      })
+                      .catch(err => {
+                          console.error('Something went wrong while accessing clipboard', err);
+                      });
+              }
+          });
+      }
+
+      function disconnectedFromServer(e) {
+          status('Disconnected');
+          $('.screenPlaceholder').show();
+          stopCountdown();
+      }
+
+      function clipboardReceived(e) {
+          navigator.clipboard.writeText(e.detail.text)
+              .then(() => {
+                  // Success!
+              })
+              .catch(err => {
+                  console.error('Something went wrong while copying to clipboard.', err);
+              });
+      }
+
+      function updateDesktopName(e) {
+          desktopName = e.detail.name;
+      }
+
+      function status(text) {
+          $('#statusText').html(text);
+      }
+
+      function readQueryVariable(name) {
+          const re = new RegExp('.*[?&]' + name + '=([^&#]*)'),
+              match = document.location.href.match(re);
+
+          if (match) {
+              return decodeURIComponent(match[1]);
+          }
+
+          return null;
+      }
+
+      function writeToClipboard(text) {
+          rfb.clipboardPasteFrom(text);
+      }
+
+      let host = '';
+      let password = '';
+      let countdown = '';
+      let targetCountdown = '';
+      let targetRemainingTimeInSeconds = '';
+      let url = '';
+      let spawnInterval = null;
+
+      function getPwnbox() {
+          return new Promise((resolve, reject) => {
+              axios.get('/api/get/pwnbox').then(response => {
+                  let data = response.data;
+                  if (data.success === 1 && data.instance.status === 'ready') {
+                      host = `proxy-${data.instance.location}.htb-cloud.com/bird/${data.instance.hostname}`;
+                      password = data.instance.password;
+                      $('.lifeLeft').html(data.instance.life_remaining);
+                      startCountdown();
+                      $('.screenPlaceholder').hide();
+                      url = 'https://vnc.htb-cloud.com/index.html?host=' + host + '&password=' + password;
+                      isPwnboxActive = true;
+
+                      if (document.querySelector('wc-htb-pwnbox-selection-card')) {
+                          document.querySelector('wc-htb-pwnbox-selection-card').setAttribute('pwnbox-active', true);
+                      }
+                      connect();
+                      if (spawnInterval !== null) {
+                          clearInterval(spawnInterval);
+                      }
+                      resolve('success getting pwnbox');
+                  } else {
+                      $('.screenPlaceholder').show();
+                  }
+              }).catch(err => {
+                  toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+                  reject(err);
+              });
+          });
+      }
+
+                function extendPwnbox() {
+              axios.get('/api/extend/pwnbox').then(response => {
+                  let data = response.data;
+                  if (data.success === 1) {
+                      $('.lifeLeft').html(data.instance.life_remaining);
+                      stopCountdown().then(() => {
+                          startCountdown();
+                          toastr['success']('Time extended for 60 minutes.', 'Success');
+                      });
+                  } else {
+                      toastr['error'](data.message, 'Error');
+                  }
+
+              }).catch(err => {
+                  toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+              });
+          }
+
+      
+      function initStartCountdown() {
+          let life = parseInt($('.lifeLeft').html()) - 1;
+          $('.lifeLeft').html(life);
+      }
+
+      function startCountdown() {
+          countdown = setInterval(function () {
+              initStartCountdown();
+          }, 60 * 1000);
+      }
+
+      function stopCountdown() {
+          return new Promise((resolve) => {
+              clearInterval(countdown);
+              resolve();
+          });
+      }
+
+      function terminatePwnbox() {
+          return new Promise((resolve, reject) => {
+              $('.resetInstanceBtn').prop('disabled', true);
+              $('.terminateInstanceBtn').prop('disabled', true);
+              $('.fullScreenBtn').prop('disabled', true);
+              $('.extendInstanceBtn').prop('disabled', true);
+              $('.instanceStart').hide();
+
+              $('.instanceTerminating').show();
+
+              status('Terminating Interactive Instance...');
+
+              axios.delete('/api/terminate/pwnbox')
+                  .then(({ data }) => {
+                      if (data.success === 1) {
+                          $('.startInstanceBtn').show();
+                          $('.instanceStart').show();
+                          $('.instanceTerminating').hide();
+                          $('.resetInstanceBtn').hide();
+                          $('.terminateInstanceBtn').hide();
+                          $('.fullScreenBtn').hide();
+                          $('.extendInstanceBtn').hide();
+
+                          isPwnboxActive = false;
+
+                          $('.iterminal').addClass('d-none');
+
+                          toastr['success']('Instance has been terminated.', 'Success');
+
+                          /**
+                           *  Dispatch an event when pwnBox is terminated
+                           */
+                          var terminatePwnBoxEvent = new CustomEvent('TerminatedPwnBox');
+                          window.dispatchEvent(terminatePwnBoxEvent);
+
+                          resolve('succes terminating pwnbox');
+
+                      } else {
+                          toastr['error'](data.message, 'Error');
+                          connect();
+                          $('.resetInstanceBtn').prop('disabled', false);
+                          $('.fullScreenBtn').prop('disabled', false);
+                          $('.extendInstanceBtn').prop('disabled', false);
+                          $('.terminateInstanceBtn').prop('disabled', false);
+                      }
+                  }).catch(err => {
+                      reject(err);
+                      toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+                  });
+          }).catch(error => {
+              reject(error);
+          });
+      }
+
+      let _wcPwnbox = document.querySelector('wc-htb-pwnbox-selection-card');
+
+      function errorHandling(value) {
+          switchToRegion = value.detail[0];
+          _pwnboxSwitchWarningModal.modal('show');
+      }
+
+      function getSelectedPwnboxLocation(event) {
+          if (pwnboxActive) {
+              selectedPwnBoxLocation = currentPwnboxLocation;
+              return;
+          }
+          selectedPwnboxLocation = event.detail[0];
+      }
+
+      function getCurrentPwnboxLocation(server) {
+          currentPwnboxLocation = server;
+      }
+
+      function setCurrentPwnboxServer(server) {
+          _wcPwnbox.setAttribute('current-pwnbox', server);
+      }
+
+      let selectedPwnboxLocation;
+      let currentPwnboxLocation;
+      let switchToRegion;
+
+      let pwnboxRegions;
+
+      let _pwnboxSwitchWarningModal = $('#pwnboxSwitchWarningModal');
+      let _cancelPwnboxSwitchBtn = $('#cancelPwnboxSwitchBtn');
+      let _continuePwnboxSwitchBtn = $('#continuePwnboxSwitchBtn');
+      let _continuePwnboxSwitchBtnText = $('#continuePwnboxSwitchBtnText');
+      let _pwnboxSwitchModalLoader = $('.pwnboxSwitchModalLoader');
+
+      _cancelPwnboxSwitchBtn.on('click', () => {
+          initWcPwnbox(pwnboxRegions);
+          _pwnboxSwitchWarningModal.modal('hide');
+      });
+
+      _continuePwnboxSwitchBtn.on('click', () => {
+          _continuePwnboxSwitchBtnText.addClass('d-none');
+          _pwnboxSwitchModalLoader.removeClass('d-none');
+          _continuePwnboxSwitchBtn.addClass('disabled');
+          _cancelPwnboxSwitchBtn.addClass('disabled');
+
+          let oldCurrentPwnbox = selectedPwnboxLocation = currentPwnboxLocation = switchToRegion;
+
+          $('.screenPlaceholder').show();
+          $('.instanceStart').show();
+                    sidePreview.disconnect();
+          terminatePwnbox().then(() => {
+
+              startPwnbox().then(() => {
+                  _pwnboxSwitchWarningModal.modal('hide');
+                  _continuePwnboxSwitchBtnText.removeClass('d-none');
+                  _pwnboxSwitchModalLoader.addClass('d-none');
+                  _continuePwnboxSwitchBtn.removeClass('disabled');
+                  _cancelPwnboxSwitchBtn.removeClass('disabled');
+                  initWcPwnbox(pwnboxRegions);
+              }).catch(() => {
+                  _pwnboxSwitchWarningModal.modal('hide');
+                  _continuePwnboxSwitchBtnText.removeClass('d-none');
+                  _pwnboxSwitchModalLoader.addClass('d-none');
+                  _continuePwnboxSwitchBtn.removeClass('disabled');
+                  _cancelPwnboxSwitchBtn.removeClass('disabled');
+                  initWcPwnbox(pwnboxRegions);
+              });
+          }).catch(error => {
+              toastr['error'](error.message, 'Error');
+              currentPwnboxLocation = oldCurrentPwnbox;
+              initWcPwnbox(pwnboxRegions);
+          });
+      });
+
+      function initWcPwnbox(regions) {
+          /**
+           *  Creates pwnbox server select component
+           */
+          const pwnboxSelector = document.createElement('wc-htb-pwnbox-selection-card');
+          pwnboxSelector.setAttribute('regions', JSON.stringify(regions));
+          pwnboxSelector.setAttribute('current-pwnbox', JSON.stringify(currentPwnboxLocation));
+
+          $('.pwnbox-select-card').html(pwnboxSelector);
+          pwnboxSelector.addEventListener('getSelectedPwnboxLocation', getSelectedPwnboxLocation);
+          pwnboxSelector.addEventListener('actionNotAllowed', errorHandling);
+          selectedPwnboxLocation = currentPwnboxLocation;
+
+          if (isPwnboxActive) document.querySelector('wc-htb-pwnbox-selection-card').setAttribute('pwnbox-active', true);
+      }
+
+      function getRegions() {
+          axios.get('/api/v2/pwnbox/regions').then(response => {
+              const data = response.data.data;
+              currentPwnboxLocation = response.data.meta.currentRegion;
+              const regions = [];
+
+              const latencyPromises = data.map((region) => {
+                  const item = { name: region.title, value: region.value };
+                  // Use Promise.resolve to ensure each iteration of the loop returns a Promise
+                  return Promise.resolve()
+                      .then(() => getServerLatency(region.proxyLatencyURL))
+                      .then((response) => {
+                          item.latency = response;
+                          regions.push(item);
+                      });
+              });
+
+              pwnboxRegions = regions;
+
+              Promise.all(latencyPromises).then(() => {
+                  // This code will run after all the getServerLatency calls have completed
+
+                  initWcPwnbox(regions);
+                  /**
+                   * getting pwnbox status and setting isPwnboxActive flag
+                   * if isPwnboxActive is true we are passing the respective attribute to the web component
+                   */
+                  getPwnbox().then(() => {
+                      if (isPwnboxActive) {
+                          document.querySelector('wc-htb-pwnbox-selection-card').setAttribute('pwnbox-active', true);
+                      }
+                  });
+              })
+                  .catch((error) => {
+                      // Handle any errors that occurred during the Promise.all chain
+                      console.error('An error occurred:', error);
+                  });
+
+          }).catch(err => {
+              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+          });
+      }
+
+      function startPwnbox() {
+          return new Promise((resolve, reject) => {
+
+              $('.resetInstanceBtn').prop('disabled', true);
+              $('.fullScreenBtn').prop('disabled', true);
+              $('.extendInstanceBtn').prop('disabled', true);
+              $('.terminateInstanceBtn').prop('disabled', true);
+              $('.instanceStart').hide();
+              $('.instanceLoading').show();
+              $('.startInstanceBtn').hide();
+
+              status('Starting Interactive Instance...');
+
+              grecaptcha.ready(function () {
+                  grecaptcha.execute('6LeI6LsaAAAAAKgdStgBC6B4UVbXlpYNaYGN46Ah', { action: 'spawnPwnbox' }).then(function (token) {
+                      if (token) {
+                          axios.get(`/api/spawn/pwnbox?g-recaptcha-response=${token}&region=${selectedPwnboxLocation.value}`).then(response => {
+                              let data = response.data;
+                              if (data.success === 1) {
+                                  spawnInterval = setInterval(() => {
+                                      getPwnbox();
+                                  }, 2000);
+                              } else {
+                                  if (data.code === 1 || (data.code === 3 && isPwnboxActive)) {
+                                      $('.resetInstanceBtn').prop('disabled', false);
+                                      $('.fullScreenBtn').prop('disabled', false);
+                                      $('.extendInstanceBtn').prop('disabled', false);
+                                      $('.terminateInstanceBtn').prop('disabled', false);
+                                      connect();
+
+                                      if (data.code === 3) {
+                                          $('.instanceLoading').hide();
+                                          startCountdown();
+                                      }
+                                  } else {
+                                      $('.startInstanceBtn').show();
+                                      $('.instanceStart').show();
+                                      $('.instanceLoading').hide();
+                                  }
+
+                                  toastr['error'](data.message, 'Error');
+                              }
+                              resolve('success start pwnbox');
+                          }).catch(err => {
+                              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+                          });
+                      } else {
+                          $('.resetInstanceBtn').prop('disabled', false);
+                          $('.fullScreenBtn').prop('disabled', false);
+                          $('.extendInstanceBtn').prop('disabled', false);
+                          $('.terminateInstanceBtn').prop('disabled', false);
+                          $('.instanceStart').show();
+                          $('.instanceLoading').hide();
+                          $('.startInstanceBtn').show();
+                      }
+                  });
+              });
+          }).catch(error => {
+              reject(error);
+          });
+      }
+
+      $('.fullScreenBtn').click(function () {
+          window.open(url, '_blank');
+      });
+
+      $('.startInstanceBtn').click(function () {
+          if (!selectedPwnboxLocation?.value) {
+              toastr['warning']('Please select Pwnbox server', 'Warning');
+              return;
+          }
+          startPwnbox(selectedPwnboxLocation.value);
+      });
+
+      $('.resetInstanceBtn').click(function () {
+          $('.screenPlaceholder').show();
+          $('.instanceStart').show();
+                    sidePreview.disconnect();
+          startPwnbox(selectedPwnboxLocation.value);
+      });
+
+      $('.terminateInstanceBtn').click(function () {
+          $('.screenPlaceholder').show();
+          $('.instanceStart').show();
+                    sidePreview.disconnect();
+          terminatePwnbox();
+      });
+
+      $('.extendInstanceBtnClicker').click(function () {
+          extendPwnbox();
+      });
+
+      $('.resetTargetBtn').click(function () {
+          $('.resetTargetBtn').prop('disabled', true);
+          $('.resetTargetBtn').hide();
+          stopTargetCountdown().then(()=>{
+                                  });
+      });
+
+      
+      function connect() {
+          status('Connecting to ' + host.split('/')[2] + '...');
+
+          
+          sidePreview = new RFB(document.getElementById('sidePreview'), 'wss://' + host,
+              { credentials: { password: password } });
+
+          sidePreview.addEventListener('connect', connectedToServer);
+          sidePreview.addEventListener('disconnect', disconnectedFromServer);
+
+          sidePreview.resizeSession = false;
+          sidePreview.viewOnly = true;
+          sidePreview.scaleViewport = true;
+
+          /**
+           *  Dispatch an event when pwnBox is spawned
+           */
+          var spawnedPwnBoxEvent = new CustomEvent('SpawnedPwnBox');
+          window.dispatchEvent(spawnedPwnBoxEvent);
+      }
+
+
+            
+      
+      function calculateTimeLeftInMinutes() {
+          if (targetRemainingTimeInSeconds === null) {
+            return 0;
+          }
+          targetRemainingTimeInSeconds -= 1;
+          return Math.ceil(targetRemainingTimeInSeconds/60);
+      }
+
+      function initializeTimeLeft(remainingTime){
+        targetRemainingTimeInSeconds = remainingTime;
+        renderLifeTimeLeft();
+      }
+
+      function renderLifeTimeLeft() {
+        let life = calculateTimeLeftInMinutes();
+
+        if (life <= 0) {
+          $('.targetLifeTimeContainer').hide();
+          clearInterval(targetCountdown);
+          resetSpawnTargetSystemText();
+        } else {
+          $('.targetLifeTime').html(life);
+        }
+      }
+
+      function startTargetCountdown() {
+          targetCountdown = setInterval(function() {
+            renderLifeTimeLeft();
+          }, 1000);
+      }
+
+      function stopTargetCountdown() {
+          return new Promise((resolve) => {
+              clearInterval(targetCountdown);
+              resolve();
+          });
+      }
+
+      function resetSpawnTargetSystemText() {
+          $('.resetTargetBtn').prop('disabled', true);
+          $('.resetTargetBtn').hide();
+          $('.targetIp').html("");
+          $('.target-protocol-ip').html("");
+          $('.targetLifeTimeContainer').hide();
+          $('.target').html('<span class="spawnTargetBtn" style="cursor:pointer;">Click here to spawn the target system!</span>');
+      }
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"8ffc0abd7c644024","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2024.10.5","token":"9d8cb854dbf443df9a649c27660a2bb6"}' crossorigin="anonymous"></script>
+</body>
+
+</html>

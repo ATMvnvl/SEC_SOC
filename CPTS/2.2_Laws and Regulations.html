@@ -1,0 +1,2103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Penetration Testing Process</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+
+    <link rel="shortcut icon" href=/images/favicon.ico>
+    <link rel=icon type=image/png sizes=16x16 href=/images/favicon-16x16.png>
+    <link rel=icon type=image/png sizes=32x32 href=/images/favicon-32x32.png>
+    <link rel=apple-touch-icon href=/images/apple-touch-icon.png>
+    <link rel=mask-icon href=/images/safari-pinned-tab.svg>
+
+    <link rel="preload" as="style" href="https://academy.hackthebox.com/build/assets/bootstrap-dark-f3934f68.css" /><link rel="preload" as="style" href="https://academy.hackthebox.com/build/assets/app-dark-c0e94a59.css" /><link rel="preload" as="style" href="https://academy.hackthebox.com/build/assets/icons-541b9943.css" /><link rel="preload" as="style" href="https://academy.hackthebox.com/build/assets/prism-8ad01d51.css" /><link rel="stylesheet" href="https://academy.hackthebox.com/build/assets/bootstrap-dark-f3934f68.css" /><link rel="stylesheet" href="https://academy.hackthebox.com/build/assets/app-dark-c0e94a59.css" /><link rel="stylesheet" href="https://academy.hackthebox.com/build/assets/icons-541b9943.css" /><link rel="stylesheet" href="https://academy.hackthebox.com/build/assets/prism-8ad01d51.css" />
+    <link href="/assets/libs/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.typekit.net/ryt3opf.css">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/8161086d56.css" crossorigin="anonymous">
+    
+    <script>
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://fygapokei.hackthebox.com/htb-anal.js/v1/" + key + "/htb-anal.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="eLzeD0QoARKZ42pc8AGEUYpcFLpYkf0I";analytics.SNIPPET_VERSION="4.13.2";
+            analytics.load("eLzeD0QoARKZ42pc8AGEUYpcFLpYkf0I", { integrations: { "Segment.io": { apiHost: "fygapokei.hackthebox.com/v1" }}});
+                                            properties = {"platform":"Academy","platform_version":"V1","module_id":90,"module_name":"Penetration Testing Process","module_difficulty":"Fundamental","section_id":1980,"section_title":"Laws and Regulations"};
+                                    analytics.page(
+                "Module",
+                properties
+            );
+                                }
+    }();
+</script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+<style>
+    .website-screenshot-url {
+        height: 22px;
+        cursor: text;
+        padding-left: 10px;
+    }
+
+    .iterminal {
+        position: fixed;
+        bottom: 0;
+        z-index: 100;
+        width: 100%;
+        left: 0;
+    }
+
+
+    .page-head {
+        display: none;
+    }
+
+    .btn-circle {
+        width: 25px;
+        height: 25px;
+        padding: 6px 0px;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 9px;
+        line-height: 1.42857;
+    }
+</style>
+    <script src="https://www.google.com/recaptcha/api.js?hl=&render=6LeI6LsaAAAAAKgdStgBC6B4UVbXlpYNaYGN46Ah"></script>
+</head>
+
+<body data-layout="detached" data-topbar="colored">
+        <div class="container-fluid">
+
+        <div id="layout-wrapper" >
+
+            <header id="page-topbar" >
+    <div class="navbar-header">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <div class="navbar-brand-box">
+                        <a href="https://academy.hackthebox.com/dashboard" class="logo">
+                            <span class="logo-sm">
+                                <img src="/images/new-logo-htb.svg" alt="" height="30">
+                            </span>
+                            <span class="logo-md">
+                                <img src="/images/logo.svg" alt="" height="30">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="/images/logo.svg" alt="" height="36">
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-sm font-size-16 header-item toggle-btn waves-effect" id="vertical-menu-btn">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+                                            </div>
+                                        <div class="topnav">
+                        <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+                            <div class="collapse navbar-collapse" id="topnav-menu-content">
+                                <ul class="navbar-nav active">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://academy.hackthebox.com/dashboard"><i class="mdi mdi-monitor-dashboard"></i> Dashboard</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://academy.hackthebox.com/modules"><i class="mdi mdi-book-open"></i>
+                                            Modules</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://academy.hackthebox.com/paths"><i class="mdi mdi-map-marker-path"></i> Paths</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                                    </div>
+
+                <div class="float-right">
+                    <div class="dropdown d-none d-lg-inline-block ml-1">
+                        <a href="https://academy.hackthebox.com/billing">
+                            <button type="button" class="btn btn-extra-light">
+                                <i class="fad fa-cube text-success mt-1 mr-2"></i>&nbsp;Purchase Cubes
+                            </button>
+                        </a>
+                    </div>
+                    <div class="dropdown d-none d-lg-inline-block ml-1">
+                        <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
+                            <i class="mdi mdi-fullscreen fullscreen-icon"></i>
+                        </button>
+                    </div>
+
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="https://www.gravatar.com/avatar/81077ac56c02d574ee54d661ab69cf4b?d=robohash" alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ml-1">ATMvnvl</span>
+                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item" href="https://academy.hackthebox.com/referral"><i class="bx bx-gift font-size-16 align-middle mr-1"></i> Refer a friend
+                                    <i class="fa fa-solid fa-circle font-size-6 align-middle ml-2 text-success"></i>
+                                </a>
+                                                        <a class="dropdown-item" href="https://academy.hackthebox.com/billing"><i class="bx bx-wallet font-size-16 align-middle mr-1"></i> Billing</a>
+                            <a class="dropdown-item d-block" href="https://academy.hackthebox.com/settings"><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
+                            <a class="dropdown-item d-block" href="https://academy.hackthebox.com/vpn"><i class="bx bx-server font-size-16 align-middle mr-1"></i> VPN Settings</a>
+                            <a class="dropdown-item d-block" href="https://academy.hackthebox.com/htb-account-settings"><i class="bx bx-server font-size-16 align-middle mr-1"></i> HTB Account Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <form method="POST" action="https://academy.hackthebox.com/logout"> <input type="hidden" name="_token" value="g7QdQZ4U8eKmZfcSMxSyQf5fJvF9fjgcf9aS9Qtt" autocomplete="off"> <a class="dropdown-item text-danger log-out" href="#"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="vertical-menu overflow-hidden  d-lg-none  ">
+    <div class="vertical-menu-overlay"></div>
+    <div class="h-100 overflow-auto">
+        <div class="user-wid text-center py-4">
+            <div class="user-img">
+                <img src="https://www.gravatar.com/avatar/81077ac56c02d574ee54d661ab69cf4b?d=robohash" alt=""
+                     class="avatar-md mx-auto rounded-circle">
+            </div>
+
+            <div class="mt-3">
+                <p class="text-dark mb-0 font-weight-medium font-size-16">ATMvnvl</p>
+                                <p class="text-body mt-1 mb-1">
+                                                                        Student
+                                                            </p>
+                <p>
+                    <span class="custom-badge custom-badge-soft-secondary" data-toggle="tooltip"
+                        data-title="Cubes">
+                        <i class="fad fa-cube text-success mr-1"></i>
+                        <span class="cubeBalance">
+                                                            70
+                                                    </span>
+                    </span>
+                                    </p>
+            </div>
+        </div>
+
+        <div id="sidebar-menu">
+    <ul class="metismenu list-unstyled" id="side-menu">
+
+        <li class="menu-title">Learn</li>
+
+        <li><a class="navDashboard" href="https://academy.hackthebox.com/dashboard"><i
+                        class="mdi mdi-monitor-dashboard"></i> Dashboard</a></li>
+
+                <li>
+            <a class="navDashboard" href="https://academy.hackthebox.com/exams"><i class="mdi mdi-certificate"></i>
+                Exams</a></li>
+        <li>
+            <a class="navModules" href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="mdi mdi-book-open"></i>
+                <span>Modules</span>
+            </a>
+            <ul class="sub-menu mm-collapse" aria-expanded="false">
+                <li><a href="https://academy.hackthebox.com/modules"><i class="mdi mdi-book-open"></i> All Modules</a>
+                </li>
+                <li>
+                    <a href="https://academy.hackthebox.com/modules/inprogress"><i class="mdi mdi-progress-upload"></i>
+                        In-Progress Modules</a></li>
+                <li><a href="https://academy.hackthebox.com/modules/locked"><i
+                                class="mdi mdi-account-arrow-left-outline"></i> Available
+                        Modules</a>
+                </li>
+                <li>
+                    <a href="https://academy.hackthebox.com/modules/unlocked"><i class="mdi mdi-account-check-outline"></i>
+                        Owned
+                        Modules</a></li>
+                <li>
+                    <a href="https://academy.hackthebox.com/modules/changelog"><i class="mdi mdi-playlist-check"></i>
+                        Change Log</a></li>
+                            </ul>
+        </li>
+        <li class="pathsLink">
+            <a class="navPaths" href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="mdi mdi-map-marker-path"></i>
+                <span>Paths</span>
+            </a>
+            <ul class="sub-menu mm-collapse" aria-expanded="false">
+                <li class="skillPathsLink"><a href="https://academy.hackthebox.com/paths"><i
+                                class="mdi mdi-chart-line-variant"></i> Skill Paths</a></li>
+                                    <li class="jobRolePathsLink"><a href="https://academy.hackthebox.com/paths/jobrole"><i
+                                    class="mdi mdi-briefcase"></i> Job Role Paths</a></li>
+                                            </ul>
+        </li>
+                <li>
+            <a class="navDashboard" href="https://academy.hackthebox.com/academy-relations"><i
+                        class="mdi mdi-sitemap"></i>
+                Academy x HTB Labs</a>
+        </li>
+        <li class="menu-title">My Achievements</li>
+        <li>
+            <a class="navDashboard" href="https://academy.hackthebox.com/my-certificates"><i class="mdi mdi-certificate"></i>
+                My Certificates </a></li>
+        <li>
+                    <li>
+                <a class="navDashboard" href="https://academy.hackthebox.com/my-badges"><i class="mdi mdi-trophy"></i>
+                    My Badges </a>
+            </li>
+                <li>
+
+                    <li class="menu-title">Referrals</li>
+                <li>
+                    <a class="navDashboard" href="https://academy.hackthebox.com/referral">
+                        <i class="mdi mdi-gift"></i> Invite friends
+                                            </a>
+                <li>
+            <li>
+        
+        <li class="menu-title">Get Help</li>
+        <li>
+            <a class="navSupport" href="http://help.hackthebox.eu/" rel="noopener nofollow norefferer"
+               target="_blank"><i class="mdi mdi-help-box"></i>Help Center</a></li>
+        <li><a class="navSupport" data-toggle="tooltip" href="https://academy.hackthebox.com/faq"><i
+                        class="mdi mdi-help-circle"></i> FAQ</a></li>
+        <li><a class="navSupport" href="https://discord.gg/hackthebox"
+               rel="noopener nofollow norefferer" target="_blank"><i class="mdi mdi-discord"></i>
+                Discord</a></li>
+
+    </ul>
+</div>
+
+    </div>
+</div>
+
+            <div class="vertical-menu overflow-hidden  d-lg-none  ">
+    <div class="vertical-menu-overlay"></div>
+    <div class="h-100 overflow-auto">
+        <div class="user-wid text-center py-4">
+            <div class="user-img">
+                <img src="https://www.gravatar.com/avatar/81077ac56c02d574ee54d661ab69cf4b?d=robohash" alt=""
+                     class="avatar-md mx-auto rounded-circle">
+            </div>
+
+            <div class="mt-3">
+                <p class="text-dark mb-0 font-weight-medium font-size-16">ATMvnvl</p>
+                                <p class="text-body mt-1 mb-1">
+                                                                        Student
+                                                            </p>
+                <p>
+                    <span class="custom-badge custom-badge-soft-secondary" data-toggle="tooltip"
+                        data-title="Cubes">
+                        <i class="fad fa-cube text-success mr-1"></i>
+                        <span class="cubeBalance">
+                                                            70
+                                                    </span>
+                    </span>
+                                    </p>
+            </div>
+        </div>
+
+        <div id="sidebar-menu">
+    <ul class="metismenu list-unstyled" id="side-menu">
+
+        <li class="menu-title">Learn</li>
+
+        <li><a class="navDashboard" href="https://academy.hackthebox.com/dashboard"><i
+                        class="mdi mdi-monitor-dashboard"></i> Dashboard</a></li>
+
+                <li>
+            <a class="navDashboard" href="https://academy.hackthebox.com/exams"><i class="mdi mdi-certificate"></i>
+                Exams</a></li>
+        <li>
+            <a class="navModules" href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="mdi mdi-book-open"></i>
+                <span>Modules</span>
+            </a>
+            <ul class="sub-menu mm-collapse" aria-expanded="false">
+                <li><a href="https://academy.hackthebox.com/modules"><i class="mdi mdi-book-open"></i> All Modules</a>
+                </li>
+                <li>
+                    <a href="https://academy.hackthebox.com/modules/inprogress"><i class="mdi mdi-progress-upload"></i>
+                        In-Progress Modules</a></li>
+                <li><a href="https://academy.hackthebox.com/modules/locked"><i
+                                class="mdi mdi-account-arrow-left-outline"></i> Available
+                        Modules</a>
+                </li>
+                <li>
+                    <a href="https://academy.hackthebox.com/modules/unlocked"><i class="mdi mdi-account-check-outline"></i>
+                        Owned
+                        Modules</a></li>
+                <li>
+                    <a href="https://academy.hackthebox.com/modules/changelog"><i class="mdi mdi-playlist-check"></i>
+                        Change Log</a></li>
+                            </ul>
+        </li>
+        <li class="pathsLink">
+            <a class="navPaths" href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="mdi mdi-map-marker-path"></i>
+                <span>Paths</span>
+            </a>
+            <ul class="sub-menu mm-collapse" aria-expanded="false">
+                <li class="skillPathsLink"><a href="https://academy.hackthebox.com/paths"><i
+                                class="mdi mdi-chart-line-variant"></i> Skill Paths</a></li>
+                                    <li class="jobRolePathsLink"><a href="https://academy.hackthebox.com/paths/jobrole"><i
+                                    class="mdi mdi-briefcase"></i> Job Role Paths</a></li>
+                                            </ul>
+        </li>
+                <li>
+            <a class="navDashboard" href="https://academy.hackthebox.com/academy-relations"><i
+                        class="mdi mdi-sitemap"></i>
+                Academy x HTB Labs</a>
+        </li>
+        <li class="menu-title">My Achievements</li>
+        <li>
+            <a class="navDashboard" href="https://academy.hackthebox.com/my-certificates"><i class="mdi mdi-certificate"></i>
+                My Certificates </a></li>
+        <li>
+                    <li>
+                <a class="navDashboard" href="https://academy.hackthebox.com/my-badges"><i class="mdi mdi-trophy"></i>
+                    My Badges </a>
+            </li>
+                <li>
+
+                    <li class="menu-title">Referrals</li>
+                <li>
+                    <a class="navDashboard" href="https://academy.hackthebox.com/referral">
+                        <i class="mdi mdi-gift"></i> Invite friends
+                                            </a>
+                <li>
+            <li>
+        
+        <li class="menu-title">Get Help</li>
+        <li>
+            <a class="navSupport" href="http://help.hackthebox.eu/" rel="noopener nofollow norefferer"
+               target="_blank"><i class="mdi mdi-help-box"></i>Help Center</a></li>
+        <li><a class="navSupport" data-toggle="tooltip" href="https://academy.hackthebox.com/faq"><i
+                        class="mdi mdi-help-circle"></i> FAQ</a></li>
+        <li><a class="navSupport" href="https://discord.gg/hackthebox"
+               rel="noopener nofollow norefferer" target="_blank"><i class="mdi mdi-discord"></i>
+                Discord</a></li>
+
+    </ul>
+</div>
+
+    </div>
+</div>
+
+            <div class="main-content">
+
+                <div class="page-content">
+
+                    
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="page-title mb-0 font-size-18 letter-spacing-1-2">Penetration Testing Process
+                                &nbsp;
+                <i style="cursor:pointer;" data-module-id="90" data-toggle="tooltip"
+                data-title="Toggle To-Do"
+                class="favouriteBtn  fa-sharp fa-solid  fa-heart text-danger"></i>
+            </h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Page 5</a></li>
+                    <li class="breadcrumb-item active">Laws and Regulations</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-xl-center">
+    <div class="col-md-12 col-xl-9 col-xxl-7">
+
+        <div class="training-module">
+
+            <h1>Laws and Regulations</h1>
+<hr />
+<p>Each country has specific federal laws which regulate computer-related activities, copyright protection, interception of electronic communications, use and disclosure of protected health information, and collection of personal information from children, respectively.</p>
+<p>It is essential to follow these laws to protect individuals from <code>unauthorized access</code> and <code>exploitation of their data</code> and to ensure their privacy. We must be aware of these laws to ensure our research activities are compliant and do not violate any of the provisions of the law. Failure to comply with these laws can result in civil or criminal penalties, making it essential for individuals to familiarize themselves with the law and understand the potential implications of their activities. Furthermore, it is crucial to ensure that research activities adhere to these laws' requirements to protect individuals' privacy and guard against the potential misuse of their data. By following these laws and exercising caution when conducting research activities, security researchers can help ensure that individuals' data is kept secure and their rights are protected. Here is a summary of the related laws and regulations for a few countries and regions:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Categories</strong></th>
+<th><strong>USA</strong></th>
+<th><strong>Europe</strong></th>
+<th><strong>UK</strong></th>
+<th><strong>India</strong></th>
+<th><strong>China</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Protecting critical information infrastructure and personal data</td>
+<td><a href="https://www.cisa.gov/resources-tools/resources/cybersecurity-information-sharing-act-2015-procedures-and-guidance">Cybersecurity Information Sharing Act</a> (<code>CISA</code>)</td>
+<td><a href="https://gdpr-info.eu/">General Data Protection Regulation</a> (<code>GDPR</code>)</td>
+<td><a href="https://www.legislation.gov.uk/ukpga/2018/12/contents/enacted">Data Protection Act 2018</a></td>
+<td><a href="https://www.indiacode.nic.in/bitstream/123456789/13116/1/it_act_2000_updated.pdf">Information Technology Act 2000</a></td>
+<td><a href="https://digichina.stanford.edu/work/translation-cybersecurity-law-of-the-peoples-republic-of-china-effective-june-1-2017/">Cyber Security Law</a></td>
+</tr>
+<tr>
+<td>Criminalizing malicious computer usage and unauthorized access to computer systems</td>
+<td><a href="https://www.justice.gov/jm/jm-9-48000-computer-fraud">Computer Fraud and Abuse Act</a> (<code>CFAA</code>)</td>
+<td><a href="https://www.enisa.europa.eu/topics/cybersecurity-policy/nis-directive-new">Network and Information Systems Directive</a> (<code>NISD</code>)</td>
+<td><a href="https://www.legislation.gov.uk/ukpga/1990/18/contents">Computer Misuse Act 1990</a></td>
+<td><a href="https://www.indiacode.nic.in/bitstream/123456789/13116/1/it_act_2000_updated.pdf">Information Technology Act 2000</a></td>
+<td><a href="https://www.chinalawtranslate.com/en/2015nsl/">National Security Law</a></td>
+</tr>
+<tr>
+<td>Prohibiting circumventing technological measures to protect copyrighted works</td>
+<td><a href="https://www.congress.gov/bill/105th-congress/house-bill/2281">Digital Millennium Copyright Act</a> (<code>DMCA</code>)</td>
+<td><a href="https://www.europarl.europa.eu/cmsdata/179163/20090225ATT50418EN.pdf">Cybercrime Convention of the Council of Europe</a></td>
+<td></td>
+<td></td>
+<td><a href="https://web.archive.org/web/20240201044856/http://ni.china-embassy.gov.cn/esp/sgxw/202402/t20240201_11237595.htm">Anti-Terrorism Law</a></td>
+</tr>
+<tr>
+<td>Regulating the interception of electronic communications</td>
+<td><a href="https://www.congress.gov/bill/99th-congress/house-bill/4952">Electronic Communications Privacy Act</a> (<code>ECPA</code>)</td>
+<td><a href="https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32002L0058">E-Privacy Directive 2002/58/EC</a></td>
+<td><a href="https://www.legislation.gov.uk/ukpga/1998/42/contents">Human Rights Act 1998</a> (<code>HRA</code>)</td>
+<td><a href="https://legislative.gov.in/sites/default/files/A1872-01.pdf">Indian Evidence Act of 1872</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Governing the use and disclosure of protected health information</td>
+<td><a href="https://aspe.hhs.gov/reports/health-insurance-portability-accountability-act-1996">Health Insurance Portability and Accountability Act</a> (<code>HIPAA</code>)</td>
+<td></td>
+<td><a href="https://www.legislation.gov.uk/ukpga/2006/48/contents">Police and Justice Act 2006</a></td>
+<td><a href="https://legislative.gov.in/sites/default/files/A1860-45.pdf">Indian Penal Code of 1860</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Regulating the collection of personal information from children</td>
+<td><a href="https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa">Children's Online Privacy Protection Act</a> (<code>COPPA</code>)</td>
+<td></td>
+<td><a href="https://www.legislation.gov.uk/ukpga/2016/25/contents/enacted">Investigatory Powers Act 2016</a> (<code>IPA</code>)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A framework for cooperation between countries in investigating and prosecuting cybercrime</td>
+<td></td>
+<td></td>
+<td><a href="https://www.legislation.gov.uk/ukpga/2000/23/contents">Regulation of Investigatory Powers Act 2000</a> (<code>RIPA</code>)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Outlining individuals' legal rights and protections regarding their personal data</td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="https://www.congress.gov/bill/116th-congress/senate-bill/2889">Personal Data Protection Bill 2019</a></td>
+<td><a href="https://www.mayerbrown.com/en/perspectives-events/publications/2022/07/china-s-security-assessments-for-cross-border-data-transfers-effective-september-2022">Measures for the Security Assessment of Cross-border Transfer of Personal Information and Important Data</a></td>
+</tr>
+<tr>
+<td>Outlining individuals' fundamental rights and freedoms</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="http://english.www.gov.cn/policies/latestreleases/202108/17/content_WS611b8062c6d0df57f98de907.html">State Council Regulation on the Protection of Critical Information Infrastructure Security</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>USA</h2>
+<p>The <a href="https://www.justice.gov/jm/jm-9-48000-computer-fraud">Computer Fraud and Abuse Act</a> (<code>CFAA</code>) is a federal law that makes it a criminal offense to access a computer without authorization. It applies to computer-related activities, including hacking, identity theft, and spreading malware. The CFAA has been the focus of much criticism and controversy, with some arguing that its provisions are too far-reaching and could be used to criminalize legitimate security research. In addition, critics have raised the concern that people can interpret the CFAA's broad definitions of computer-related activities in a manner that could lead to the prosecution of activities that were not intended to be criminal offenses. Furthermore, the CFAA has been criticized for needing more clarity regarding the meaning of specific terms, making it difficult for individuals to understand their rights and responsibilities under the law. For these reasons, it is crucial for individuals to familiarize themselves with the law and to understand the potential implications of their activities.</p>
+<p>The <a href="https://www.congress.gov/bill/105th-congress/house-bill/2281">Digital Millennium Copyright Act</a> (<code>DMCA</code>) includes provisions prohibiting circumventing technological measures to protect copyrighted works. This can consist of digital locks, encryption, and authentication protocols, which safeguard software, firmware, and other types of digital content. Security researchers should know the DMCA provisions to ensure their research activities do not violate the law. It is important to remember that circumventing copyright protection measures, even for research or educational activities, can result in civil or criminal penalties. As such, researchers must exercise caution and due diligence to avoid inadvertently running afoul of the DMCA.</p>
+<p>The <a href="https://www.congress.gov/bill/99th-congress/house-bill/4952">Electronic Communications Privacy Act</a> (<code>ECPA</code>) regulates the interception of electronic communications, including those sent over the Internet. This law makes it unlawful to intercept, access, monitor, or store communications without one or both parties consent. Furthermore, the ECPA prohibits using intercepted communications as evidence in a court of law. The ECPA also outlines the responsibilities of service providers, as they are not allowed to divulge the contents of communications to anyone except the sender and the receiver. Therefore, the ECPA protects the privacy of electronic communications and ensures that individuals are not subjected to illegal interception or use of their communications.</p>
+<p>The <a href="https://aspe.hhs.gov/reports/health-insurance-portability-accountability-act-1996">Health Insurance Portability and Accountability Act</a> (<code>HIPAA</code>) governs the use and disclosure of protected health information and includes a set of rules for safeguarding personal health information stored electronically. Researchers should know these requirements and ensure their research activities adhere to HIPAA regulations. This includes taking measures such as encrypting data, keeping detailed data access, and sharing records. Furthermore, research must be conducted by institutional policies and procedures, and the appropriate governance body must approve any changes made. Researchers must also be mindful of the possibility of data breaches and take steps to ensure that any personal health information is kept secure. Failure to comply with HIPAA regulations can result in severe legal and financial penalties, so researchers must ensure that their research activities comply with HIPAA.</p>
+<p>The <a href="https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa">Children's Online Privacy Protection Act</a> (<code>COPPA</code>) is an important piece of legislation regulating the collection of personal information from children under 13. We must be aware of the provisions of COPPA and take precautions to ensure that our research activities do not violate any of the requirements of the Act. To comply with COPPA, researchers must exercise caution and take special steps to ensure that they are not collecting, using, or disclosing any personal information from children under the age of 13. Failure to comply with COPPA could result in legal action and penalties, so security researchers must familiarize themselves with the Act and comply with its provisions.</p>
+<hr />
+<h2>Europe</h2>
+<p>The <a href="https://gdpr-info.eu/">General Data Protection Regulation</a> (<code>GDPR</code>) regulates the handling of personal data, strengthens individuals' rights over personal data, and imposes penalties of up to 4% of global annual revenue or 20 million euros, whichever is higher for non-compliance. Security researchers should be aware of these provisions and ensure that their research does not run afoul of GDPR. It's important to note that GDPR applies to any company that processes the personal data of EU citizens, regardless of the company's location.</p>
+<p>The <a href="https://www.enisa.europa.eu/topics/cybersecurity-policy/nis-directive-new">Network and Information Systems Directive</a> (<code>NISD</code>) requires operators of essential services and digital service providers to take appropriate security measures and report specific incidents. It's important to note that the NISD applies to various organizations and individuals, including those conducting penetration testing and security research.</p>
+<p>The <a href="https://www.europarl.europa.eu/cmsdata/179163/20090225ATT50418EN.pdf">Cybercrime Convention of the Council of Europe</a>, the first international treaty on crimes committed via the Internet and other computer networks, provides a framework for cooperation between countries in investigating and prosecuting cybercrime.</p>
+<p>The <a href="https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32002L0058">E-Privacy Directive 2002/58/EC</a> regulates the processing of personal data in the electronic communication sector. This directive applies to personal processing data in connection with the provision of publicly available electronic communications services in the EU.</p>
+<hr />
+<h2>UK</h2>
+<p>The <a href="https://www.legislation.gov.uk/ukpga/1990/18/contents">Computer Misuse Act 1990</a> was introduced to address malicious computer usage. It is a criminal offense to access a computer system without authorization, modify data without permission, or misuse computers to commit fraud or other unlawful activities. The Act also allows for confiscating computers and other devices used to commission a computer misuse offense and encourages reporting computer misuse incidents to law enforcement authorities. It also provides for the implementation of various measures to help prevent computer misuse, including establishing a special law enforcement team and implementing appropriate security measures.</p>
+<p>The <a href="https://www.legislation.gov.uk/ukpga/2018/12/contents/enacted">Data Protection Act 2018</a> is an important piece of legislation that provides individuals with certain legal rights and protections regarding their personal data. It details the rights of individuals, such as the right to access their data, the right to have their personal data rectified, and the right to object to the processing of their data. Furthermore, it outlines the obligations of those who process personal data, such as securely and transparently and providing individuals with clear and understandable information about how their data is being used. By considering the Act, security researchers can ensure that their research is conducted responsibly and lawfully.</p>
+<p>The <a href="https://www.legislation.gov.uk/ukpga/1998/42/contents">Human Rights Act 1998</a> (<code>HRA</code>) is an important piece of legislation in the United Kingdom that outlines individuals' fundamental rights and freedoms. It incorporates the European Convention on Human Rights into UK law. It ensures that individuals have the right to fair and equal treatment in various areas, such as the right to a fair trial, the right to private and family life, and the right to freedom of expression. It also gives individuals the right to access judicial remedies in cases where their rights have been violated. The Act also gives individuals the right to challenge the legality of any law or administrative action that violates their fundamental rights and freedoms. The HRA is an essential piece of legislation that helps protect individuals from abuse of power and ensures their rights are respected.</p>
+<p>The <a href="https://www.legislation.gov.uk/ukpga/2006/48/contents">Police and Justice Act 2006</a> was an Act of Parliament passed in the United Kingdom, which aimed to provide a comprehensive framework for reforming the criminal justice system and policing. The Act established several new criminal offenses, including the violation of inciting religious hatred and measures to protect children from exploitation and vulnerable adults. It also provided for the creation of the Serious Organised Crime Agency and a National DNA Database. The Act also set out new measures to tackle anti-social behavior, including introducing Anti-Social Behaviour Orders. Furthermore, it included provisions to modernize the coroners' system and provide additional powers to the police to combat terrorism. In addition, the Act sought to improve the rights of victims of crime and to provide increased protection for victims of domestic violence.</p>
+<p><a href="https://www.legislation.gov.uk/ukpga/2016/25/contents/enacted">Investigatory Powers Act 2016</a> (<code>IPA</code>) regulates the use of investigatory powers by law enforcement and intelligence agencies, including hacking and other forms of digital surveillance. The IPA also requires Internet and other communications providers to retain certain data types for a specified period.</p>
+<p><a href="https://www.legislation.gov.uk/ukpga/2000/23/contents">Regulation of Investigatory Powers Act 2000</a> (<code>RIPA</code>) regulates public authorities' use of covert investigatory techniques, including hacking and other forms of digital surveillance.</p>
+<hr />
+<h2>India</h2>
+<p>The <a href="https://www.indiacode.nic.in/bitstream/123456789/13116/1/it_act_2000_updated.pdf">Information Technology Act 2000</a> provides for legal recognition of transactions using electronic data interchange and other means of electronic communication. It also criminalizes hacking and other unauthorized access to computer systems and imposes penalties for such actions.</p>
+<p>The <a href="https://www.congress.gov/bill/116th-congress/senate-bill/2889">Personal Data Protection Bill 2019</a> is a proposed legislation to protect individuals' personal data and impose penalties for non-compliance.</p>
+<p>The <a href="https://legislative.gov.in/sites/default/files/A1872-01.pdf">Indian Evidence Act of 1872</a> and the Indian Penal Code of 1860 contain provisions that may be invoked in cases of cybercrime, including hacking and unauthorized access to computer systems. Security researchers should be aware of these laws and ensure our research does not run afoul.</p>
+<hr />
+<h2>China</h2>
+<p>The <a href="https://digichina.stanford.edu/work/translation-cybersecurity-law-of-the-peoples-republic-of-china-effective-june-1-2017/">Cyber Security Law</a> establishes a legal framework for protecting critical information infrastructure and personal data and requires organizations to comply with certain security measures and report certain types of security incidents.</p>
+<p>The <a href="https://www.chinalawtranslate.com/en/2015nsl/">National Security Law</a> criminalizes activities that threaten national security, including hacking and other unauthorized access to computer systems.</p>
+<p>The <a href="http://ni.china-embassy.gov.cn/esp/sgxw/202402/t20240201_11237595.htm">Anti-Terrorism Law</a> criminalizes activities that support or promote terrorism, including hacking and other unauthorized access to computer systems.</p>
+<p>The <a href="https://www.mayerbrown.com/en/perspectives-events/publications/2022/07/china-s-security-assessments-for-cross-border-data-transfers-effective-september-2022">Measures for the Security Assessment of Cross-border Transfer of Personal Information and Important Data</a> regulates the cross-border transfer of personal information and important data and also requires organizations to conduct security assessments and obtain approval from relevant authorities before transferring such data.</p>
+<p>The <a href="http://english.www.gov.cn/policies/latestreleases/202108/17/content_WS611b8062c6d0df57f98de907.html">State Council Regulation on the Protection of Critical Information Infrastructure Security</a> regulates critical information infrastructure protection. Also, it requires organizations to take certain security measures and report certain types of security incidents.</p>
+<hr />
+<h2>Precautionary Measures during Penetration Tests</h2>
+<p>We have prepared a list of precautions we highly recommend following during each penetration test to avoid violating most laws. In addition, we should also be aware that some countries have additional regulations that apply to specific cases, and we should either inform ourselves or ask our lawyer.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Precautionary Measure</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>☐</code></td>
+<td>Obtain written consent from the owner or authorized representative of the computer or network being tested</td>
+</tr>
+<tr>
+<td><code>☐</code></td>
+<td>Conduct the testing within the scope of the consent obtained only and respect any limitations specified</td>
+</tr>
+<tr>
+<td><code>☐</code></td>
+<td>Take measures to prevent causing damage to the systems or networks being tested</td>
+</tr>
+<tr>
+<td><code>☐</code></td>
+<td>Do not access, use or disclose personal data or any other information obtained during the testing without permission</td>
+</tr>
+<tr>
+<td><code>☐</code></td>
+<td>Do not intercept electronic communications without the consent of one of the parties to the communication</td>
+</tr>
+<tr>
+<td><code>☐</code></td>
+<td>Do not conduct testing on systems or networks that are covered by the Health Insurance Portability and Accountability Act (HIPAA) without proper authorization</td>
+</tr>
+</tbody>
+</table>
+
+                                            </div>
+
+        <div class="card bg-color-blue-nav" style="margin: 30px 0">
+            <div class="card-body">
+                                <a href="https://academy.hackthebox.com/module/90/section/935"
+                    class="btn btn-light module-button py-2" style="float: left"><i
+                        class="fa fa-arrow-alt-left mr-1"></i> Previous</a>
+                                                                <form action="https://academy.hackthebox.com/module" method="POST" class="form-inline" id="completeForm"
+                    style="float: right">
+                    <input type="hidden" name="module_id" value="90">
+                    <input type="hidden" name="page_id" value="6">
+                    <input type="hidden" name="completed" value="1">
+                                        <p id="completeBtnPoints" class="mb-0 mr-3 font-size-14 font-medium text-white d-none">
+                        +10 Streak pts</p>
+                                        <button id="completeBtn" class="btn btn-outline-success" style="display: none;">
+                        <div id="complete-button-text">
+                            <i class="fa fa-check-circle"></i> Mark Complete & Next
+                        </div>
+                        <div id="complete-button-loader" class="mx-5 d-none">
+                            <i class="fa fa-circle-notch fa-spin"></i>
+                        </div>
+                    </button>
+                </form>
+                
+                <a href="https://academy.hackthebox.com/module/90/section/936"
+                    class="btn btn-light ml-2 module-button py-2" style="float: left">Next <i
+                        class="ml-1 fa fa-arrow-alt-right"></i></a>
+                            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-xl-3 col-xxl-3">
+        <div id="table-of-contents">
+
+                        <div class="card">
+                <div class="card-body bg-color-blue-nav">
+                                                                            </div>
+            </div>
+                        <div class="card" id="TOC">
+                <div class="card-body bg-color-blue-nav">
+                    <h5 class="card-title font-size-15 mb-4">Table of Contents</h5>
+                                         <h6 class="mt-4 mb-2">Using Academy Effectively</h6>                     <a href="https://academy.hackthebox.com/module/90/section/1569"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Introduction to the Penetration Tester Path</span>
+                                                                                                <i class="fad fa-check-square text-success float-right mt-1" style="top: 2px"></i>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/1559"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Academy Modules Layout</span>
+                                                                                                <i class="fad fa-check-square text-success float-right mt-1" style="top: 2px"></i>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/1570"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Academy Exercises &amp; Questions</span>
+                                                                                                <i class="fad fa-check-square text-success float-right mt-1" style="top: 2px"></i>
+                                                                    </a>
+                                         <h6 class="mt-4 mb-2">Background &amp; Preparation</h6>                     <a href="https://academy.hackthebox.com/module/90/section/935"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Penetration Testing Overview</span>
+                                                                                                <i class="fad fa-check-square text-success float-right mt-1" style="top: 2px"></i>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/1980"
+                        class="btn   text-primary  btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Laws and Regulations</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/936"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Penetration Testing Process</span>
+                                                                    </a>
+                                         <h6 class="mt-4 mb-2">Penetration Testing Phases - Assessment  Specific Stages</h6>                     <a href="https://academy.hackthebox.com/module/90/section/937"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <i class="fad fa-cube text-success mt-1 mr-2"></i>&nbsp;
+                                                <span class="font-size-13">Pre-Engagement</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/938"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Information Gathering</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/939"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <i class="fad fa-cube text-success mt-1 mr-2"></i>&nbsp;
+                                                <span class="font-size-13">Vulnerability Assessment</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/940"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Exploitation</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/941"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <i class="fad fa-cube text-success mt-1 mr-2"></i>&nbsp;
+                                                <span class="font-size-13">Post-Exploitation</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/942"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Lateral Movement</span>
+                                                                    </a>
+                                         <h6 class="mt-4 mb-2">Penetration Testing Phases - Project Closeout</h6>                     <a href="https://academy.hackthebox.com/module/90/section/943"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Proof-of-Concept</span>
+                                                                    </a>
+                                                            <a href="https://academy.hackthebox.com/module/90/section/944"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <i class="fad fa-cube text-success mt-1 mr-2"></i>&nbsp;
+                                                <span class="font-size-13">Post-Engagement</span>
+                                                                    </a>
+                                         <h6 class="mt-4 mb-2">Preparing for Real-World Pentests</h6>                     <a href="https://academy.hackthebox.com/module/90/section/945"
+                        class="btn   btn-sm btn-block mt-1 py-2 text-left btn-lighter">
+                                                <span class="font-size-13">Practice</span>
+                                                                    </a>
+                                    </div>
+            </div>
+            <div class="card">
+                <div class="card-body bg-color-blue-nav">
+                    <h5 class="card-title mb-4">My Workstation</h5>
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="sidePreview"
+                                style="height: 160px; border: 1px solid #323232; border-radius: 5px; background-color: #0a121c; text-align: center">
+                                <div class="screenPlaceholder">
+                                    <p class="instanceStart" style="padding-top:70px; letter-spacing: 5px;">
+                                        OFFLINE</p>
+                                    <p class="instanceLoading " style="padding-top:70px; display: none"><i
+                                            class="fa fa-circle-notch fa-spin"></i> Starting...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <div class="instanceStart">
+                                <button
+                                    class="startInstanceBtn btn btn-success text-light btn-sm mt-2 btn-block module-button py-2  ">
+                                    <i class="fad fa-play-circle text-light"></i> &nbsp;Start Instance
+                                </button>
+                                <p class="text-center mt-2 font-size-13 font-secondary">
+                                    <span class="text-success spawnsLeft">
+                                                                                <i class="fal fa-infinity"></i>
+                                                                            </span> / 1 spawns left
+                                </p>
+                            </div>
+                            <button style="display:none;"
+                                class="fullScreenBtn btn btn-light btn-sm mt-2 module-button py-2"><i
+                                    class="fad fa-expand text-success"></i> &nbsp;Interact
+                            </button>
+                            <button style="display:none;"
+                                class="terminateInstanceBtn btn btn-light btn-sm mt-2 module-button py-2"><i
+                                    class="fad fa-times text-danger"></i> &nbsp;Terminate
+                            </button>
+                            <button style="display:none;"
+                                class="resetInstanceBtn btn btn-light btn-sm mt-2 module-button py-2"><i
+                                    class="fad fa-sync text-warning"></i> &nbsp;Reset
+                            </button>
+                            <div class="btn-group" role="group">
+                                <button style="display:none; cursor: default;"
+                                    class=" extendInstanceBtn btn btn-light btn-sm mt-2 module-button py-2">Life
+                                    Left: <span class="lifeLeft"></span>m
+                                </button>
+                                                                <button style="display:none;" data-toggle="tooltip" data-title="Extend Life"
+                                    class=" extendInstanceBtn extendInstanceBtnClicker btn btn-light btn-sm mt-2 module-button py-2">
+                                    <i class="fa fa-plus text-success"></i></button>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div id="cheatSheetModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="unlockModuleModal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center text-break">
+                    <h5><i class="fad fa-file-alt"></i>&nbsp; Cheat Sheet</h5>
+                    <p>The cheat sheet is a useful command reference for this module.</p>
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-light btn-block" href="https://academy.hackthebox.com/module/cheatsheet/90">Download
+                    Cheatsheet</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="linkDiscordModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="linkDiscordModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                            <h5 class="modal-title w-100">Do you need help with this question?</h5>
+                        </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <img src="/images/icons/discord-alternative.svg" alt="discord icon">
+                    <p class="mb-1">It looks like you have not linked your Discord account!</p>
+                    <p>You can receive question guidance via Discord. </p>
+                    <a href="https://academy.hackthebox.com/account/discord/link" class="btn btn-outline-success btn-block">
+                        Link your Discord account
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><div id="referralModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="referralModal"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center border-0">
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true"><img src="/images/close.svg" alt="close" /></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <img src="/images/htb-coin.svg" alt="coin icon" />
+                    <h1 class="text-white">Refer &amp; Earn</h1>
+                    <p class="text-secondary font-size-20">
+                        Refer a Friend, Earn Cubes, Unlock Academy Modules!
+                    </p>
+                    <div class="d-flex flex-column">
+                        <a href="/referral">
+                            <button type="button" class="btn btn-success btn-invite-friend text-light my-4">
+                                Invite Friends
+                            </button>
+                        </a>
+                        <button type="button" id="disableReferralModalBtn" onclick="disableModalRedisplay()" class="btn mt-2 mb-3 d-none">
+                            Don't show it again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><div id="pwnboxSwitchWarningModal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="pwnboxSwitchWarningModal" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h2 class="d-inline-flex align-items-center text-white"><span class="font-size-18"><i
+                            class="far fa-exclamation-triangle text-danger mr-2"></i></span>Warning</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><img src="/images/close.svg" alt="close" height="16" width="16" /></span>
+                </button>
+            </div>
+            <div class="modal-body pt-0">
+                <div class="text-left">
+                    <h1 class="text-white"></h1>
+                    <div class="text-secondary font-size-14 px-2">
+                        <p>
+                            The current instance of Pwnbox <span
+                                class="font-medium text-white">will be terminated</span>   when switching to a new region.
+                        </p>
+                        <p>
+                            <span class="font-medium text-white">All progress you've made will be lost.</span>  Do you want to continue?
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancelPwnboxSwitchBtn" class="btn cancel-btn px-5">
+                    Cancel
+                </button>
+                <button type="button" id="continuePwnboxSwitchBtn" class="btn continue-btn px-5 text-light">
+                    <span id="continuePwnboxSwitchBtnText">Continue</span>
+                    <div class="pwnboxSwitchModalLoader spinner-border d-none" role="status">
+                        <span class="sr-only">Switching VPN...</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div><div id="vpnSwitchWarningModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vpnSwitchWarningModal"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h2 class="d-inline-flex align-items-center text-white"><span class="font-size-18"><i
+                            class="far fa-exclamation-triangle text-danger mr-2"></i></span>Warning</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><img src="/images/close.svg" alt="close" height="16" width="16" /></span>
+                </button>
+            </div>
+            <div class="modal-body pt-0">
+                <div class="text-left">
+                    <h1 class="text-white"></h1>
+                    <div class="text-secondary font-size-14 px-2">
+                        <p>
+                            All VM instances associated with the old VPN Server <span
+                                class="font-medium text-white">will be terminated</span> when switching to
+                            a new VPN server. Existing PwnBox instances
+                            <span class="font-medium text-white">will automatically switch</span>
+                            to the new VPN server.
+                        </p>
+                        <p>
+                            <span class="font-medium text-white">All progress you've made, will
+                                be lost,</span> do you want to continue?
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancelVpnSwitchBtn" class="btn cancel-btn px-5">
+                    Cancel
+                </button>
+                <button type="button" id="continueVpnSwitchBtn" class="btn continue-btn px-5 text-light">
+                    <span id="continueVpnSwitchBtnText">Continue</span>
+                    <div class="vpnSwitchModalLoader spinner-border d-none" role="status">
+                        <span class="sr-only">Switching VPN...</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div><div id="solutionPreferencesModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="solutionPreferencesModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content pt-4 pl-4 pr-4 pb-3">
+            <div class="modal-header text-center flex-column align-items-center p-0 font-size-18 font-bold">
+                <img src="/images/icons/contact-support.svg" alt="contact support icon">
+                <h5 class="modal-title w-100 text-white mt-2">Do you need help with this question?</h5>
+            </div>
+            <div class="modal-body p-0 mt-2 font-size-16">
+                <div class="text-center">
+                    <p class="mb-0">You have the option to enable step-by-step solutions for all questions.</p>
+                    <p class="mb-0">You can manage this preference at any time through your profile settings.</p>
+                </div>
+            </div>
+            <div class="modal-footer align-items-center justify-content-center p-0 mt-4 gap-12">
+                <button class="btn btn-outline-secondary text-white font-medium" onclick="handleSolutionPreferencesModalAction(false)">
+                    Don't show Solutions
+                </button>
+                <button class="btn btn-success text-light font-medium" onclick="handleSolutionPreferencesModalAction(true)">
+                    Activate Solutions
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="streaks-container">
+    </div>
+
+
+
+                </div>
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-right d-none d-sm-block">
+                                    Powered by &nbsp; <a href="https://www.hackthebox.com" target="_blank"><img style="margin-bottom: 1px;" src="/images/logo-htb.svg" height="20px" alt="Hack The Box logo"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+
+    </div>
+    
+    <script src="/assets/libs/jquery/jquery.min.js"></script>
+
+    <link rel="preload" as="style" href="https://academy.hackthebox.com/build/assets/vue-radial-progress-a171cc18.css" /><link rel="preload" as="style" href="https://academy.hackthebox.com/build/assets/app-9c6116ce.css" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/app-58f58a33.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/lodash-c1890673.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vue-pusher-355285b3.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vue-markdown-render-9a7adb1b.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vue-router-d40907bb.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vuex-25bbbfbe.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vue-radial-progress-b7e2d0d0.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/popper-f4af5ef6.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vuejs-countdown-timer-ec737dcb.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vue-screen-5ca5066c.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/vue2-perfect-scrollbar-dc6fc349.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/main-e60506ee.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/just-detect-adblock-220f5df6.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/referral-6739fc5a.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/prism-b645253c.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/detectBrowser-fc4c37dc.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/core-helpers-a73d44c2.js" /><link rel="modulepreload" href="https://academy.hackthebox.com/build/assets/index-da74a519.js" /><link rel="stylesheet" href="https://academy.hackthebox.com/build/assets/vue-radial-progress-a171cc18.css" /><link rel="stylesheet" href="https://academy.hackthebox.com/build/assets/app-9c6116ce.css" /><script type="module" src="https://academy.hackthebox.com/build/assets/app-58f58a33.js"></script><script type="module" src="https://academy.hackthebox.com/build/assets/main-e60506ee.js"></script><script type="module" src="https://academy.hackthebox.com/build/assets/referral-6739fc5a.js"></script><script type="module" src="https://academy.hackthebox.com/build/assets/prism-b645253c.js"></script><script type="module" src="https://academy.hackthebox.com/build/assets/detectBrowser-fc4c37dc.js"></script><script type="module" src="https://academy.hackthebox.com/build/assets/core-helpers-a73d44c2.js"></script>    
+    <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="/assets/libs/node-waves/waves.min.js"></script>
+    <script src="/assets/libs/toastr/toastr.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            const csrfToken = 'g7QdQZ4U8eKmZfcSMxSyQf5fJvF9fjgcf9aS9Qtt';
+            const apiToken= 'WRI04eD0dLRT0zl6sytdbFICTFd1g6vRbv0m1Iou5ZGofbDoxXyLuQCJbCDlYQ5AwvMyVHtCkdFZGCaz';
+                
+            initAxios(csrfToken,apiToken);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script type="module">
+    import {register} from '/assets/libs/core-web-components/index.js';
+
+    register();
+</script>
+
+<script>
+      let currentBrowser;
+      let isPwnboxActive = false;
+      let isTargetActive = false;
+      let vmCheckTimer;
+      let areSolutionsEnabled = false;
+      const _showSolutionsSettingSwitch = $('#showSolutionsModuleSetting');
+      const isAnnualUser = false;
+      const isAdmin = false;
+      const isCompanyAdmin = false;
+
+      window.addEventListener('SpawnedPwnBox', () => {
+          isPwnboxActive = true;
+      }, false);
+
+      window.addEventListener('TerminatedPwnBox', () => {
+          isPwnboxActive = false;
+      }, false);
+
+      setTimeout(() => {
+          currentBrowser = window.detectBrowser();
+      }, 1000);
+
+      const AXIOS_ERROR_HANDLING_MESSAGE = 'Something went wrong, please try again later.';
+
+      
+      $('table').addClass('table table-striped text-left').wrap('<div class="table-responsive"></div>');
+
+      $('.training-module a').attr('target', '_blank').attr('rel', 'noopener nofollow');
+
+      $('.favouriteBtn').click(function () {
+          let id = $(this).data('module-id');
+
+          axios.get('/api/modules/favourite/' + id).then(response => {
+              let data = response.data;
+              if (data.fav === 1) {
+            $(this).removeClass('fa-sharp fa-solid fa-regular').addClass('fa-sharp fa-solid');
+                  toastr['success'](data.message, 'Success');
+              } else {
+            $(this).removeClass('fa-sharp fa-solid fa-regular').addClass('fa-regular');
+                  toastr['success'](data.message, 'Success');
+              }
+          }).catch(err => {
+              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+          });
+      });
+
+      function encode_utf8(string) {
+          return unescape(encodeURIComponent(string));
+      }
+
+      function checkSolutionsSettings() {
+        axios.get('/api/v2/user/settings/walkthroughs_enabled').then(response => {
+            areSolutionsEnabled = response.data.data.value;
+
+            if(areSolutionsEnabled) {
+                _showSolutionsSettingSwitch.prop('checked', true);
+            }
+        }).catch(error => {
+            toastr['error'](data.message, 'Error');
+        });
+      }
+
+      function manageSolutionsSettings(enableWriteupSettings) {
+        return axios.put('/api/v2/user/settings/walkthroughs_enabled', {
+            value: enableWriteupSettings
+        });
+      }
+
+      function handleSolutionPreferencesModalAction(enableWriteupSettings) {
+        manageSolutionsSettings(!areSolutionsEnabled).then(response => {
+            if (response.status === 204) {
+                areSolutionsEnabled = enableWriteupSettings;
+                if (areSolutionsEnabled) {
+                    // refresh page to update UI
+                    window.location.reload();
+                }
+            }
+        }).catch(error => {
+            toastr['error'](error.message, 'Error');
+        }).finally(() => {
+            $('#solutionPreferencesModal').modal('hide');
+        });
+      }
+
+      _showSolutionsSettingSwitch.on('click', () => {
+            if(isAnnualUser || isAdmin || isCompanyAdmin) {
+                _showSolutionsSettingSwitch.prop('disabled', true);
+                manageSolutionsSettings(!areSolutionsEnabled)
+                    .then(response => {
+                        if (response.status === 204) {
+                            areSolutionsEnabled = !areSolutionsEnabled;
+                             // refresh page to update UI
+                             window.location.reload();
+                        }
+                    }).catch(error => {
+                        toastr['error'](error.message, 'Error');
+                    }).finally(() => {
+                        // We add a small delay to avoid possible spam/abuse
+                        setTimeout(() => {
+                            _showSolutionsSettingSwitch.prop('disabled', false);
+                        }, 1500);
+                    });
+            }
+        });
+
+      $('.btnAnswer').click(function () {
+          let question_id = $(this).data('question-id');
+          $(this).attr('disabled', 1);
+          $(this).find('.submit-button-text').addClass('d-none');
+          $(this).find('.submit-button-loader').removeClass('d-none');
+          let utf8EncodedString = encode_utf8($('#answer' + question_id).val());
+          axios.post('/api/check/answer', {
+              answer: btoa(utf8EncodedString),
+              question_id: question_id
+          }).then(response => {
+              let data = response.data;
+              if (data.success === 0) {
+                  $(this).removeAttr('disabled');
+
+                  if(data.should_show_walkthrough_modal) {
+                    openSolutionPreferencesModal();
+                  }
+
+                  toastr['error'](data.message, 'Error');
+              } else {
+                  $(this).attr('disabled', 1);
+                  $('#answer' + question_id).attr('disabled', 1);
+                  $('#answer' + question_id).addClass('text-success');
+                  $('#hintBtn' + question_id).attr('disabled', 1);
+                  $(`.d-discord-${question_id}`).addClass('d-none');
+                  $('#questionStreakPointsText-' + question_id).addClass('d-none');
+                  toastr['success'](data.message, 'Success');
+                  completeCheck();
+              }
+              $(this).find('.submit-button-text').removeClass('d-none');
+              $(this).find('.submit-button-loader').addClass('d-none');
+          }).catch(err => {
+              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+          });
+      });
+
+      $('.btnAnswerExercise').click(function () {
+          let exercise_id = $(this).data('exercise-id');
+          $(this).attr('disabled', 1);
+          $(this).find('.submit-button-text').addClass('d-none');
+          $(this).find('.submit-button-loader').removeClass('d-none');
+          let utf8EncodedString = encode_utf8($(`#exerciseAnswer${exercise_id}`).val());
+          axios.post(`/api/check/exercise/${exercise_id}/answer`, {
+              answer: btoa(utf8EncodedString)
+          }).then(response => {
+              let data = response.data;
+              if (data.success === 0) {
+                  $(this).removeAttr('disabled');
+                  toastr['error'](data.message, 'Error');
+              } else {
+                  $(this).attr('disabled', 1);
+                  $(`#exerciseAnswer${exercise_id}`).attr('disabled', 1);
+                  $(`#exerciseAnswer${exercise_id}`).addClass('text-success');
+                  toastr['success'](data.message, 'Success');
+              }
+              $(this).find('.submit-button-text').removeClass('d-none');
+              $(this).find('.submit-button-loader').addClass('d-none');
+          }).catch(err => {
+              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+          });
+      });
+
+      $('.btnAnswerExerciseMultiple').click(function () {
+          $(this).attr('disabled', 1);
+          $(this).find('.submit-button-text').addClass('d-none');
+          $(this).find('.submit-button-loader').removeClass('d-none');
+          let exercise_id = $(this).data('exercise-id');
+          $(this).attr('disabled', 1);
+          let utf8EncodedString = $(`#exerciseAnswer${exercise_id}`).find('input:checked').val();
+          axios.post(`/api/check/exercise/${exercise_id}/answer`, {
+              answer: btoa(utf8EncodedString)
+          }).then(response => {
+              let data = response.data;
+              if (data.success === 0) {
+                  $(this).removeAttr('disabled');
+                  toastr['error'](data.message, 'Error');
+                  $(`#exerciseAnswer${exercise_id} input[type=radio]:checked`).parent().parent().find(`.exercise-answer-justification`).removeClass('d-none');
+                  $(`#exerciseAnswer${exercise_id} input[type=radio]:checked`).attr('disabled', 1);
+                  $(`#exerciseAnswer${exercise_id} input[type=radio]:checked`).parent().find('label').addClass('text-danger red');
+              } else {
+                  $(this).attr('disabled', 1);
+                  $(`#exerciseAnswer${exercise_id}`).attr('disabled', 1);
+                  $(`#exerciseAnswer${exercise_id} input[type=radio]:checked`).parent().find('label').addClass('text-success green');
+                  $(`#exerciseAnswer${exercise_id} input[type=radio]:checked`).parent().find('label').removeClass('red');
+                  $(`#exerciseAnswer${exercise_id} input[type=radio]`).attr('disabled', 1);
+                  $(`#exerciseAnswer${exercise_id} .exercise-answer-justification`).removeClass('d-none');
+                  toastr['success'](data.message, 'Success');
+              }
+              $(this).find('.submit-button-text').removeClass('d-none');
+              $(this).find('.submit-button-loader').addClass('d-none');
+          }).catch(err => {
+              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+          });
+      });
+
+      $('.reveal-modal').click(e => {
+          let id = $(e.target).data('exercise-id');
+          $(`#revealExerciseAnswer${id}`).modal('hide');
+      });
+
+      $(document).ready(function () {
+        let isOnOverloadedVpnServer;
+        const overLoadedVpnServerStatusKey = 'htb-vpn-overloaded-status';
+        isOnOverloadedVpnServer= '' ?? false;
+        const isNotInformedForVpnLoad = JSON.parse(localStorage.getItem(overLoadedVpnServerStatusKey) === null);
+
+        if(isOnOverloadedVpnServer && isNotInformedForVpnLoad) {
+            $('#overloadedVpnInfoModal').modal('show');
+        }
+
+          setTimeout(() => {
+            // we add a delay before calling this function
+            // in order the axios headers to have been set
+            completeCheck();
+            checkSolutionsSettings();
+
+          }, 500);
+
+          setTimeout(() => {
+            $('.bootstrap-select').find('button').attr("title","");
+          }, 5000);
+
+          $('pre').filter(function () {
+              return this.className.match(/\blanguage-/);
+          }).each(function () {
+              let heading = $(this).prevAll().closest('h1').last().text();
+
+              if (this.className === ' language-shell-session') {
+                  wrapTerminal(this, heading);
+              } else if (this.className === ' language-powershell-session') {
+                  wrapPSTerminal(this, heading);
+              } else if (this.className === ' language-cmd-session') {
+                  wrapCMDTerminal(this, heading);
+              } else if (this.className.startsWith(' language-')) {
+                  var language = this.className.split('-').pop();
+                  wrapCodeBlock(this, language);
+              }
+          });
+
+          wrapBrowser($('.website-screenshot'));
+
+          $('span:contains(\'[!bash!]\')').html('<span class="text-gray">ATMvnvl@htb</span><span class="text-success">[/htb]</span>');
+
+          let _vpnSelector = $('.vpnSelector');
+          let _selectedServer = _vpnSelector.val();
+          let _vpnLoader = $('.vpn-loader');
+
+          let _vpnSwitchWarningModal = $('#vpnSwitchWarningModal');
+          let _continueVpnSwitchBtn = $('#continueVpnSwitchBtn');
+          let _continueVpnSwitchBtnText = $('#continueVpnSwitchBtnText');
+          let _cancelVpnSwitchBtn = $('#cancelVpnSwitchBtn');
+          let _vpnSwitchWarningModalLoader = $('.vpnSwitchModalLoader');
+
+          // Modal for warning the user about switching to an overloaded server
+          let _overloadedVpnWarningModal = $('#overloadedVpnWarningModal');
+
+          // Modal for informing the user already being on an overloaded server
+          let _overloadedVpnInfoModal = $('#overloadedVpnInfoModal');
+
+          // Reverts the selected server to the last selected server
+          function cancelVpnServerChange() {
+            _overloadedVpnWarningModal.modal('hide');
+            _vpnSelector.val(_selectedServer);
+            _vpnSelector.selectpicker('refresh');
+          }
+
+          _overloadedVpnWarningModal.find('#stayToVpnServerWarning, .close').on('click', () => {
+            cancelVpnServerChange();
+          });
+
+          _overloadedVpnWarningModal.find('#overloadedVpnServerWarningAction').on('click', () => {
+            localStorage.setItem(overLoadedVpnServerStatusKey, JSON.stringify('complete'));
+            _overloadedVpnWarningModal.modal('hide');
+            switchVpnServer(true);
+          });
+
+          _overloadedVpnInfoModal.find('#stayToVpnServerInfo, #overloadedVpnInfoAction, .close').on('click', () => {
+            _vpnSelector.val(_selectedServer);
+            _vpnSelector.selectpicker('refresh');
+            _overloadedVpnInfoModal.modal('hide');
+          });
+
+          _overloadedVpnInfoModal.on('hidden.bs.modal', () => {
+            localStorage.setItem(overLoadedVpnServerStatusKey, JSON.stringify('complete'));
+          });
+
+          _vpnSelector.change(function () {
+              if (isPwnboxActive) {
+                _vpnSwitchWarningModal.modal('show');
+              } else {
+                let vpnLoadLevel = $('.vpnSelector option:selected').data('level');
+                if (vpnLoadLevel >= 70) {
+                    _overloadedVpnWarningModal.modal('show');
+                } else {
+                    switchVpnServer();
+                }
+              }
+          });
+
+          function switchVpnServer(displayError = true) {
+            let vpnId = $('.vpnSelector option:selected').val();
+            if (!vpnId) return;
+
+            _vpnLoader.removeClass('d-none');
+            _vpnLoader.addClass('d-flex');
+            $('.bootstrap-select').addClass('d-none');
+
+            // Display button loader and disable the buttons while
+            // waiting for the request to finish
+            _continueVpnSwitchBtnText.addClass('d-none');
+            _vpnSwitchWarningModalLoader.removeClass('d-none');
+            _continueVpnSwitchBtn.addClass('disabled');
+            _cancelVpnSwitchBtn.addClass('disabled');
+            _vpnSwitchWarningModal.find('.close').addClass('disabled');
+
+            axios.post(`/api/v2/vpn-servers/${vpnId}/switch`, {}).then(response => {
+                _vpnLoader.removeClass('d-flex');
+                _vpnLoader.addClass('d-none');
+                $('.bootstrap-select').removeClass('d-none');
+
+                toastr['success']('Vpn server switched successfully', 'Success');
+                $('.startInstanceBtn').each(function () {
+                    $(this).removeClass('disabled');
+                });
+
+                _selectedServer = _vpnSelector.val();
+                _vpnSwitchWarningModal.modal('hide');
+                _continueVpnSwitchBtnText.removeClass('d-none');
+                _vpnSwitchWarningModalLoader.addClass('d-none');
+                _continueVpnSwitchBtn.removeClass('disabled');
+                _cancelVpnSwitchBtn.removeClass('disabled');
+                _vpnSwitchWarningModal.find('.close').removeClass('disabled');
+
+                if (isTargetActive) {
+                    $('.target').html('<i class="fad fa-circle-notch fa-spin"></i> Target is spawning...');
+                    $('.targetIp').html('<i class="fad fa-circle-notch fa-spin"></i>');
+                    $('.target-protocol-ip').html('<i class="fad fa-circle-notch fa-spin"></i>');
+                    $('.resetTargetBtn').hide();
+                    $('.resetTargetBtn').prop('disabled', true);
+
+                    vmCheckTimer = setInterval(function () {
+                        window.checkMultipleVMs();
+                    }, 5 * 1000);
+                }
+
+            }).catch(err => {
+                clearInterval(vmCheckTimer);
+                _vpnLoader.removeClass('d-flex');
+                _vpnLoader.addClass('d-none');
+                $('.bootstrap-select').removeClass('d-none');
+                if(displayError) {
+                    toastr['error'](err.response.data.message, 'Error');
+                }
+                _vpnSelector.val(_selectedServer);
+                $('.selectpicker').selectpicker('refresh')
+                _vpnSwitchWarningModal.modal('hide');
+                _continueVpnSwitchBtnText.removeClass('d-none');
+                _vpnSwitchWarningModalLoader.addClass('d-none');
+                _continueVpnSwitchBtn.removeClass('disabled');
+                _cancelVpnSwitchBtn.removeClass('disabled');
+                _vpnSwitchWarningModal.find('.close').removeClass('disabled');
+            });
+
+          }
+
+          _continueVpnSwitchBtn.on('click', () => {
+              switchVpnServer();
+          });
+
+          _vpnSwitchWarningModal.find('.close').on('click', () => {
+              _vpnSelector.val(_selectedServer);
+              _vpnSwitchWarningModal.modal('hide');
+          });
+
+          _cancelVpnSwitchBtn.on('click', () => {
+              _vpnSelector.val(_selectedServer);
+              _vpnSwitchWarningModal.modal('hide');
+          });
+
+          _vpnSwitchWarningModal.on('hidden.bs.modal', () => {
+              _continueVpnSwitchBtnText.removeClass('d-none');
+              _vpnSwitchWarningModalLoader.addClass('d-none');
+
+              // Reset button state on modal close
+              _continueVpnSwitchBtn.removeClass('disabled');
+              _cancelVpnSwitchBtn.removeClass('disabled');
+              _vpnSwitchWarningModal.find('.close').removeClass('disabled');
+          });
+
+      });
+
+      $('.download-vpn-settings').click(() => {
+          let type = 'regular';
+          let protocol = $('input[name="vpn-protocol"]:checked').val();
+          axios.get(`/api/v2/vpn-servers/key/download?type=${type}&protocol=${protocol}`).then(response => {
+              const url = window.URL.createObjectURL(new Blob([response.data]));
+              const link = document.createElement('a');
+              link.href = url;
+              link.setAttribute('download', `academy-${type}.ovpn`);
+              document.body.appendChild(link);
+              link.click();
+          }).catch(err => {
+              toastr['error'](err.response.data.message, 'Error');
+          });
+      });
+
+      $('#completeBtn').click(() => {
+          $('#completeBtn').addClass('disabled');
+          $('#complete-button-text').addClass('d-none');
+          $('#complete-button-loader').removeClass('d-none');
+      });
+
+      function completeCheck() {
+          axios.get('/api/check/complete/1980').then(response => {
+              let data = response.data;
+              if (data.success === 1) {
+                  if (data.completed === true) {
+                      $('#completeBtn').show();
+                      $('#completeBtnPoints').removeClass('d-none');
+                  }
+              }
+          }).catch(err => {
+              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+          });
+      }
+
+      function wrapTerminal(element, heading) {
+          $(element).css('line-height', '0px');
+          $(element).wrap('<div class="window_content"></div>')
+              .parent().wrap('<div class="window_container"></div>')
+              .prepend(`
+                      <div class='window_top'>
+                          <span class='window_dot bg-danger'></span>
+                          <span class='window_dot bg-warning'></span>
+                          <span class='window_dot bg-success'></span>
+                          <span class='window_title'>${heading}</span>
+                      </div>
+                  `);
+      }
+
+      function wrapPSTerminal(element, heading) {
+          $(element).css('background', '#012456').children().css('color', 'white');
+          $(element).css('line-height', '0px');
+          $(element).wrap('<div class="window_content"></div>')
+              .parent().wrap('<div class="window_container"></div>')
+              .prepend(`
+                      <div class='window_top'>
+                          <span class='window_dot bg-danger'></span>
+                          <span class='window_dot bg-warning'></span>
+                          <span class='window_dot bg-success'></span>
+                          <span class='window_title'>${heading}</span>
+                      </div>
+                  `);
+      }
+
+      function wrapCMDTerminal(element, heading) {
+          $(element).css('background', 'black').children().css('color', 'white');
+          $(element).css('line-height', '0px');
+          $(element).wrap('<div class="window_content"></div>')
+              .parent().wrap('<div class="window_container"></div>')
+              .prepend(`
+                      <div class='window_top'>
+                          <span class='window_dot bg-danger'></span>
+                          <span class='window_dot bg-warning'></span>
+                          <span class='window_dot bg-success'></span>
+                          <span class='window_title'>${heading}</span>
+                      </div>
+                  `);
+      }
+
+      function wrapCodeBlock(element, lang) {
+          $(element).wrap('<div class="window_content"></div>')
+              .parent().wrap('<div class="window_container"></div>')
+              .prepend('<div class="window_top">Code: <span class="text-success">' + lang + '</div>');
+      }
+
+      function wrapBrowserOld(element) {
+          $(element).css('border', '0px').css('border-radius', '0');
+          let url = element.data('url');
+          $(element).wrap('<div class="window_content"></div>')
+              .parent().wrap('<div class="window_container"></div>')
+              .prepend(`
+                      <div class='window_top'>
+                          <span class='window_dot bg-danger'></span>
+                          <span class='window_dot bg-warning'></span>
+                          <span class='window_dot bg-success'></span>
+                          <input type='text' class='website-screenshot-url' disabled value='${url}'>
+                          <span class='float-right'><i class='fa fa-home'></i></span>
+                      </div>
+                  `);
+      }
+
+      function wrapBrowser(element) {
+          $(element).css('border', '0px').css('border-radius', '0');
+
+          $(element).each(function (index, e) {
+              let url = $(e).data('url');
+              $(e).wrap('<div class="window_content"></div>')
+                  .parent().wrap('<div class="window_container"></div>')
+                  .prepend(`
+                          <div class='window_top'>
+                              <span class='mr-2'>
+                                  <i class='fa fa-arrow-circle-left'></i> <i class='fa fa-arrow-right'></i> <i class='fa fa-redo'></i> <i class='fa fa-home'></i>
+                              </span>
+                              <input type='text' class='website-screenshot-url' disabled value='${url}'>
+                              <span class='float-right'><i class='fa fa-bars'></i></span>
+                          </div>
+                      `);
+          });
+      }
+
+      // This one is used by the requestHelpModal
+      function requestHelp() {
+          let question_id = $('#requestHelpModal').data('question_id');
+          axios.post(`/api/question/${question_id}/help`)
+              .then(({ data }) => {
+                  $('#requestHelpModal').modal('hide');
+                  if (data.success == 0) {
+                      toastr['error'](data.message, 'Error');
+                      return;
+                  }
+                  toastr['success']('Request sent!', 'Success');
+              }).catch(err => {
+                  toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+              });
+      }
+
+      function openRequestModal(question_id) {
+          $('#requestHelpModal').modal('show').data('question_id', question_id);
+      }
+
+      function openSolutionPreferencesModal() {
+        $('#solutionPreferencesModal').modal('show');
+      };
+
+      function openWalkthroughModal(index, sectionTitle) {
+          let _walkthrougModal = $('#walkthroughModal');
+          const _walkthroughContent = $('#walkthroughModal').find('.training-module');
+          const _walkthroughLoader = $('.walkthrough-loader');
+          _walkthrougModal.modal('show');
+          _walkthrougModal.on('shown.bs.modal', function (event) {
+              const indexNumber = new Number(index);
+
+              _walkthroughLoader.removeClass('d-none');
+              _walkthroughLoader.addClass('d-block');
+
+              let question = `Question ${indexNumber + 1}`;
+              let element = $('h1').filter(function () {
+                  // Filter all the h1 headers, to find the exact section title
+                  return $(this).text().trim().toLowerCase() === sectionTitle.toLowerCase();
+              }).nextAll('h2').filter(function () {
+                  // then filter all the h2 headers, to find the exact question as well
+                  return $(this).text().trim().toLowerCase() === question.toLowerCase();
+              }).first();
+
+              if (element.length) {
+                  setTimeout(() => {
+                      _walkthroughLoader.addClass('d-none');
+                      _walkthroughLoader.removeClass('d-block');
+                      _walkthroughContent.removeClass('d-none');
+
+                      _walkthrougModal.animate({
+                          scrollTop: element.offset().top - _walkthrougModal.offset().top + _walkthrougModal.scrollTop()
+                      }, 500);
+                  }, 1500);
+              } else {
+                  _walkthroughLoader.addClass('d-none');
+                  _walkthroughLoader.removeClass('d-block');
+                  _walkthroughContent.removeClass('d-none');
+              }
+          });
+          _walkthrougModal.on('hidden.bs.modal', function (event) {
+              // Make sure that content gets hidden again
+              // in case the user re-opens the modal multiple times
+              _walkthroughContent.addClass('d-none');
+          });
+      }
+
+      
+      function initStreakToast(autoHideOption = true) {
+          const streakToast = $('#streak-toast');
+          streakToast.toast({ autohide: autoHideOption, delay: 20000 }).toast('show');
+      }
+
+      function initStreaksNotificationContent(streaksTemplate) {
+          return new Promise((resolve, reject) => {
+              const _streaksContainer = $('.streaks-container');
+              _streaksContainer.html(streaksTemplate);
+              resolve();
+          });
+
+      }
+</script>
+
+<script type="module">
+    import RFB from '/assets/libs/vnc/core/rfb.js';
+
+      let rfb;
+      let sidePreview;
+      let desktopName;
+      let pwnboxActive = false;
+      $(document).ready(function () {
+          getRegions();
+          const userId = '1674007';
+          Echo.private(`user-${userId}`)
+              .listen('.streak.completed', data => {
+                  initStreaksNotificationContent(data.streak_popup).then(() => {
+                      initStreakToast();
+                  });
+              })
+              .listen('.streak.progressed', data => {
+                  initStreaksNotificationContent(data.streak_popup).then(() => {
+                      initStreakToast();
+                  });
+              })
+              .listen('.streak.started', data => {
+                  const { event, current_streak } = data.streak_data;
+                  initStreaksNotificationContent(data.streak_popup).then(() => {
+                    const enableToastAutohide = event === 'streak.started' && current_streak === 0 ? false : true;
+                    initStreakToast(enableToastAutohide);
+                  });
+              });
+      });
+
+      function connectedToServer(e) {
+          status('Connected to ' + desktopName);
+          $('.fullScreenBtn').show();
+          $('.resetInstanceBtn').show();
+          $('.terminateInstanceBtn').show();
+          $('.extendInstanceBtn').show();
+          $('.instanceLoading').hide();
+          $('.instanceStart').hide();
+          $('.resetInstanceBtn').prop('disabled', false);
+          $('.fullScreenBtn').prop('disabled', false);
+          $('.extendInstanceBtn').prop('disabled', false);
+          $('.terminateInstanceBtn').prop('disabled', false);
+
+          document.querySelector('canvas').addEventListener('focus', (event) => {
+              if (currentBrowser.firefox) {
+                  window.copyToClipboard(event.target.textContent);
+              } else {
+                  navigator.clipboard.readText()
+                      .then(text => {
+                          writeToClipboard(text);
+                      })
+                      .catch(err => {
+                          console.error('Something went wrong while accessing clipboard', err);
+                      });
+              }
+          });
+      }
+
+      function disconnectedFromServer(e) {
+          status('Disconnected');
+          $('.screenPlaceholder').show();
+          stopCountdown();
+      }
+
+      function clipboardReceived(e) {
+          navigator.clipboard.writeText(e.detail.text)
+              .then(() => {
+                  // Success!
+              })
+              .catch(err => {
+                  console.error('Something went wrong while copying to clipboard.', err);
+              });
+      }
+
+      function updateDesktopName(e) {
+          desktopName = e.detail.name;
+      }
+
+      function status(text) {
+          $('#statusText').html(text);
+      }
+
+      function readQueryVariable(name) {
+          const re = new RegExp('.*[?&]' + name + '=([^&#]*)'),
+              match = document.location.href.match(re);
+
+          if (match) {
+              return decodeURIComponent(match[1]);
+          }
+
+          return null;
+      }
+
+      function writeToClipboard(text) {
+          rfb.clipboardPasteFrom(text);
+      }
+
+      let host = '';
+      let password = '';
+      let countdown = '';
+      let targetCountdown = '';
+      let targetRemainingTimeInSeconds = '';
+      let url = '';
+      let spawnInterval = null;
+
+      function getPwnbox() {
+          return new Promise((resolve, reject) => {
+              axios.get('/api/get/pwnbox').then(response => {
+                  let data = response.data;
+                  if (data.success === 1 && data.instance.status === 'ready') {
+                      host = `proxy-${data.instance.location}.htb-cloud.com/bird/${data.instance.hostname}`;
+                      password = data.instance.password;
+                      $('.lifeLeft').html(data.instance.life_remaining);
+                      startCountdown();
+                      $('.screenPlaceholder').hide();
+                      url = 'https://vnc.htb-cloud.com/index.html?host=' + host + '&password=' + password;
+                      isPwnboxActive = true;
+
+                      if (document.querySelector('wc-htb-pwnbox-selection-card')) {
+                          document.querySelector('wc-htb-pwnbox-selection-card').setAttribute('pwnbox-active', true);
+                      }
+                      connect();
+                      if (spawnInterval !== null) {
+                          clearInterval(spawnInterval);
+                      }
+                      resolve('success getting pwnbox');
+                  } else {
+                      $('.screenPlaceholder').show();
+                  }
+              }).catch(err => {
+                  toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+                  reject(err);
+              });
+          });
+      }
+
+                function extendPwnbox() {
+              axios.get('/api/extend/pwnbox').then(response => {
+                  let data = response.data;
+                  if (data.success === 1) {
+                      $('.lifeLeft').html(data.instance.life_remaining);
+                      stopCountdown().then(() => {
+                          startCountdown();
+                          toastr['success']('Time extended for 60 minutes.', 'Success');
+                      });
+                  } else {
+                      toastr['error'](data.message, 'Error');
+                  }
+
+              }).catch(err => {
+                  toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+              });
+          }
+
+      
+      function initStartCountdown() {
+          let life = parseInt($('.lifeLeft').html()) - 1;
+          $('.lifeLeft').html(life);
+      }
+
+      function startCountdown() {
+          countdown = setInterval(function () {
+              initStartCountdown();
+          }, 60 * 1000);
+      }
+
+      function stopCountdown() {
+          return new Promise((resolve) => {
+              clearInterval(countdown);
+              resolve();
+          });
+      }
+
+      function terminatePwnbox() {
+          return new Promise((resolve, reject) => {
+              $('.resetInstanceBtn').prop('disabled', true);
+              $('.terminateInstanceBtn').prop('disabled', true);
+              $('.fullScreenBtn').prop('disabled', true);
+              $('.extendInstanceBtn').prop('disabled', true);
+              $('.instanceStart').hide();
+
+              $('.instanceTerminating').show();
+
+              status('Terminating Interactive Instance...');
+
+              axios.delete('/api/terminate/pwnbox')
+                  .then(({ data }) => {
+                      if (data.success === 1) {
+                          $('.startInstanceBtn').show();
+                          $('.instanceStart').show();
+                          $('.instanceTerminating').hide();
+                          $('.resetInstanceBtn').hide();
+                          $('.terminateInstanceBtn').hide();
+                          $('.fullScreenBtn').hide();
+                          $('.extendInstanceBtn').hide();
+
+                          isPwnboxActive = false;
+
+                          $('.iterminal').addClass('d-none');
+
+                          toastr['success']('Instance has been terminated.', 'Success');
+
+                          /**
+                           *  Dispatch an event when pwnBox is terminated
+                           */
+                          var terminatePwnBoxEvent = new CustomEvent('TerminatedPwnBox');
+                          window.dispatchEvent(terminatePwnBoxEvent);
+
+                          resolve('succes terminating pwnbox');
+
+                      } else {
+                          toastr['error'](data.message, 'Error');
+                          connect();
+                          $('.resetInstanceBtn').prop('disabled', false);
+                          $('.fullScreenBtn').prop('disabled', false);
+                          $('.extendInstanceBtn').prop('disabled', false);
+                          $('.terminateInstanceBtn').prop('disabled', false);
+                      }
+                  }).catch(err => {
+                      reject(err);
+                      toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+                  });
+          }).catch(error => {
+              reject(error);
+          });
+      }
+
+      let _wcPwnbox = document.querySelector('wc-htb-pwnbox-selection-card');
+
+      function errorHandling(value) {
+          switchToRegion = value.detail[0];
+          _pwnboxSwitchWarningModal.modal('show');
+      }
+
+      function getSelectedPwnboxLocation(event) {
+          if (pwnboxActive) {
+              selectedPwnBoxLocation = currentPwnboxLocation;
+              return;
+          }
+          selectedPwnboxLocation = event.detail[0];
+      }
+
+      function getCurrentPwnboxLocation(server) {
+          currentPwnboxLocation = server;
+      }
+
+      function setCurrentPwnboxServer(server) {
+          _wcPwnbox.setAttribute('current-pwnbox', server);
+      }
+
+      let selectedPwnboxLocation;
+      let currentPwnboxLocation;
+      let switchToRegion;
+
+      let pwnboxRegions;
+
+      let _pwnboxSwitchWarningModal = $('#pwnboxSwitchWarningModal');
+      let _cancelPwnboxSwitchBtn = $('#cancelPwnboxSwitchBtn');
+      let _continuePwnboxSwitchBtn = $('#continuePwnboxSwitchBtn');
+      let _continuePwnboxSwitchBtnText = $('#continuePwnboxSwitchBtnText');
+      let _pwnboxSwitchModalLoader = $('.pwnboxSwitchModalLoader');
+
+      _cancelPwnboxSwitchBtn.on('click', () => {
+          initWcPwnbox(pwnboxRegions);
+          _pwnboxSwitchWarningModal.modal('hide');
+      });
+
+      _continuePwnboxSwitchBtn.on('click', () => {
+          _continuePwnboxSwitchBtnText.addClass('d-none');
+          _pwnboxSwitchModalLoader.removeClass('d-none');
+          _continuePwnboxSwitchBtn.addClass('disabled');
+          _cancelPwnboxSwitchBtn.addClass('disabled');
+
+          let oldCurrentPwnbox = selectedPwnboxLocation = currentPwnboxLocation = switchToRegion;
+
+          $('.screenPlaceholder').show();
+          $('.instanceStart').show();
+                    sidePreview.disconnect();
+          terminatePwnbox().then(() => {
+
+              startPwnbox().then(() => {
+                  _pwnboxSwitchWarningModal.modal('hide');
+                  _continuePwnboxSwitchBtnText.removeClass('d-none');
+                  _pwnboxSwitchModalLoader.addClass('d-none');
+                  _continuePwnboxSwitchBtn.removeClass('disabled');
+                  _cancelPwnboxSwitchBtn.removeClass('disabled');
+                  initWcPwnbox(pwnboxRegions);
+              }).catch(() => {
+                  _pwnboxSwitchWarningModal.modal('hide');
+                  _continuePwnboxSwitchBtnText.removeClass('d-none');
+                  _pwnboxSwitchModalLoader.addClass('d-none');
+                  _continuePwnboxSwitchBtn.removeClass('disabled');
+                  _cancelPwnboxSwitchBtn.removeClass('disabled');
+                  initWcPwnbox(pwnboxRegions);
+              });
+          }).catch(error => {
+              toastr['error'](error.message, 'Error');
+              currentPwnboxLocation = oldCurrentPwnbox;
+              initWcPwnbox(pwnboxRegions);
+          });
+      });
+
+      function initWcPwnbox(regions) {
+          /**
+           *  Creates pwnbox server select component
+           */
+          const pwnboxSelector = document.createElement('wc-htb-pwnbox-selection-card');
+          pwnboxSelector.setAttribute('regions', JSON.stringify(regions));
+          pwnboxSelector.setAttribute('current-pwnbox', JSON.stringify(currentPwnboxLocation));
+
+          $('.pwnbox-select-card').html(pwnboxSelector);
+          pwnboxSelector.addEventListener('getSelectedPwnboxLocation', getSelectedPwnboxLocation);
+          pwnboxSelector.addEventListener('actionNotAllowed', errorHandling);
+          selectedPwnboxLocation = currentPwnboxLocation;
+
+          if (isPwnboxActive) document.querySelector('wc-htb-pwnbox-selection-card').setAttribute('pwnbox-active', true);
+      }
+
+      function getRegions() {
+          axios.get('/api/v2/pwnbox/regions').then(response => {
+              const data = response.data.data;
+              currentPwnboxLocation = response.data.meta.currentRegion;
+              const regions = [];
+
+              const latencyPromises = data.map((region) => {
+                  const item = { name: region.title, value: region.value };
+                  // Use Promise.resolve to ensure each iteration of the loop returns a Promise
+                  return Promise.resolve()
+                      .then(() => getServerLatency(region.proxyLatencyURL))
+                      .then((response) => {
+                          item.latency = response;
+                          regions.push(item);
+                      });
+              });
+
+              pwnboxRegions = regions;
+
+              Promise.all(latencyPromises).then(() => {
+                  // This code will run after all the getServerLatency calls have completed
+
+                  initWcPwnbox(regions);
+                  /**
+                   * getting pwnbox status and setting isPwnboxActive flag
+                   * if isPwnboxActive is true we are passing the respective attribute to the web component
+                   */
+                  getPwnbox().then(() => {
+                      if (isPwnboxActive) {
+                          document.querySelector('wc-htb-pwnbox-selection-card').setAttribute('pwnbox-active', true);
+                      }
+                  });
+              })
+                  .catch((error) => {
+                      // Handle any errors that occurred during the Promise.all chain
+                      console.error('An error occurred:', error);
+                  });
+
+          }).catch(err => {
+              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+          });
+      }
+
+      function startPwnbox() {
+          return new Promise((resolve, reject) => {
+
+              $('.resetInstanceBtn').prop('disabled', true);
+              $('.fullScreenBtn').prop('disabled', true);
+              $('.extendInstanceBtn').prop('disabled', true);
+              $('.terminateInstanceBtn').prop('disabled', true);
+              $('.instanceStart').hide();
+              $('.instanceLoading').show();
+              $('.startInstanceBtn').hide();
+
+              status('Starting Interactive Instance...');
+
+              grecaptcha.ready(function () {
+                  grecaptcha.execute('6LeI6LsaAAAAAKgdStgBC6B4UVbXlpYNaYGN46Ah', { action: 'spawnPwnbox' }).then(function (token) {
+                      if (token) {
+                          axios.get(`/api/spawn/pwnbox?g-recaptcha-response=${token}&region=${selectedPwnboxLocation.value}`).then(response => {
+                              let data = response.data;
+                              if (data.success === 1) {
+                                  spawnInterval = setInterval(() => {
+                                      getPwnbox();
+                                  }, 2000);
+                              } else {
+                                  if (data.code === 1 || (data.code === 3 && isPwnboxActive)) {
+                                      $('.resetInstanceBtn').prop('disabled', false);
+                                      $('.fullScreenBtn').prop('disabled', false);
+                                      $('.extendInstanceBtn').prop('disabled', false);
+                                      $('.terminateInstanceBtn').prop('disabled', false);
+                                      connect();
+
+                                      if (data.code === 3) {
+                                          $('.instanceLoading').hide();
+                                          startCountdown();
+                                      }
+                                  } else {
+                                      $('.startInstanceBtn').show();
+                                      $('.instanceStart').show();
+                                      $('.instanceLoading').hide();
+                                  }
+
+                                  toastr['error'](data.message, 'Error');
+                              }
+                              resolve('success start pwnbox');
+                          }).catch(err => {
+                              toastr['error'](AXIOS_ERROR_HANDLING_MESSAGE, 'Error');
+                          });
+                      } else {
+                          $('.resetInstanceBtn').prop('disabled', false);
+                          $('.fullScreenBtn').prop('disabled', false);
+                          $('.extendInstanceBtn').prop('disabled', false);
+                          $('.terminateInstanceBtn').prop('disabled', false);
+                          $('.instanceStart').show();
+                          $('.instanceLoading').hide();
+                          $('.startInstanceBtn').show();
+                      }
+                  });
+              });
+          }).catch(error => {
+              reject(error);
+          });
+      }
+
+      $('.fullScreenBtn').click(function () {
+          window.open(url, '_blank');
+      });
+
+      $('.startInstanceBtn').click(function () {
+          if (!selectedPwnboxLocation?.value) {
+              toastr['warning']('Please select Pwnbox server', 'Warning');
+              return;
+          }
+          startPwnbox(selectedPwnboxLocation.value);
+      });
+
+      $('.resetInstanceBtn').click(function () {
+          $('.screenPlaceholder').show();
+          $('.instanceStart').show();
+                    sidePreview.disconnect();
+          startPwnbox(selectedPwnboxLocation.value);
+      });
+
+      $('.terminateInstanceBtn').click(function () {
+          $('.screenPlaceholder').show();
+          $('.instanceStart').show();
+                    sidePreview.disconnect();
+          terminatePwnbox();
+      });
+
+      $('.extendInstanceBtnClicker').click(function () {
+          extendPwnbox();
+      });
+
+      $('.resetTargetBtn').click(function () {
+          $('.resetTargetBtn').prop('disabled', true);
+          $('.resetTargetBtn').hide();
+          stopTargetCountdown().then(()=>{
+                                  });
+      });
+
+      
+      function connect() {
+          status('Connecting to ' + host.split('/')[2] + '...');
+
+          
+          sidePreview = new RFB(document.getElementById('sidePreview'), 'wss://' + host,
+              { credentials: { password: password } });
+
+          sidePreview.addEventListener('connect', connectedToServer);
+          sidePreview.addEventListener('disconnect', disconnectedFromServer);
+
+          sidePreview.resizeSession = false;
+          sidePreview.viewOnly = true;
+          sidePreview.scaleViewport = true;
+
+          /**
+           *  Dispatch an event when pwnBox is spawned
+           */
+          var spawnedPwnBoxEvent = new CustomEvent('SpawnedPwnBox');
+          window.dispatchEvent(spawnedPwnBoxEvent);
+      }
+
+
+            
+      
+      function calculateTimeLeftInMinutes() {
+          if (targetRemainingTimeInSeconds === null) {
+            return 0;
+          }
+          targetRemainingTimeInSeconds -= 1;
+          return Math.ceil(targetRemainingTimeInSeconds/60);
+      }
+
+      function initializeTimeLeft(remainingTime){
+        targetRemainingTimeInSeconds = remainingTime;
+        renderLifeTimeLeft();
+      }
+
+      function renderLifeTimeLeft() {
+        let life = calculateTimeLeftInMinutes();
+
+        if (life <= 0) {
+          $('.targetLifeTimeContainer').hide();
+          clearInterval(targetCountdown);
+          resetSpawnTargetSystemText();
+        } else {
+          $('.targetLifeTime').html(life);
+        }
+      }
+
+      function startTargetCountdown() {
+          targetCountdown = setInterval(function() {
+            renderLifeTimeLeft();
+          }, 1000);
+      }
+
+      function stopTargetCountdown() {
+          return new Promise((resolve) => {
+              clearInterval(targetCountdown);
+              resolve();
+          });
+      }
+
+      function resetSpawnTargetSystemText() {
+          $('.resetTargetBtn').prop('disabled', true);
+          $('.resetTargetBtn').hide();
+          $('.targetIp').html("");
+          $('.target-protocol-ip').html("");
+          $('.targetLifeTimeContainer').hide();
+          $('.target').html('<span class="spawnTargetBtn" style="cursor:pointer;">Click here to spawn the target system!</span>');
+      }
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9004d894a8c8879d","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2024.10.5","token":"9d8cb854dbf443df9a649c27660a2bb6"}' crossorigin="anonymous"></script>
+</body>
+
+</html>

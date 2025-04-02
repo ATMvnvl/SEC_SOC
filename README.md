@@ -1,2 +1,2 @@
 # SEC_SOC
-SEC_SOC
+Bài cáo cáo lab 
